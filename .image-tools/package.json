@@ -1,0 +1,12 @@
+{
+  "name": "rjgreg-image-tools",
+  "version": "1.0.0",
+  "private": true,
+  "description": "One-shot generator for hero photo variants (3 photos × 2 sizes × WebP+JPG)",
+  "scripts": {
+    "build": "node generate-variants.js"
+  },
+  "dependencies": {
+    "sharp": "^0.34.5"
+  }
+}

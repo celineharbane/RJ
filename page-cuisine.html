@@ -1,0 +1,558 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Atelier Cuisine — Ronde et Jolie</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Dancing+Script:wght@500;700&family=Montserrat:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --pink: #ec3a8b;
+    --pink-deep: #d62a7c;
+    --pink-bar: #e83a8a;
+    --gold: #d9b06c;
+    --gold-soft: #e8c987;
+    --black: #0d0908;
+    --cream: #fdf8f3;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 100%;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  body {
+    font-family: 'Montserrat', sans-serif;
+    background: #0d0908;
+    color: var(--cream);
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ============ MINI HEADER NAV (cohérent toutes pages) ============ */
+  .page-nav {
+    width: 100%;
+    padding: 14px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    border-bottom: 1px solid rgba(236,58,139,.25);
+    background: rgba(13,9,8,0.92);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    font-family: 'Montserrat',sans-serif;
+    position: sticky;
+    top: 0;
+    z-index: 100;
+  }
+  .page-nav-brand { display: flex; align-items: center; gap: 10px; color: var(--cream); text-decoration: none; transition: opacity .3s; }
+  .page-nav-brand:hover { opacity: .8; }
+  .page-nav-mark {
+    width: 36px; height: 36px; border-radius: 50%;
+    border: 1.5px solid var(--pink);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display',serif;
+    font-size: 17px; font-weight: 700; font-style: italic; color: var(--pink);
+  }
+  .page-nav-name {
+    font-family: 'Playfair Display',serif;
+    font-size: 17px; font-weight: 600; color: var(--cream); letter-spacing: .02em;
+  }
+  .page-nav-list { list-style: none; display: flex; gap: 24px; align-items: center; margin: 0; padding: 0; }
+  .page-nav-list a {
+    color: #a89b89; text-decoration: none;
+    font-size: 13px; font-weight: 400; letter-spacing: .04em;
+    padding: 6px 0; position: relative; transition: color .3s;
+  }
+  .page-nav-list a:hover { color: var(--cream); }
+  .page-nav-list a.is-active { color: var(--pink); }
+  .page-nav-list a.is-active::after {
+    content: ""; position: absolute; left: 0; right: 0; bottom: 0;
+    height: 1px; background: var(--pink);
+  }
+  @media (max-width: 720px) {
+    .page-nav { flex-wrap: wrap; justify-content: center; gap: 14px; padding: 10px 14px; }
+    .page-nav-list { gap: 14px; font-size: 12px; }
+    .page-nav-name { display: none; }
+  }
+
+  /* ============================
+     POSTER PLEINE PAGE DESKTOP
+     ============================ */
+  .poster {
+    position: relative;
+    width: 100vw;
+    flex: 1;
+    min-height: calc(100vh - 68px);
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+  }
+
+  /* ===== PHOTO BACKGROUND PLEINE PAGE ===== */
+  .photo {
+    position: absolute;
+    inset: 0;
+    background-image: url('assets/atelier-cuisine-hero.webp');
+    background-size: cover;
+    background-position: center center;
+    z-index: 1;
+  }
+
+  /* Overlay : assombrir gauche + bas + voile global */
+  .photo-overlay {
+    position: absolute;
+    inset: 0;
+    background:
+      linear-gradient(90deg,
+        rgba(13, 9, 8, 0.85) 0%,
+        rgba(13, 9, 8, 0.65) 25%,
+        rgba(13, 9, 8, 0.25) 50%,
+        rgba(13, 9, 8, 0.15) 100%
+      ),
+      linear-gradient(180deg,
+        rgba(13, 9, 8, 0.3) 0%,
+        transparent 30%,
+        transparent 70%,
+        rgba(13, 9, 8, 0.7) 100%
+      );
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* ============================
+     HEADER POSTER (brand haut gauche + badge haut droite)
+     ============================ */
+  .header {
+    position: relative;
+    z-index: 10;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 2.5rem 3.5rem 0;
+    width: 100%;
+  }
+
+  .brand { display: flex; align-items: center; gap: 1rem; }
+
+  .brand-logo {
+    width: 58px; height: 58px;
+    border-radius: 50%;
+    background: var(--pink);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-weight: 900; font-style: italic;
+    font-size: 1.6rem; color: white;
+    position: relative;
+    box-shadow: 0 6px 20px rgba(236, 58, 139, 0.5);
+  }
+  .brand-logo::after {
+    content: '♥';
+    position: absolute;
+    bottom: 6px; right: 6px;
+    font-size: 0.65rem; color: white;
+  }
+
+  .brand-text h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.65rem; font-weight: 700;
+    color: var(--cream);
+    line-height: 1;
+    text-shadow: 0 2px 12px rgba(0, 0, 0, 0.8);
+  }
+  .brand-text p {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    color: var(--cream);
+    opacity: 0.9;
+    margin-top: 0.5rem;
+    font-weight: 500;
+    text-shadow: 0 1px 6px rgba(0, 0, 0, 0.8);
+  }
+
+  /* Badge rond exclusif */
+  .badge {
+    width: 140px; height: 140px;
+    border-radius: 50%;
+    background: rgba(15, 8, 10, 0.88);
+    border: 2px solid var(--gold);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    text-align: center;
+    box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6);
+    animation: pulse 3s ease-in-out infinite;
+  }
+  @keyframes pulse {
+    0%, 100% { box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 0 0 rgba(217, 176, 108, 0.4); }
+    50% { box-shadow: 0 12px 32px rgba(0, 0, 0, 0.6), 0 0 0 18px rgba(217, 176, 108, 0); }
+  }
+  .badge .icon { font-size: 1.5rem; margin-bottom: 0.3rem; }
+  .badge .title {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700; font-size: 0.9rem;
+    color: var(--cream); letter-spacing: 0.05em; line-height: 1.15;
+  }
+  .badge .sub {
+    font-size: 0.6rem; letter-spacing: 0.18em;
+    color: var(--gold-soft); margin-top: 0.4rem;
+    font-weight: 600;
+    border-top: 1px solid rgba(217, 176, 108, 0.4);
+    padding-top: 0.35rem; width: 75%;
+  }
+
+  /* ============================
+     CONTENU CENTRAL (titre + tagline)
+     ============================ */
+  .content {
+    position: relative;
+    z-index: 10;
+    flex: 1;
+    display: flex; flex-direction: column;
+    justify-content: center;
+    padding: 2rem 3.5rem;
+    max-width: 60%;
+  }
+
+  .title-main {
+    font-family: 'Playfair Display', serif;
+    font-weight: 900;
+    font-size: clamp(4rem, 9vw, 8.5rem);
+    line-height: 0.92;
+    color: var(--pink);
+    letter-spacing: -0.02em;
+    text-shadow:
+      0 6px 30px rgba(236, 58, 139, 0.5),
+      0 4px 20px rgba(0, 0, 0, 0.8);
+    margin-bottom: 0.3rem;
+    animation: fadeUp 1s ease-out both;
+  }
+  .title-script {
+    font-family: 'Dancing Script', cursive;
+    font-weight: 500;
+    font-size: clamp(2.5rem, 5vw, 4.5rem);
+    color: var(--cream);
+    line-height: 1;
+    transform: rotate(-2deg);
+    display: inline-block;
+    margin-left: 1rem;
+    text-shadow: 0 4px 20px rgba(0, 0, 0, 0.9);
+    animation: fadeUp 1s ease-out 0.2s both;
+  }
+
+  /* Pill rose */
+  .pill {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    background: var(--pink);
+    padding: 0.75rem 1.6rem;
+    border-radius: 999px;
+    margin-top: 2rem; margin-bottom: 1.8rem;
+    box-shadow: 0 8px 24px rgba(236, 58, 139, 0.5);
+    align-self: flex-start;
+    animation: fadeUp 1s ease-out 0.4s both;
+  }
+  .pill span {
+    font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.15em; color: white;
+    text-transform: uppercase;
+  }
+  .pill .dot {
+    width: 5px; height: 5px;
+    background: white; border-radius: 50%; opacity: 0.85;
+  }
+
+  /* Tagline */
+  .tagline {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.15rem; line-height: 1.55;
+    color: var(--cream); font-weight: 500;
+    max-width: 500px;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.9);
+    animation: fadeUp 1s ease-out 0.6s both;
+  }
+  .tagline strong { font-weight: 700; color: var(--gold-soft); }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ============================
+     3 VALEURS (bas, pleine largeur)
+     ============================ */
+  .values {
+    position: relative; z-index: 10;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+    padding: 0 3.5rem 2.5rem;
+    max-width: 1100px;
+  }
+
+  .value {
+    display: flex; flex-direction: column;
+    align-items: flex-start; gap: 0.7rem;
+    animation: fadeUp 0.9s ease-out both;
+  }
+  .value:nth-child(1) { animation-delay: 0.7s; }
+  .value:nth-child(2) { animation-delay: 0.85s; }
+  .value:nth-child(3) { animation-delay: 1s; }
+
+  .value-icon {
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    border: 1.5px solid var(--pink);
+    background: rgba(236, 58, 139, 0.2);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--pink); font-size: 1.3rem;
+    transition: all 0.4s ease;
+  }
+  .value:hover .value-icon {
+    background: var(--pink); color: white;
+    transform: scale(1.1) rotate(-5deg);
+    box-shadow: 0 10px 25px rgba(236, 58, 139, 0.5);
+  }
+
+  .value h3 {
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 800; font-size: 1rem;
+    color: var(--cream);
+    letter-spacing: 0.08em; text-transform: uppercase;
+    line-height: 1.2;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+  }
+  .value p {
+    font-size: 0.9rem; line-height: 1.5;
+    color: rgba(253, 248, 243, 0.9);
+    font-weight: 400;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.9);
+    max-width: 250px;
+  }
+
+  /* ============================
+     BARRE ROSE PIED PLEINE LARGEUR
+     ============================ */
+  .footer-bar {
+    position: relative; z-index: 10;
+    background: var(--pink-bar);
+    padding: 1.2rem 3.5rem;
+    display: flex; align-items: center;
+    justify-content: space-between; gap: 2rem;
+  }
+  .footer-bar::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at top right, rgba(255, 255, 255, 0.15), transparent 60%);
+    pointer-events: none;
+  }
+
+  .footer-left { display: flex; align-items: center; gap: 0.9rem; color: white; z-index: 1; }
+  .footer-cal {
+    width: 36px; height: 36px;
+    border: 1.5px solid white;
+    border-radius: 6px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1rem; flex-shrink: 0;
+  }
+  .footer-left strong {
+    display: block; font-size: 0.9rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.2;
+  }
+  .footer-left span { font-size: 0.8rem; opacity: 0.95; font-weight: 400; }
+
+  .footer-cta {
+    background: var(--gold-soft);
+    color: var(--black);
+    padding: 0.9rem 2.2rem;
+    border-radius: 999px;
+    font-weight: 700; font-size: 0.85rem;
+    letter-spacing: 0.15em; text-transform: uppercase;
+    text-decoration: none;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+    transition: all 0.3s ease;
+    z-index: 1;
+  }
+  .footer-cta:hover {
+    transform: translateY(-2px) scale(1.03);
+    background: white;
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.4);
+  }
+
+  .footer-right { display: flex; align-items: center; gap: 1rem; color: white; z-index: 1; }
+  .footer-domain { font-weight: 600; font-size: 0.95rem; }
+  .socials { display: flex; gap: 0.5rem; }
+  .social {
+    width: 30px; height: 30px;
+    border-radius: 50%;
+    background: white; color: var(--pink);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem; font-weight: 700;
+    text-decoration: none;
+    transition: transform 0.3s ease;
+  }
+  .social:hover { transform: translateY(-2px) scale(1.1); }
+
+  /* ============================
+     RESPONSIVE TABLETTE
+     ============================ */
+  @media (max-width: 1024px) {
+    .header { padding: 2rem 2rem 0; }
+    .content { padding: 1.5rem 2rem; max-width: 70%; }
+    .values { padding: 0 2rem 2rem; gap: 1.5rem; }
+    .footer-bar { padding: 1rem 2rem; gap: 1rem; }
+    .badge { width: 110px; height: 110px; }
+    .badge .title { font-size: 0.75rem; }
+    .badge .sub { font-size: 0.5rem; }
+    .badge .icon { font-size: 1.2rem; }
+  }
+
+  /* ============================
+     RESPONSIVE MOBILE
+     ============================ */
+  @media (max-width: 768px) {
+    .photo-overlay {
+      background:
+        linear-gradient(180deg,
+          rgba(13, 9, 8, 0.75) 0%,
+          rgba(13, 9, 8, 0.3) 30%,
+          rgba(13, 9, 8, 0.2) 50%,
+          rgba(13, 9, 8, 0.85) 100%
+        );
+    }
+    .header { padding: 1.5rem 1.5rem 0; }
+    .brand-logo { width: 44px; height: 44px; font-size: 1.2rem; }
+    .brand-text h1 { font-size: 1.2rem; }
+    .brand-text p { font-size: 0.55rem; }
+
+    .badge { width: 90px; height: 90px; }
+    .badge .icon { font-size: 1rem; }
+    .badge .title { font-size: 0.6rem; }
+    .badge .sub { font-size: 0.42rem; }
+
+    .content { padding: 2rem 1.5rem; max-width: 100%; }
+    .title-main { font-size: 3rem; }
+    .title-script { font-size: 1.8rem; margin-left: 0.5rem; }
+    .pill { padding: 0.5rem 1rem; margin-top: 1.5rem; }
+    .pill span { font-size: 0.6rem; }
+    .tagline { font-size: 0.9rem; }
+
+    .values { grid-template-columns: 1fr; gap: 1rem; padding: 0 1.5rem 1.5rem; }
+
+    .footer-bar { flex-direction: column; gap: 1rem; padding: 1.2rem 1.5rem; text-align: center; }
+    .footer-left { width: 100%; justify-content: center; }
+    .footer-cta { width: 100%; max-width: 280px; text-align: center; }
+    .footer-right { width: 100%; justify-content: center; }
+  }
+</style>
+</head>
+<body>
+
+<nav class="page-nav" aria-label="Navigation principale">
+  <a href="index.html" class="page-nav-brand">
+    <span class="page-nav-mark">RJ</span>
+    <span class="page-nav-name">Ronde et Jolie</span>
+  </a>
+  <ul class="page-nav-list">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="page-cuisine.html" class="is-active">Cuisine</a></li>
+    <li><a href="page-video.html">Vidéo</a></li>
+    <li><a href="after-work-poster.html">Événements</a></li>
+    <li><a href="index.html#apropos">À propos</a></li>
+  </ul>
+</nav>
+
+<div class="poster">
+
+  <!-- Photo atelier cuisine en background plein écran -->
+  <div class="photo"></div>
+  <div class="photo-overlay"></div>
+
+  <!-- HEADER : brand gauche + badge droite -->
+  <header class="header">
+    <div class="brand">
+      <div class="brand-logo">RJ</div>
+      <div class="brand-text">
+        <h1>Ronde et Jolie</h1>
+        <p>L'EXPÉRIENCE QUI TE RESSEMBLE</p>
+      </div>
+    </div>
+
+    <div class="badge">
+      <div class="icon">👨‍🍳</div>
+      <div class="title">ATELIER<br>EXCLUSIF</div>
+      <div class="sub">PLACES LIMITÉES</div>
+    </div>
+  </header>
+
+  <!-- CONTENU CENTRAL : titre + pill + tagline -->
+  <div class="content">
+    <div class="title-main">ATELIER</div>
+    <div class="title-script">cuisine</div>
+
+    <div class="pill">
+      <span>TECHNIQUES</span>
+      <span class="dot"></span>
+      <span>PARTAGE</span>
+      <span class="dot"></span>
+      <span>SAVEURS</span>
+    </div>
+
+    <p class="tagline">
+      <strong>10 amoureux de la cuisine.</strong><br>
+      Un chef, une cave à vin, une grande table.<br>
+      On apprend, on rit, on déguste.
+    </p>
+  </div>
+
+  <!-- 3 VALEURS -->
+  <div class="values">
+    <div class="value">
+      <div class="value-icon">👨‍🍳</div>
+      <h3>Apprends avec un chef</h3>
+      <p>Techniques accessibles, recettes à reproduire chez toi.</p>
+    </div>
+    <div class="value">
+      <div class="value-icon">🍅</div>
+      <h3>Produits de saison</h3>
+      <p>Sélection du marché, fournisseurs locaux, qualité au rendez-vous.</p>
+    </div>
+    <div class="value">
+      <div class="value-icon">🍷</div>
+      <h3>Dîne avec le groupe</h3>
+      <p>On déguste ensemble le fruit de votre travail, autour d'un bon vin.</p>
+    </div>
+  </div>
+
+  <!-- BARRE PIED ROSE PLEINE LARGEUR -->
+  <footer class="footer-bar">
+    <div class="footer-left">
+      <div class="footer-cal">📅</div>
+      <div>
+        <strong>Prochain atelier</strong>
+        <span>Réserve ta place avant qu'il soit complet !</span>
+      </div>
+    </div>
+    <a href="#reservation" class="footer-cta">Réserver</a>
+    <div class="footer-right">
+      <span class="footer-domain">rondeetjolie.com</span>
+      <div class="socials">
+        <a href="#" class="social" aria-label="Facebook">f</a>
+        <a href="#" class="social" aria-label="Instagram">@</a>
+        <a href="#" class="social" aria-label="TikTok">♪</a>
+      </div>
+    </div>
+  </footer>
+
+</div>
+
+</body>
+</html>

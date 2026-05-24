@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Ronde et Jolie — une communauté bienveillante qui célèbre l'essentiel. Rejoins un espace où chaque membre compte.">
+<title>Ronde et Jolie — Communauté & Connexions</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ATMOSPHÈRE DE FOND : grain + cercles décoratifs -->
+<div class="bg-atmosphere" aria-hidden="true">
+    <div class="bg-grain"></div>
+    <div class="bg-gradient"></div>
+    <svg class="bg-circles" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
+        <circle cx="400" cy="400" r="380" fill="none" stroke="url(#circleGrad)" stroke-width="0.5"/>
+        <circle cx="400" cy="400" r="300" fill="none" stroke="url(#circleGrad)" stroke-width="0.5"/>
+        <circle cx="400" cy="400" r="220" fill="none" stroke="url(#circleGrad)" stroke-width="0.5"/>
+        <circle cx="400" cy="400" r="140" fill="none" stroke="url(#circleGrad)" stroke-width="0.5"/>
+        <defs>
+            <linearGradient id="circleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#d4a574" stop-opacity="0.4"/>
+                <stop offset="50%" stop-color="#d4a574" stop-opacity="0.15"/>
+                <stop offset="100%" stop-color="#d4a574" stop-opacity="0"/>
+            </linearGradient>
+        </defs>
+    </svg>
+</div>
+
+<!-- HEADER / NAVIGATION -->
+<header class="header">
+    <div class="header-inner">
+        <a href="#" class="logo" aria-label="Ronde et Jolie — accueil">
+            <img class="logo-img" src="assets/logo-rj-full.png" alt="Ronde et Jolie — Communauté & Connexions">
+        </a>
+
+        <nav class="nav" aria-label="Navigation principale">
+            <ul class="nav-list">
+                <li><a href="#accueil" class="nav-link is-active">
+                    <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12L12 4l9 8v8a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1v-8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                    Accueil
+                </a></li>
+                <li><a href="page-cuisine.html" class="nav-link">Cuisine</a></li>
+                <li><a href="page-video.html" class="nav-link">Vidéo</a></li>
+                <li><a href="after-work-poster.html" class="nav-link">Événements</a></li>
+                <li><a href="#apropos" class="nav-link">À propos</a></li>
+            </ul>
+        </nav>
+
+        <a href="#rejoindre" class="btn btn-primary btn-header">Rejoindre la communauté</a>
+
+        <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false">
+            <span></span><span></span><span></span>
+        </button>
+    </div>
+</header>
+
+<!-- HERO -->
+<main>
+<section class="hero" id="accueil">
+    <div class="hero-inner">
+
+        <!-- Colonne texte -->
+        <div class="hero-content">
+            <p class="hero-eyebrow">
+                <span>Bienvenue dans la communauté</span>
+                <svg class="heart-doodle" viewBox="0 0 32 28" aria-hidden="true">
+                    <path d="M16 25 C 6 18, 2 12, 4 7 C 6 3, 12 3, 16 8 C 20 3, 26 3, 28 7 C 30 12, 26 18, 16 25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span class="eyebrow-line" aria-hidden="true"></span>
+            </p>
+
+            <h1 class="hero-title">
+                <span class="hero-line-1">Une communauté</span>
+                <span class="hero-line-2">
+                    <span class="underline-wrap">
+                        qui célèbre l'essentiel
+                        <svg class="title-underline" viewBox="0 0 600 24" preserveAspectRatio="none" aria-hidden="true">
+                            <path d="M5 14 Q 150 4, 300 12 T 595 10" fill="none" stroke="url(#underlineGrad)" stroke-width="2.5" stroke-linecap="round"/>
+                            <defs>
+                                <linearGradient id="underlineGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+                                    <stop offset="0%" stop-color="#d4a574" stop-opacity="0.3"/>
+                                    <stop offset="50%" stop-color="#e8b87a"/>
+                                    <stop offset="100%" stop-color="#d4a574" stop-opacity="0.3"/>
+                                </linearGradient>
+                            </defs>
+                        </svg>
+                    </span>
+                    <svg class="heart-doodle heart-inline" viewBox="0 0 32 28" aria-hidden="true">
+                        <path d="M16 25 C 6 18, 2 12, 4 7 C 6 3, 12 3, 16 8 C 20 3, 26 3, 28 7 C 30 12, 26 18, 16 25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </span>
+            </h1>
+
+            <p class="hero-desc">
+                Rejoins un espace bienveillant où chaque membre compte.<br>
+                Partage, découvre et participe à des expériences authentiques,<br>
+                en ligne comme en présentiel.
+            </p>
+
+            <!-- 4 PILIERS -->
+            <ul class="pillars" role="list">
+                <li class="pillar">
+                    <span class="pillar-icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32"><circle cx="10" cy="11" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="22" cy="11" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="20" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M5 24 Q 10 20, 13 23" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M27 24 Q 22 20, 19 23" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M11 28 Q 16 26, 21 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </span>
+                    <span class="pillar-label">Des connexions<br>vraies</span>
+                </li>
+                <li class="pillar">
+                    <span class="pillar-icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32"><path d="M16 25 C 6 18, 3 13, 5 8 C 7 4, 12 4, 16 9 C 20 4, 25 4, 27 8 C 29 13, 26 18, 16 25Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                    </span>
+                    <span class="pillar-label">Une ambiance<br>chaleureuse</span>
+                </li>
+                <li class="pillar">
+                    <span class="pillar-icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32"><rect x="5" y="7" width="22" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="5" y1="13" x2="27" y2="13" stroke="currentColor" stroke-width="1.5"/><line x1="11" y1="4" x2="11" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="21" y1="4" x2="21" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="16" y1="17" x2="16" y2="23" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="13" y1="20" x2="19" y2="20" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                    </span>
+                    <span class="pillar-label">Des expériences<br>uniques</span>
+                </li>
+                <li class="pillar">
+                    <span class="pillar-icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32"><path d="M16 4 L 26 8 V 16 C 26 22, 21 26, 16 28 C 11 26, 6 22, 6 16 V 8 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 16 L 15 19 L 21 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                    </span>
+                    <span class="pillar-label">Un espace<br>sécurisé</span>
+                </li>
+            </ul>
+
+            <!-- CTA -->
+            <div class="hero-cta">
+                <a href="#rejoindre" class="btn btn-primary">Rejoindre la communauté</a>
+                <a href="#activites" class="btn btn-outline">
+                    <svg class="btn-play" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M10 8.5 L 16 12 L 10 15.5 Z" fill="currentColor"/></svg>
+                    Découvrir nos activités
+                </a>
+            </div>
+        </div>
+
+        <!-- Colonne visuelle : composition photos + cercles -->
+        <div class="hero-visual" aria-hidden="false">
+            <!-- Cercles concentriques décoratifs centrés sur la photo ronde (31% / 69%) -->
+            <svg class="visual-circles" viewBox="0 0 1245 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <defs>
+                    <linearGradient id="visualCirclesGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#e8b87a" stop-opacity="0.55"/>
+                        <stop offset="55%" stop-color="#d4a574" stop-opacity="0.22"/>
+                        <stop offset="100%" stop-color="#d4a574" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="386" cy="690" r="540" fill="none" stroke="url(#visualCirclesGrad)" stroke-width="1.2"/>
+                <circle cx="386" cy="690" r="445" fill="none" stroke="url(#visualCirclesGrad)" stroke-width="1.2"/>
+                <circle cx="386" cy="690" r="360" fill="none" stroke="url(#visualCirclesGrad)" stroke-width="1.2"/>
+                <circle cx="386" cy="690" r="280" fill="none" stroke="url(#visualCirclesGrad)" stroke-width="1.2"/>
+                <circle cx="386" cy="690" r="205" fill="none" stroke="url(#visualCirclesGrad)" stroke-width="1.2"/>
+                <circle cx="386" cy="690" r="135" fill="none" stroke="url(#visualCirclesGrad)" stroke-width="1.2"/>
+            </svg>
+
+            <!-- Logo central — monogramme RJ officiel (self-contained) -->
+            <div class="visual-logo" aria-hidden="true">
+                <img src="assets/logo-rj-monogramme.png" alt="">
+            </div>
+
+            <!-- Photo principale ronde (centre) — Cocktails vue Tour Eiffel -->
+            <figure class="photo photo-circle">
+                <picture>
+                    <source type="image/webp"
+                            srcset="assets/photos/photo-2-apero@1x.webp 1x,
+                                    assets/photos/photo-2-apero@2x.webp 2x">
+                    <img src="assets/photos/photo-2-apero@1x.jpg"
+                         srcset="assets/photos/photo-2-apero@1x.jpg 1x,
+                                 assets/photos/photo-2-apero@2x.jpg 2x"
+                         alt="Soirée afterwork Ronde et Jolie : membres souriants partageant cocktails et tapas avec vue sur la Tour Eiffel"
+                         loading="eager"
+                         width="800" height="800">
+                </picture>
+                <span class="photo-ring" aria-hidden="true"></span>
+            </figure>
+
+            <!-- Photo top-right — Dîner privé -->
+            <figure class="photo photo-tr">
+                <picture>
+                    <source type="image/webp"
+                            srcset="assets/photos/photo-1-diner@1x.webp 1x,
+                                    assets/photos/photo-1-diner@2x.webp 2x">
+                    <img src="assets/photos/photo-1-diner@1x.jpg"
+                         srcset="assets/photos/photo-1-diner@1x.jpg 1x,
+                                 assets/photos/photo-1-diner@2x.jpg 2x"
+                         alt="Dîner privé Ronde et Jolie : membres trinquent ensemble devant le panneau « L'expérience qui te ressemble »"
+                         loading="eager"
+                         width="800" height="600">
+                </picture>
+                <span class="photo-badge" aria-hidden="true">
+                    <img src="assets/logo-rj-icon.png" alt="">
+                </span>
+            </figure>
+
+            <!-- Photo bottom-right — Atelier cuisine -->
+            <figure class="photo photo-br">
+                <picture>
+                    <source type="image/webp"
+                            srcset="assets/photos/photo-3-cuisine@1x.webp 1x,
+                                    assets/photos/photo-3-cuisine@2x.webp 2x">
+                    <img src="assets/photos/photo-3-cuisine@1x.jpg"
+                         srcset="assets/photos/photo-3-cuisine@1x.jpg 1x,
+                                 assets/photos/photo-3-cuisine@2x.jpg 2x"
+                         alt="Atelier cuisine Ronde et Jolie : membres en tabliers RJ préparant ensemble un repas autour d'une table d'ingrédients frais"
+                         loading="eager"
+                         width="800" height="600">
+                </picture>
+                <span class="photo-badge" aria-hidden="true">
+                    <img src="assets/logo-rj-icon.png" alt="">
+                </span>
+                <svg class="heart-doodle heart-floating" viewBox="0 0 32 28" aria-hidden="true">
+                    <path d="M16 25 C 6 18, 2 12, 4 7 C 6 3, 12 3, 16 8 C 20 3, 26 3, 28 7 C 30 12, 26 18, 16 25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </figure>
+        </div>
+
+    </div>
+
+    <!-- Indicateur scroll -->
+    <div class="scroll-indicator" aria-hidden="true">
+        <span class="scroll-line"></span>
+        <span class="scroll-label">Découvrir</span>
+    </div>
+</section>
+
+<!-- ============================================
+     SECTION 1 — COMMUNAUTÉ
+     ============================================ -->
+<section class="section section-communaute" id="communaute">
+    <div class="section-inner">
+        <header class="section-header">
+            <p class="eyebrow">Notre communauté</p>
+            <h2 class="section-title">Une famille <em>qui te ressemble</em></h2>
+            <p class="section-desc">
+                Depuis 2018, on rassemble celles et ceux qui croient qu'on est plus beaux à plusieurs.
+                Sans jugement, sans étiquette.
+            </p>
+        </header>
+
+        <div class="stats-grid">
+            <div class="stat">
+                <span class="stat-value">2&nbsp;500<span class="stat-plus">+</span></span>
+                <span class="stat-label">Membres actifs</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value">150<span class="stat-plus">+</span></span>
+                <span class="stat-label">Événements organisés</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value">12</span>
+                <span class="stat-label">Villes en France</span>
+            </div>
+            <div class="stat">
+                <span class="stat-value">8&nbsp;ans</span>
+                <span class="stat-label">D'aventures partagées</span>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     SECTION 2 — ACTIVITÉS
+     ============================================ -->
+<section class="section section-activites" id="activites">
+    <div class="section-inner">
+        <header class="section-header">
+            <p class="eyebrow">Ce qu'on fait ensemble</p>
+            <h2 class="section-title">Des moments <em>à vivre</em></h2>
+            <p class="section-desc">
+                Six grandes familles d'activités, pensées pour créer du lien — en vrai, pas en émojis.
+            </p>
+        </header>
+
+        <div class="activities-grid">
+            <article class="activity-card">
+                <span class="activity-icon" aria-hidden="true">
+                    <svg viewBox="0 0 32 32"><path d="M10 4v10c0 1.1.9 2 2 2h0v12M10 4h-1M10 4h1M22 4v10c0 1.1-.9 2-2 2h0v12M20 4l-1 6h2l-1-6M16 4v9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                </span>
+                <h3 class="activity-title">Dîners privés</h3>
+                <p class="activity-desc">Tables de 8 à 12, dans des restos triés sur le volet. L'occasion de se rencontrer dans la vraie vie.</p>
+            </article>
+
+            <article class="activity-card">
+                <span class="activity-icon" aria-hidden="true">
+                    <svg viewBox="0 0 32 32"><path d="M6 6h20l-8 10v8M12 28h8M14 16h4" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="22" cy="4" r="1.5" fill="currentColor"/></svg>
+                </span>
+                <h3 class="activity-title">Afterworks</h3>
+                <p class="activity-desc">Rooftops, bars à vins, lieux insolites. Une fois par mois, on ouvre la soirée.</p>
+            </article>
+
+            <article class="activity-card">
+                <span class="activity-icon" aria-hidden="true">
+                    <svg viewBox="0 0 32 32"><rect x="6" y="10" width="20" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M12 10V7a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3M6 16h20" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+                </span>
+                <h3 class="activity-title">Voyages</h3>
+                <p class="activity-desc">Week-ends et séjours organisés clés en main. Londres, Marrakech, Lisbonne, Reykjavik…</p>
+            </article>
+
+            <article class="activity-card">
+                <span class="activity-icon" aria-hidden="true">
+                    <svg viewBox="0 0 32 32"><path d="M8 14c0-4 4-7 8-7s8 3 8 7c0 1-.5 2-1 2.5v8a2 2 0 0 1-2 2h-10a2 2 0 0 1-2-2v-8c-.5-.5-1-1.5-1-2.5z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M12 20h8" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+                </span>
+                <h3 class="activity-title">Ateliers cuisine</h3>
+                <p class="activity-desc">On apprend, on rit, on mange. Avec des chefs qui savent recevoir.</p>
+            </article>
+
+            <article class="activity-card">
+                <span class="activity-icon" aria-hidden="true">
+                    <svg viewBox="0 0 32 32"><path d="M16 4c-2 4-2 8 0 12 2-4 2-8 0-12zM4 16c4-2 8-2 12 0-4 2-8 2-12 0zM28 16c-4-2-8-2-12 0 4 2 8 2 12 0zM16 28c-2-4-2-8 0-12 2 4 2 8 0 12z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><circle cx="16" cy="16" r="2" fill="currentColor"/></svg>
+                </span>
+                <h3 class="activity-title">Bien-être</h3>
+                <p class="activity-desc">Yoga, sport doux, retraites zen. Le corps et l'esprit, à ton rythme.</p>
+            </article>
+
+            <article class="activity-card">
+                <span class="activity-icon" aria-hidden="true">
+                    <svg viewBox="0 0 32 32"><path d="M4 11a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v3a2 2 0 0 0 0 4v3a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-3a2 2 0 0 0 0-4v-3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/><path d="M14 9v14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-dasharray="2 2"/></svg>
+                </span>
+                <h3 class="activity-title">Sorties culturelles</h3>
+                <p class="activity-desc">Expos, concerts, théâtre, opéra. Le beau, partagé.</p>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ============================================
+     SECTION 3 — ÉVÉNEMENTS
+     ============================================ -->
+<section class="section section-evenements" id="evenements">
+    <div class="section-inner">
+        <header class="section-header">
+            <p class="eyebrow">À l'agenda</p>
+            <h2 class="section-title">Prochains <em>rendez-vous</em></h2>
+            <p class="section-desc">
+                Trois dates à noter. Réserve avant qu'elles soient complètes.
+            </p>
+        </header>
+
+        <ul class="events-list" role="list">
+            <li class="event-card">
+                <time class="event-date" datetime="2026-06-15">
+                    <span class="event-day">15</span>
+                    <span class="event-month">Juin</span>
+                </time>
+                <div class="event-body">
+                    <h3 class="event-title">Dîner d'été — Rooftop Bastille</h3>
+                    <p class="event-meta">Paris 11e · 20h00 · 18 places</p>
+                    <p class="event-desc">Une terrasse, une vue, et nos meilleures bouteilles. Tenue habillée recommandée.</p>
+                </div>
+                <a href="#rejoindre" class="btn btn-outline event-cta">S'inscrire</a>
+            </li>
+
+            <li class="event-card">
+                <time class="event-date" datetime="2026-06-28">
+                    <span class="event-day">28</span>
+                    <span class="event-month">Juin</span>
+                </time>
+                <div class="event-body">
+                    <h3 class="event-title">Atelier cuisine italienne</h3>
+                    <p class="event-meta">Paris 9e · 19h00 · 12 places</p>
+                    <p class="event-desc">Avec le chef Marco. On prépare, on dîne, on repart avec les recettes.</p>
+                </div>
+                <a href="#rejoindre" class="btn btn-outline event-cta">S'inscrire</a>
+            </li>
+
+            <li class="event-card">
+                <time class="event-date" datetime="2026-07-12">
+                    <span class="event-day">12</span>
+                    <span class="event-month">Juil.</span>
+                </time>
+                <div class="event-body">
+                    <h3 class="event-title">Week-end à Deauville</h3>
+                    <p class="event-meta">Normandie · 3 jours / 2 nuits · 24 places</p>
+                    <p class="event-desc">Spa, plage, dîner d'huîtres. Une bulle entre soi.</p>
+                </div>
+                <a href="#rejoindre" class="btn btn-outline event-cta">S'inscrire</a>
+            </li>
+        </ul>
+    </div>
+</section>
+
+<!-- ============================================
+     SECTION 4 — À PROPOS
+     ============================================ -->
+<section class="section section-apropos" id="apropos">
+    <div class="section-inner">
+        <div class="apropos-grid">
+            <div class="apropos-text">
+                <p class="eyebrow">Notre histoire</p>
+                <h2 class="section-title">L'histoire d'une <em>évidence</em></h2>
+                <p>
+                    Ronde et Jolie est née d'un constat simple — trop de gens formidables passaient à côté
+                    les uns des autres faute d'un cadre où se rencontrer vraiment.
+                </p>
+                <p>
+                    Alors on a créé cet endroit. Pas un site, pas une appli : une communauté.
+                    Vivante, exigeante, bienveillante.
+                </p>
+                <p>
+                    Aujourd'hui, plus de 2 500 membres partagent nos soirées, nos voyages, nos ateliers.
+                    Tu seras le prochain ?
+                </p>
+            </div>
+            <figure class="apropos-quote">
+                <blockquote>
+                    «&nbsp;On ne cherche pas à plaire à tout le monde.<br>
+                    On cherche à rassembler les bonnes personnes.&nbsp;»
+                </blockquote>
+                <figcaption>— Céline, fondatrice</figcaption>
+            </figure>
+        </div>
+    </div>
+</section>
+</main>
+
+<script src="script.js"></script>
+</body>
+</html>

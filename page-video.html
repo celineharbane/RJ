@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ronde et Jolie — Et si les plus belles rencontres…</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500;1,600&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --rj-pink:#E91E63;
+  --rj-pink-soft:#F06292;
+  --rj-black:#0a0707;
+  --rj-cream:#f5ede0;
+  --rj-text:#ffffff;
+  --rj-muted:#9a8a78;
+  --serif:'Cormorant Garamond', serif;
+  --sans:'Jost', sans-serif;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{
+  background:#000;color:var(--rj-text);
+  font-family:var(--sans);font-weight:300;
+  min-height:100vh;
+  width:100%;
+}
+body{padding:24px}
+
+/* ============ PLAYER CONTAINER ============ */
+.player{
+  width:100%;
+  max-width:1400px;
+  margin:0 auto;
+  background:#000;
+  border-radius:6px;
+  overflow:hidden;
+  box-shadow:0 30px 90px rgba(0,0,0,0.5);
+}
+
+/* ============ STORYBOARD GRID 4×3 ============ */
+.storyboard{
+  display:grid;
+  grid-template-columns:repeat(4, 1fr);
+  gap:2px;
+  background:#000;
+}
+
+.frame{
+  position:relative;
+  background:#000;
+  aspect-ratio: 4 / 3;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+}
+
+/* Timestamps */
+.time{
+  position:absolute;
+  bottom:10px;right:14px;
+  font-family:var(--sans);
+  font-size:14px;
+  color:rgba(255,255,255,0.85);
+  font-weight:300;
+  z-index:5;
+  text-shadow:0 1px 3px rgba(0,0,0,0.8);
+}
+
+/* Placeholder for photo frames */
+.photo-placeholder{
+  width:100%;height:100%;
+  background:linear-gradient(135deg, #1a0e0a 0%, #0a0505 100%);
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  color:rgba(255,255,255,0.25);
+  font-family:var(--sans);
+  font-size:11px;
+  letter-spacing:0.25em;
+  text-transform:uppercase;
+  text-align:center;
+  padding:20px;
+  line-height:1.8;
+}
+.photo-placeholder svg{
+  width:32px;height:32px;
+  margin-bottom:12px;
+  opacity:0.4;
+}
+
+/* ============ FRAME 1 (0:03) — Opening + logo ============ */
+.frame-1{
+  padding:20px;
+  align-items:flex-start;
+  justify-content:flex-start;
+  flex-direction:column;
+  background:linear-gradient(135deg, #1a0e0a 0%, #0a0505 100%);
+}
+.frame-1 .mini-logo{
+  align-self:flex-end;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:4px;
+  margin-bottom:auto;
+}
+.frame-1 .mini-logo-circle{
+  width:36px;height:36px;
+  border-radius:50%;
+  border:1px solid var(--rj-pink);
+  display:flex;align-items:center;justify-content:center;
+  font-family:var(--serif);
+  font-size:18px;
+  color:var(--rj-pink);
+  font-weight:600;
+  font-style:italic;
+}
+.frame-1 .mini-logo-text{
+  font-family:var(--sans);
+  font-size:8px;
+  letter-spacing:0.3em;
+  color:var(--rj-cream);
+  font-weight:400;
+}
+.frame-1 .opening-text{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:22px;
+  line-height:1.35;
+  color:var(--rj-cream);
+  font-weight:400;
+  margin-top:auto;
+}
+.frame-1 .opening-text .accent{
+  color:var(--rj-pink);
+  font-style:italic;
+  display:block;
+}
+
+/* ============ TEXT FRAMES (0:09, 0:24, 0:30) ============ */
+.frame-text{
+  background:#000;
+  text-align:center;
+  padding:30px 20px;
+}
+.frame-text .text-content{
+  font-family:var(--serif);
+  font-style:italic;
+  font-size:22px;
+  line-height:1.55;
+  color:var(--rj-cream);
+  font-weight:400;
+}
+.frame-text .pink{
+  color:var(--rj-pink);
+  display:block;
+}
+.frame-text .brand-name{
+  color:var(--rj-pink);
+  font-style:italic;
+}
+
+/* ============ FRAME FINALE (0:36) ============ */
+.frame-final{
+  background:#000;
+  text-align:center;
+  padding:24px 16px;
+  flex-direction:column;
+  gap:6px;
+  align-items:center;
+  justify-content:center;
+}
+.frame-final .big-logo{
+  width:50px;height:50px;
+  border-radius:50%;
+  border:1.5px solid var(--rj-pink);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--serif);
+  font-size:22px;
+  color:var(--rj-pink);
+  font-weight:600;
+  font-style:italic;
+  margin-bottom:4px;
+}
+.frame-final .label{
+  font-family:var(--sans);
+  font-size:10px;
+  letter-spacing:0.3em;
+  color:var(--rj-cream);
+  text-transform:uppercase;
+  font-weight:400;
+}
+.frame-final .name{
+  font-family:var(--serif);
+  font-size:22px;
+  letter-spacing:0.18em;
+  color:var(--rj-pink);
+  font-weight:500;
+}
+.frame-final .info-muted{
+  font-family:var(--sans);
+  font-size:9px;
+  letter-spacing:0.25em;
+  color:var(--rj-muted);
+  text-transform:uppercase;
+  font-weight:400;
+  line-height:1.8;
+}
+.frame-final .badge{
+  margin-top:10px;
+  padding:8px 14px;
+  background:var(--rj-pink);
+  font-family:var(--sans);
+  font-size:9px;
+  letter-spacing:0.22em;
+  color:#fff;
+  text-transform:uppercase;
+  font-weight:500;
+}
+
+/* ============ BRAND BAR ============ */
+.brand-bar{
+  background:#000;
+  padding:24px 20px 20px;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:10px;
+  border-top:1px solid rgba(255,255,255,0.04);
+}
+.brand-bar-row{
+  display:flex;
+  align-items:center;
+  gap:14px;
+}
+.brand-bar-circle{
+  width:42px;height:42px;
+  border-radius:50%;
+  border:1.5px solid var(--rj-pink);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-family:var(--serif);
+  font-size:18px;
+  color:var(--rj-pink);
+  font-weight:600;
+  font-style:italic;
+}
+.brand-bar-name{
+  font-family:var(--serif);
+  font-size:26px;
+  color:var(--rj-cream);
+  font-weight:400;
+  letter-spacing:0.02em;
+}
+.brand-bar-tagline{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-family:var(--sans);
+  font-size:10px;
+  letter-spacing:0.32em;
+  color:var(--rj-cream);
+  text-transform:uppercase;
+  font-weight:400;
+}
+.brand-bar-tagline::before{
+  content:'';
+  display:inline-block;
+  width:5px;height:5px;
+  background:var(--rj-pink);
+  border-radius:50%;
+}
+
+/* ============ CONTROLS BAR ============ */
+.controls-bar{
+  background:#000;
+  padding:8px 20px 18px;
+}
+.progress-bar{
+  width:100%;
+  height:3px;
+  background:rgba(255,255,255,0.18);
+  border-radius:2px;
+  overflow:hidden;
+  cursor:pointer;
+  margin-bottom:14px;
+}
+.progress-fill{
+  height:100%;
+  width:2%;
+  background:var(--rj-pink);
+  border-radius:2px;
+  transition:width 0.1s linear;
+}
+.controls{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+.controls-left, .controls-right{
+  display:flex;
+  align-items:center;
+  gap:18px;
+}
+.ctrl-btn{
+  background:none;
+  border:none;
+  color:rgba(255,255,255,0.92);
+  cursor:pointer;
+  padding:4px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:color 0.2s;
+}
+.ctrl-btn:hover{color:var(--rj-pink)}
+.ctrl-btn svg{
+  width:20px;height:20px;
+  fill:currentColor;
+}
+.time-display{
+  font-family:var(--sans);
+  font-size:14px;
+  color:rgba(255,255,255,0.85);
+  font-weight:400;
+  margin-left:4px;
+}
+.hd-badge{
+  font-family:var(--sans);
+  font-size:10px;
+  color:rgba(255,255,255,0.7);
+  font-weight:500;
+  background:rgba(255,255,255,0.1);
+  padding:3px 6px;
+  border-radius:2px;
+}
+
+/* ============ RESPONSIVE ============ */
+@media(max-width:900px){
+  body{padding:12px}
+  .storyboard{
+    grid-template-columns:repeat(2, 1fr);
+  }
+  .frame-1 .opening-text,
+  .frame-text .text-content{font-size:16px}
+  .frame-final .name{font-size:16px}
+  .frame-final .big-logo{width:42px;height:42px;font-size:18px}
+  .brand-bar-name{font-size:20px}
+}
+@media(max-width:520px){
+  body{padding:6px}
+  .storyboard{grid-template-columns:1fr}
+  .controls-left, .controls-right{gap:10px}
+  .time-display{font-size:11px}
+}
+
+/* ============ MINI HEADER NAV (cohérent toutes pages) ============ */
+.page-nav{
+  max-width:1400px;
+  margin:0 auto 18px;
+  padding:14px 4px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:24px;
+  border-bottom:1px solid rgba(233,30,99,.18);
+  font-family:'Jost','Montserrat',sans-serif;
+}
+.page-nav-brand{display:flex;align-items:center;gap:10px;color:#f5ede0;text-decoration:none;transition:opacity .3s}
+.page-nav-brand:hover{opacity:.8}
+.page-nav-mark{
+  width:36px;height:36px;border-radius:50%;
+  border:1.5px solid #E91E63;
+  display:flex;align-items:center;justify-content:center;
+  font-family:'Cormorant Garamond','Playfair Display',serif;
+  font-size:17px;font-weight:600;font-style:italic;color:#E91E63;
+}
+.page-nav-name{
+  font-family:'Cormorant Garamond','Playfair Display',serif;
+  font-size:17px;font-weight:500;color:#f5ede0;letter-spacing:.02em;
+}
+.page-nav-list{list-style:none;display:flex;gap:24px;align-items:center;margin:0;padding:0}
+.page-nav-list a{
+  color:#9a8a78;text-decoration:none;
+  font-size:13px;font-weight:400;letter-spacing:.04em;
+  padding:6px 0;position:relative;transition:color .3s;
+}
+.page-nav-list a:hover{color:#f5ede0}
+.page-nav-list a.is-active{color:#E91E63}
+.page-nav-list a.is-active::after{
+  content:"";position:absolute;left:0;right:0;bottom:0;
+  height:1px;background:#E91E63;
+}
+@media (max-width:720px){
+  .page-nav{flex-wrap:wrap;justify-content:center;gap:14px}
+  .page-nav-list{gap:14px;font-size:12px}
+  .page-nav-name{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav class="page-nav" aria-label="Navigation principale">
+  <a href="index.html" class="page-nav-brand">
+    <span class="page-nav-mark">RJ</span>
+    <span class="page-nav-name">Ronde et Jolie</span>
+  </a>
+  <ul class="page-nav-list">
+    <li><a href="index.html">Accueil</a></li>
+    <li><a href="page-cuisine.html">Cuisine</a></li>
+    <li><a href="page-video.html" class="is-active">Vidéo</a></li>
+    <li><a href="after-work-poster.html">Événements</a></li>
+    <li><a href="index.html#apropos">À propos</a></li>
+  </ul>
+</nav>
+
+<div class="player">
+
+  <!-- ============ STORYBOARD GRID 4×3 ============ -->
+  <div class="storyboard">
+
+    <!-- ROW 1 -->
+
+    <!-- 0:03 Restaurant facade + opening text -->
+    <div class="frame frame-1">
+      <div class="mini-logo">
+        <div class="mini-logo-circle">RJ</div>
+        <div class="mini-logo-text">RONDE ET JOLIE</div>
+      </div>
+      <div class="opening-text">
+        Et si les plus belles<br>rencontres…
+        <span class="accent">commençaient autour<br>d'une table ?</span>
+      </div>
+      <span class="time">0:03</span>
+    </div>
+
+    <!-- 0:06 -->
+    <div class="frame">
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        Photo 02<br>Femme en ville
+      </div>
+      <span class="time">0:06</span>
+    </div>
+
+    <!-- 0:09 8 célibataires, une soirée -->
+    <div class="frame frame-text">
+      <div class="text-content">
+        8 célibataires.
+        <span class="pink">Une soirée.</span>
+        Des connexions réelles.
+      </div>
+      <span class="time">0:09</span>
+    </div>
+
+    <!-- 0:12 -->
+    <div class="frame">
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M5 12.5c0 .94.36 1.81 1 2.5v3c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-2h6v2c0 .55.45 1 1 1h1c.55 0 1-.45 1-1v-3c.64-.68 1-1.56 1-2.5v-5c0-2.92-3.65-3.5-8-3.5s-8 .58-8 3.5v5zm3 1.5c-.83 0-1.5-.67-1.5-1.5S7.17 11 8 11s1.5.67 1.5 1.5S8.83 14 8 14z"/></svg>
+        Photo 04<br>Couple au bar
+      </div>
+      <span class="time">0:12</span>
+    </div>
+
+    <!-- ROW 2 -->
+
+    <!-- 0:15 -->
+    <div class="frame">
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        Photo 05<br>Table de groupe
+      </div>
+      <span class="time">0:15</span>
+    </div>
+
+    <!-- 0:18 -->
+    <div class="frame">
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        Photo 06<br>Femme riant
+      </div>
+      <span class="time">0:18</span>
+    </div>
+
+    <!-- 0:21 -->
+    <div class="frame">
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+        Photo 07<br>Homme souriant
+      </div>
+      <span class="time">0:21</span>
+    </div>
+
+    <!-- 0:24 Plus qu'une application -->
+    <div class="frame frame-text">
+      <div class="text-content">
+        <span class="pink">Plus qu'une application.</span>
+        Une <em style="color:var(--rj-pink)">vraie expérience</em>.
+      </div>
+      <span class="time">0:24</span>
+    </div>
+
+    <!-- ROW 3 -->
+
+    <!-- 0:27 -->
+    <div class="frame">
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        Photo 09<br>Tête-à-tête
+      </div>
+      <span class="time">0:27</span>
+    </div>
+
+    <!-- 0:30 Chez Ronde et Jolie -->
+    <div class="frame frame-text">
+      <div class="text-content">
+        Chez <span class="brand-name">Ronde et Jolie</span>…<br>
+        on crée des rencontres<br>autrement.
+      </div>
+      <span class="time">0:30</span>
+    </div>
+
+    <!-- 0:33 -->
+    <div class="frame">
+      <div class="photo-placeholder">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5c-1.66 0-3 1.34-3 3s1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5C6.34 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5z"/></svg>
+        Photo 11<br>Trinquons groupe
+      </div>
+      <span class="time">0:33</span>
+    </div>
+
+    <!-- 0:36 Final CTA -->
+    <div class="frame frame-final">
+      <div class="big-logo">RJ</div>
+      <div class="label">DÎNER PRIVÉ</div>
+      <div class="name">RONDE ET JOLIE</div>
+      <div class="info-muted">PLACES LIMITÉES</div>
+      <div class="info-muted">REJOINS LES PROCHAINS ÉVÉNEMENTS</div>
+      <div class="badge">EXCLUSIVEMENT SUR RONDE ET JOLIE</div>
+      <span class="time">0:36</span>
+    </div>
+
+  </div>
+
+  <!-- ============ BRAND BAR ============ -->
+  <div class="brand-bar">
+    <div class="brand-bar-row">
+      <div class="brand-bar-circle">RJ</div>
+      <div class="brand-bar-name">Ronde et Jolie</div>
+    </div>
+    <div class="brand-bar-tagline">CHOISIS L'EXPÉRIENCE QUI TE RESSEMBLE</div>
+  </div>
+
+  <!-- ============ PLAYER CONTROLS ============ -->
+  <div class="controls-bar">
+    <div class="progress-bar" id="progress">
+      <div class="progress-fill" id="progFill"></div>
+    </div>
+    <div class="controls">
+      <div class="controls-left">
+        <button class="ctrl-btn" id="playBtn" aria-label="Lecture">
+          <svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>
+        </button>
+        <button class="ctrl-btn" aria-label="Suivant">
+          <svg viewBox="0 0 24 24"><path d="M6 18l8.5-6L6 6v12zM16 6v12h2V6h-2z"/></svg>
+        </button>
+        <button class="ctrl-btn" aria-label="Volume">
+          <svg viewBox="0 0 24 24"><path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/></svg>
+        </button>
+        <span class="time-display" id="timeDisplay">0:00 / 0:45</span>
+      </div>
+      <div class="controls-right">
+        <button class="ctrl-btn" aria-label="Paramètres">
+          <svg viewBox="0 0 24 24"><path d="M19.14 12.94c.04-.3.06-.61.06-.94 0-.32-.02-.64-.07-.94l2.03-1.58c.18-.14.23-.41.12-.61l-1.92-3.32c-.12-.22-.37-.29-.59-.22l-2.39.96c-.5-.38-1.03-.7-1.62-.94l-.36-2.54c-.04-.24-.24-.41-.48-.41h-3.84c-.24 0-.43.17-.47.41l-.36 2.54c-.59.24-1.13.57-1.62.94l-2.39-.96c-.22-.08-.47 0-.59.22L2.74 8.87c-.12.21-.08.47.12.61l2.03 1.58c-.05.3-.09.63-.09.94s.02.64.07.94l-2.03 1.58c-.18.14-.23.41-.12.61l1.92 3.32c.12.22.37.29.59.22l2.39-.96c.5.38 1.03.7 1.62.94l.36 2.54c.05.24.24.41.48.41h3.84c.24 0 .44-.17.47-.41l.36-2.54c.59-.24 1.13-.56 1.62-.94l2.39.96c.22.08.47 0 .59-.22l1.92-3.32c.12-.22.07-.47-.12-.61l-2.01-1.58zM12 15.6c-1.98 0-3.6-1.62-3.6-3.6s1.62-3.6 3.6-3.6 3.6 1.62 3.6 3.6-1.62 3.6-3.6 3.6z"/></svg>
+        </button>
+        <span class="hd-badge">HD</span>
+        <button class="ctrl-btn" aria-label="Mini lecteur">
+          <svg viewBox="0 0 24 24"><path d="M19 7h-8v6h8V7zm2-4H3c-1.1 0-2 .9-2 2v14c0 1.1.9 1.98 2 1.98h18c1.1 0 2-.88 2-1.98V5c0-1.1-.9-2-2-2zm0 16.01H3V4.98h18v14.03z"/></svg>
+        </button>
+        <button class="ctrl-btn" aria-label="Plein écran">
+          <svg viewBox="0 0 24 24"><path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let playing = false;
+let progress = 0;
+const total = 45;
+const fill = document.getElementById('progFill');
+const display = document.getElementById('timeDisplay');
+const playBtn = document.getElementById('playBtn');
+const progressBar = document.getElementById('progress');
+
+const playIcon = '<svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg>';
+const pauseIcon = '<svg viewBox="0 0 24 24"><path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/></svg>';
+
+function fmt(t){
+  const m = Math.floor(t/60);
+  const s = Math.floor(t%60).toString().padStart(2,'0');
+  return m + ':' + s;
+}
+
+playBtn.addEventListener('click', ()=>{
+  playing = !playing;
+  playBtn.innerHTML = playing ? pauseIcon : playIcon;
+});
+
+progressBar.addEventListener('click', (e)=>{
+  const rect = progressBar.getBoundingClientRect();
+  progress = ((e.clientX - rect.left) / rect.width) * total;
+  fill.style.width = (progress / total * 100) + '%';
+  display.textContent = fmt(progress) + ' / 0:45';
+});
+
+setInterval(()=>{
+  if(playing){
+    progress = (progress + 0.1) % total;
+    fill.style.width = (progress / total * 100) + '%';
+    display.textContent = fmt(progress) + ' / 0:45';
+  }
+}, 100);
+</script>
+</body>
+</html>
