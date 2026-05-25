@@ -480,9 +480,16 @@ ul { list-style: none; }
 
 .hero-visual {
     position: relative;
-    /* Aspect ~1.245 (635/510) comme la maquette — paysage, pas carré */
-    height: clamp(440px, 36vw, 540px);
+    width: 100%;
     animation: fadeIn 1.2s var(--ease-out) 0.5s both;
+}
+
+.hero-bloc {
+    width: 100%;
+    height: auto;
+    display: block;
+    /* Subtile float pour rappeler le dynamisme des sous-éléments d'avant */
+    animation: floatA 8s ease-in-out infinite;
 }
 
 /* Cercles concentriques décoratifs centrés sur la photo ronde (31% / 69%) */

@@ -142,84 +142,13 @@
             </div>
         </div>
 
-        <!-- Colonne visuelle : composition photos + cercles -->
-        <div class="hero-visual" aria-hidden="false">
-            <!-- Cercles concentriques décoratifs centrés sur la photo ronde (31% / 69%) -->
-            <svg class="visual-circles" viewBox="0 0 1245 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
-                <defs>
-                    <linearGradient id="visualCirclesGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                        <stop offset="0%" stop-color="#e8b87a" stop-opacity="0.55"/>
-                        <stop offset="55%" stop-color="#d4a574" stop-opacity="0.22"/>
-                        <stop offset="100%" stop-color="#d4a574" stop-opacity="0"/>
-                    </linearGradient>
-                </defs>
-                <circle cx="386" cy="690" r="540" fill="none" stroke="url(#visualCirclesGrad)" stroke-width="1.2"/>
-                <circle cx="386" cy="690" r="445" fill="none" stroke="url(#visualCirclesGrad)" stroke-width="1.2"/>
-                <circle cx="386" cy="690" r="360" fill="none" stroke="url(#visualCirclesGrad)" stroke-width="1.2"/>
-                <circle cx="386" cy="690" r="280" fill="none" stroke="url(#visualCirclesGrad)" stroke-width="1.2"/>
-                <circle cx="386" cy="690" r="205" fill="none" stroke="url(#visualCirclesGrad)" stroke-width="1.2"/>
-                <circle cx="386" cy="690" r="135" fill="none" stroke="url(#visualCirclesGrad)" stroke-width="1.2"/>
-            </svg>
-
-            <!-- Logo central — monogramme RJ officiel (self-contained) -->
-            <div class="visual-logo" aria-hidden="true">
-                <img src="assets/logo-rj-monogramme.png" alt="">
-            </div>
-
-            <!-- Photo principale ronde (centre) — Cocktails vue Tour Eiffel -->
-            <figure class="photo photo-circle">
-                <picture>
-                    <source type="image/webp"
-                            srcset="assets/photos/photo-2-apero@1x.webp 1x,
-                                    assets/photos/photo-2-apero@2x.webp 2x">
-                    <img src="assets/photos/photo-2-apero@1x.jpg"
-                         srcset="assets/photos/photo-2-apero@1x.jpg 1x,
-                                 assets/photos/photo-2-apero@2x.jpg 2x"
-                         alt="Soirée afterwork Ronde et Jolie : membres souriants partageant cocktails et tapas avec vue sur la Tour Eiffel"
-                         loading="eager"
-                         width="800" height="800">
-                </picture>
-                <span class="photo-ring" aria-hidden="true"></span>
-            </figure>
-
-            <!-- Photo top-right — Dîner privé -->
-            <figure class="photo photo-tr">
-                <picture>
-                    <source type="image/webp"
-                            srcset="assets/photos/photo-1-diner@1x.webp 1x,
-                                    assets/photos/photo-1-diner@2x.webp 2x">
-                    <img src="assets/photos/photo-1-diner@1x.jpg"
-                         srcset="assets/photos/photo-1-diner@1x.jpg 1x,
-                                 assets/photos/photo-1-diner@2x.jpg 2x"
-                         alt="Dîner privé Ronde et Jolie : membres trinquent ensemble devant le panneau « L'expérience qui te ressemble »"
-                         loading="eager"
-                         width="800" height="600">
-                </picture>
-                <span class="photo-badge" aria-hidden="true">
-                    <img src="assets/logo-rj-icon.png" alt="">
-                </span>
-            </figure>
-
-            <!-- Photo bottom-right — Atelier cuisine -->
-            <figure class="photo photo-br">
-                <picture>
-                    <source type="image/webp"
-                            srcset="assets/photos/photo-3-cuisine@1x.webp 1x,
-                                    assets/photos/photo-3-cuisine@2x.webp 2x">
-                    <img src="assets/photos/photo-3-cuisine@1x.jpg"
-                         srcset="assets/photos/photo-3-cuisine@1x.jpg 1x,
-                                 assets/photos/photo-3-cuisine@2x.jpg 2x"
-                         alt="Atelier cuisine Ronde et Jolie : membres en tabliers RJ préparant ensemble un repas autour d'une table d'ingrédients frais"
-                         loading="eager"
-                         width="800" height="600">
-                </picture>
-                <span class="photo-badge" aria-hidden="true">
-                    <img src="assets/logo-rj-icon.png" alt="">
-                </span>
-                <svg class="heart-doodle heart-floating" viewBox="0 0 32 28" aria-hidden="true">
-                    <path d="M16 25 C 6 18, 2 12, 4 7 C 6 3, 12 3, 16 8 C 20 3, 26 3, 28 7 C 30 12, 26 18, 16 25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-                </svg>
-            </figure>
+        <!-- Colonne visuelle : composition complète (logo + 3 photos + cercles concentriques) en image unique -->
+        <div class="hero-visual">
+            <img class="hero-bloc"
+                 src="assets/hero-bloc.png"
+                 alt="Composition visuelle Ronde et Jolie : logo central, photo de groupe rooftop avec Tour Eiffel, voyage à Londres, atelier cuisine, entourés de cercles décoratifs dorés"
+                 width="550" height="396"
+                 loading="eager">
         </div>
 
     </div>
