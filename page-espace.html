@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Tout ce que tu trouveras sur Ronde & Jolie : un espace unique où respect, bienveillance et authenticité sont au cœur de chaque échange.">
+<title>Ton espace — Ronde et Jolie</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="footer.css">
+
+<style>
+  :root {
+    --pink: #ec3a8b;
+    --pink-deep: #b8226a;
+    --pink-bright: #f25aa0;
+    --pink-soft: rgba(236, 58, 139, 0.12);
+  }
+
+  /* ============================================
+     PAGE ESPACE — texte gauche + grille 6 cards
+     ============================================ */
+  .esp {
+    position: relative;
+    z-index: 1;
+    padding: clamp(2rem, 4vw, 4rem) 0;
+    overflow: hidden;
+  }
+
+  .esp-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    position: relative;
+  }
+
+  .esp-grid {
+    display: grid;
+    grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.6fr);
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: start;
+  }
+
+  /* --- COLONNE GAUCHE --- */
+  .esp-content {
+    position: sticky;
+    top: 2rem;
+  }
+
+  .esp-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--gold);
+    margin-bottom: 1.5rem;
+  }
+  .esp-eyebrow svg {
+    width: 18px;
+    height: 16px;
+    color: var(--gold);
+  }
+
+  .esp-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  .esp-title em {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .esp-desc {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+    line-height: 1.7;
+    max-width: 420px;
+  }
+
+  /* --- COLONNE DROITE : GRILLE 6 CARDS --- */
+  .esp-cards {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(1rem, 1.8vw, 1.5rem);
+  }
+
+  .esp-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--border-gold);
+    border-radius: 16px;
+    padding: clamp(1.5rem, 2vw, 2rem) clamp(1.25rem, 1.8vw, 1.8rem);
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+    transition: transform 0.35s var(--ease-out), border-color 0.35s var(--ease-out);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .esp-card:hover {
+    transform: translateY(-4px);
+    border-color: rgba(236, 58, 139, 0.4);
+  }
+
+  .esp-card-icon {
+    width: 48px;
+    height: 48px;
+    color: var(--pink);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 0.25rem;
+  }
+  .esp-card-icon svg {
+    width: 100%;
+    height: 100%;
+  }
+
+  .esp-card h3 {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.2rem;
+    color: var(--pink);
+    line-height: 1.25;
+    letter-spacing: 0.005em;
+    position: relative;
+    padding-bottom: 0.6rem;
+  }
+
+  .esp-card h3::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--pink), transparent);
+  }
+
+  .esp-card p {
+    color: var(--cream-soft);
+    font-size: 0.82rem;
+    line-height: 1.6;
+    opacity: 0.9;
+  }
+
+  /* Carte highlighted (gradient rose) */
+  .esp-card--highlight {
+    background:
+      linear-gradient(160deg, rgba(236, 58, 139, 0.85) 0%, rgba(120, 20, 70, 0.95) 100%),
+      var(--bg-elev);
+    border-color: rgba(236, 58, 139, 0.55);
+    box-shadow: 0 20px 50px rgba(236, 58, 139, 0.25);
+  }
+  .esp-card--highlight .esp-card-icon,
+  .esp-card--highlight h3 {
+    color: #ffffff;
+  }
+  .esp-card--highlight h3::after {
+    background: linear-gradient(90deg, transparent, #ffffff, transparent);
+  }
+  .esp-card--highlight p {
+    color: rgba(255, 255, 255, 0.92);
+    opacity: 1;
+  }
+
+  /* Décorations de fond : cœur rose flottant + petits points */
+  .esp-deco-heart {
+    position: absolute;
+    right: -40px;
+    top: 38%;
+    width: 90px;
+    color: rgba(236, 58, 139, 0.35);
+    pointer-events: none;
+    z-index: 0;
+    transform: rotate(-12deg);
+  }
+  .esp-deco-circles {
+    position: absolute;
+    left: -200px;
+    bottom: -100px;
+    width: 450px;
+    height: 450px;
+    pointer-events: none;
+    z-index: 0;
+    opacity: 0.4;
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 1100px) {
+    .esp-grid {
+      grid-template-columns: 1fr;
+    }
+    .esp-content {
+      position: static;
+    }
+  }
+  @media (max-width: 720px) {
+    .esp-cards {
+      grid-template-columns: 1fr;
+    }
+    .esp-title {
+      font-size: clamp(1.75rem, 8vw, 2.4rem);
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- ATMOSPHÈRE DE FOND -->
+<div class="bg-atmosphere" aria-hidden="true">
+    <div class="bg-grain"></div>
+    <div class="bg-gradient"></div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo" aria-label="Ronde et Jolie — accueil">
+            <img class="logo-img" src="assets/logo-rj-full.png" alt="Ronde et Jolie — Communauté & Connexions">
+        </a>
+
+        <nav class="nav" aria-label="Navigation principale">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link is-active">
+                    <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12L12 4l9 8v8a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1v-8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                    Accueil
+                </a></li>
+                <li><a href="page-communaute.html" class="nav-link">Communauté</a></li>
+                <li><a href="page-cuisine.html" class="nav-link">Activités</a></li>
+                <li><a href="after-work-poster.html" class="nav-link">Événements</a></li>
+                <li><a href="index.html#apropos" class="nav-link">À propos</a></li>
+            </ul>
+        </nav>
+
+        <a href="#rejoindre" class="btn btn-primary btn-header">Rejoindre la communauté</a>
+    </div>
+</header>
+
+<!-- SECTION ESPACE -->
+<main>
+<section class="esp" id="espace">
+
+    <!-- Décor cœur rose à droite -->
+    <svg class="esp-deco-heart" viewBox="0 0 32 28" aria-hidden="true">
+        <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+
+    <!-- Décor cercles dorés bas-gauche -->
+    <svg class="esp-deco-circles" viewBox="0 0 450 450" aria-hidden="true">
+        <defs>
+            <linearGradient id="espCirGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#e8b87a" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#d4a574" stop-opacity="0"/>
+            </linearGradient>
+        </defs>
+        <circle cx="225" cy="225" r="220" fill="none" stroke="url(#espCirGrad)" stroke-width="1"/>
+        <circle cx="225" cy="225" r="170" fill="none" stroke="url(#espCirGrad)" stroke-width="1"/>
+        <circle cx="225" cy="225" r="120" fill="none" stroke="url(#espCirGrad)" stroke-width="1"/>
+    </svg>
+
+    <div class="esp-inner">
+
+        <div class="esp-grid">
+
+            <!-- COLONNE GAUCHE -->
+            <div class="esp-content">
+                <p class="esp-eyebrow">
+                    <span>Bienvenue dans ton espace</span>
+                    <svg viewBox="0 0 32 28" aria-hidden="true">
+                        <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </p>
+
+                <h1 class="esp-title">
+                    Tout ce que tu trouveras
+                    sur <em>Ronde &amp; Jolie</em>
+                </h1>
+
+                <p class="esp-desc">
+                    Nous avons créé un espace unique où respect, bienveillance et authenticité sont au cœur de chaque échange.
+                    Découvre tout ce qui fait la force de notre communauté.
+                </p>
+            </div>
+
+            <!-- COLONNE DROITE : 6 CARTES -->
+            <div class="esp-cards">
+
+                <article class="esp-card">
+                    <div class="esp-card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48">
+                            <circle cx="16" cy="16" r="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                            <circle cx="32" cy="16" r="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                            <path d="M6 36 Q 16 28, 22 34" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                            <path d="M42 36 Q 32 28, 26 34" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                            <path d="M24 30 C 18 24, 16 19, 19 16 C 22 14, 24 17, 24 19 C 24 17, 26 14, 29 16 C 32 19, 30 24, 24 30Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Des hommes qui apprécient vraiment</h3>
+                    <p>Ici, tu rencontres des hommes qui apprécient les femmes rondes pour ce qu'elles sont. Des relations basées sur l'attirance sincère, le respect et l'authenticité.</p>
+                </article>
+
+                <article class="esp-card">
+                    <div class="esp-card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48">
+                            <path d="M24 6 L 38 11 V 22 C 38 32, 32 38, 24 42 C 16 38, 10 32, 10 22 V 11 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                            <path d="M17 24 L 22 29 L 31 19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Un espace sûr et respectueux</h3>
+                    <p>Tolérance zéro pour le jugement, le bodyshaming ou tout comportement déplacé. Notre équipe veille chaque jour à garantir un environnement sain où tu peux être toi-même en toute sérénité.</p>
+                </article>
+
+                <article class="esp-card esp-card--highlight">
+                    <div class="esp-card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48">
+                            <circle cx="24" cy="18" r="10" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                            <path d="M24 18 L 26 14 L 30 17 L 28 21 Z" fill="currentColor"/>
+                            <path d="M18 26 L 12 42 L 18 39 L 22 44 L 24 30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                            <path d="M30 26 L 36 42 L 30 39 L 26 44 L 24 30" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+                    <h3>Des expériences qui t'enrichissent</h3>
+                    <p>Ateliers bien-être, discussions inspirantes, rencontres locales, live &amp; Q&amp;A… Participe à des activités pensées pour ton épanouissement et élargis tes horizons au sein d'une communauté engagée.</p>
+                </article>
+
+                <article class="esp-card">
+                    <div class="esp-card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48">
+                            <path d="M6 10 H 28 V 26 H 12 L 6 32 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                            <path d="M20 18 H 42 V 32 H 36 L 30 38 L 30 32 H 20 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/>
+                            <line x1="11" y1="17" x2="22" y2="17" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="11" y1="21" x2="18" y2="21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="25" y1="24" x2="36" y2="24" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <line x1="25" y1="28" x2="32" y2="28" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Des conversations authentiques</h3>
+                    <p>Des échanges profonds et bienveillants avec des hommes qui partagent tes valeurs et tes centres d'intérêt. Chaque conversation a le potentiel de devenir une belle histoire.</p>
+                </article>
+
+                <article class="esp-card">
+                    <div class="esp-card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48">
+                            <circle cx="17" cy="14" r="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                            <circle cx="31" cy="14" r="5" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                            <path d="M8 32 Q 17 26, 24 32 Q 31 26, 40 32" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                            <path d="M24 40 C 18 35, 15 30, 18 26 C 21 24, 24 27, 24 30 C 24 27, 27 24, 30 26 C 33 30, 30 35, 24 40Z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3>Une communauté qui soutient</h3>
+                    <p>Rejoins des milliers de femmes rondes qui se comprennent, s'encouragent et avancent ensemble. Ici, tu n'es plus seule : tu fais partie d'une vraie famille.</p>
+                </article>
+
+                <article class="esp-card">
+                    <div class="esp-card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 48 48">
+                            <circle cx="24" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/>
+                            <path d="M14 36 V 26 C 14 22, 18 19, 24 19 C 30 19, 34 22, 34 26 V 36" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            <path d="M14 25 L 8 17 M 34 25 L 40 17" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/>
+                            <path d="M9 10 L 11 14 M 11 10 L 9 14" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M39 8 L 41 12 M 41 8 L 39 12" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            <path d="M4 22 L 6 26 M 6 22 L 4 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                        </svg>
+                    </div>
+                    <h3>Célèbre ta beauté, rayonne chaque jour</h3>
+                    <p>Ronde &amp; Jolie, c'est un espace pour reprendre confiance, te sentir valorisée pour qui tu es, chaque jour, à ta façon.</p>
+                </article>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+</main>
+
+<!-- ============ BANNIÈRE "PROPOSE TON ÉVÉNEMENT" ============ -->
+<section class="ev-propose">
+    <div class="ev-propose-inner">
+        <div class="ev-propose-content">
+            <h3>Propose ton événement</h3>
+            <p>Partage ton idée avec la communauté et crée des moments inoubliables ensemble.</p>
+            <a href="#proposer" class="ev-propose-btn">
+                Proposer un événement
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 3 L 14 9 L 21 10 L 16 14 L 17 21 L 12 17 L 7 21 L 8 14 L 3 10 L 10 9 Z" fill="currentColor"/>
+                </svg>
+            </a>
+        </div>
+        <div class="ev-propose-photo" aria-hidden="true"></div>
+    </div>
+</section>
+
+<!-- ============ LIGNE CTA CENTRALE ============ -->
+<div class="ev-cta-row">
+    <div class="ev-cta-side">
+        <svg viewBox="0 0 32 28" aria-hidden="true">
+            <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Chaque événement est pensé pour favoriser<br>les rencontres authentiques et les beaux moments.</span>
+    </div>
+    <a href="page-evenements.html" class="ev-cta-btn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+            <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+            <line x1="8" y1="2" x2="8" y2="7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="2" x2="16" y2="7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Découvrir tous les événements
+    </a>
+    <div class="ev-cta-side ev-cta-side--right">
+        <span>Une communauté bienveillante,<br>des souvenirs inoubliables.</span>
+        <svg viewBox="0 0 32 28" aria-hidden="true">
+            <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+</div>
+
+<!-- ============ FOOTER 4 COLONNES ============ -->
+<footer class="ev-footer">
+    <svg class="ev-footer-deco-circles" viewBox="0 0 400 400" aria-hidden="true">
+        <defs>
+            <linearGradient id="footCirGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ec3a8b" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#ec3a8b" stop-opacity="0.05"/>
+            </linearGradient>
+        </defs>
+        <circle cx="200" cy="200" r="180" fill="none" stroke="url(#footCirGrad)" stroke-width="1"/>
+        <circle cx="200" cy="200" r="140" fill="none" stroke="url(#footCirGrad)" stroke-width="1"/>
+        <circle cx="200" cy="200" r="100" fill="none" stroke="url(#footCirGrad)" stroke-width="1"/>
+    </svg>
+    <svg class="ev-footer-deco-heart" viewBox="0 0 32 28" aria-hidden="true">
+        <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="ev-footer-inner">
+        <div class="ev-footer-grid">
+            <div class="ev-footer-brand">
+                <div class="ev-footer-brand-head">
+                    <div class="ev-footer-brand-mark">RJ</div>
+                    <div class="ev-footer-brand-text">
+                        <h4>Ronde et Jolie</h4>
+                        <small>Communauté &amp; Connexions</small>
+                    </div>
+                </div>
+                <p>Une communauté bienveillante où les femmes rondes et les hommes qui les aiment se rencontrent, échangent et créent des liens authentiques.</p>
+                <a href="#rejoindre" class="ev-footer-aventure">
+                    Rejoins l'aventure !
+                    <svg viewBox="0 0 32 28" aria-hidden="true">
+                        <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <div class="ev-footer-stores">
+                    <a href="#" class="ev-footer-store" aria-label="Télécharger sur l'App Store">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.18 1.78-3.23 1.86-3.28-1.01-1.49-2.59-1.69-3.16-1.71-1.34-.14-2.62.79-3.31.79-.68 0-1.74-.78-2.86-.75-1.47.02-2.83.85-3.59 2.16-1.53 2.65-.39 6.58 1.1 8.74.73 1.06 1.6 2.24 2.74 2.2 1.1-.05 1.52-.71 2.85-.71 1.33 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.64-2.13.84-1.22 1.18-2.41 1.2-2.47-.03-.01-2.29-.88-2.32-3.49zm-2.18-6.42c.61-.74 1.02-1.77.91-2.79-.88.04-1.94.59-2.57 1.33-.57.66-1.07 1.71-.93 2.72.98.08 1.98-.5 2.59-1.26z"/></svg>
+                        <span><small>Télécharger dans</small><strong>l'App Store</strong></span>
+                    </a>
+                    <a href="#" class="ev-footer-store" aria-label="Disponible sur Google Play">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 20.83V3.17c0-.31.18-.58.43-.71l10.45 10-10.43 10c-.27-.12-.45-.4-.45-.63zm12.31-8.83l2.27 2.27-12.39 7.11 10.12-9.38zm0-2L5.37 1.46l12.39 7.11-2.27 2.4zm5.85 1.91l-2.71 1.56-2.31-2.47 2.31-2.47 2.71 1.56c.69.4.69 1.42 0 1.82z"/></svg>
+                        <span><small>Disponible sur</small><strong>Google Play</strong></span>
+                    </a>
+                </div>
+            </div>
+            <div class="ev-footer-col">
+                <h5>Pages utiles</h5>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="page-communaute.html">Communauté</a></li>
+                    <li><a href="page-cuisine.html">Activités</a></li>
+                    <li><a href="page-evenements.html">Événements</a></li>
+                    <li><a href="index.html#apropos">À propos</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="page-contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="ev-footer-col">
+                <h5>Liens rapides</h5>
+                <ul>
+                    <li><a href="#cgu">CGU – CGV</a></li>
+                </ul>
+            </div>
+            <div class="ev-footer-col ev-footer-social">
+                <h5>Réseaux sociaux</h5>
+                <p>Suis-nous sur les réseaux pour des témoignages authentiques, des conseils bienveillants et une dose quotidienne de body positive.</p>
+                <div class="ev-footer-social-icons">
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <rect x="3" y="3" width="18" height="18" rx="5"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M16 4v2.5c0 2 1.6 3.5 3.5 3.5h.5v3c-1.5 0-3-.4-4-1v6c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.3 0 .7 0 1 .1V15c-.3-.1-.7-.2-1-.2-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3V4h3z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="ev-footer-bottom">
+            <span>Ronde &amp; Jolie par <a href="#" style="color:var(--pink);text-decoration:none;">Celine Harbane</a></span>
+            <span>Copyright <span class="gold">© 2025</span>. Tous droits réservés</span>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

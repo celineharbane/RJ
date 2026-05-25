@@ -1,0 +1,1595 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Une communauté qui vit avec toi, chaque jour. Découvre toutes les activités de Ronde et Jolie.">
+<title>Activités — Ronde et Jolie</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="footer.css">
+
+<style>
+  :root {
+    --pink: #ec3a8b;
+    --pink-deep: #b8226a;
+    --pink-bright: #f25aa0;
+    --pink-soft: rgba(236, 58, 139, 0.12);
+  }
+
+  .nav-link.is-active { color: var(--pink) !important; }
+  .nav-link.is-active::after { background: var(--pink) !important; }
+  .btn-header {
+    border: none !important;
+    background: linear-gradient(135deg, #ec3a8b, #d62a7c) !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 24px rgba(236, 58, 139, 0.35) !important;
+  }
+  .btn-header svg { color: #ffffff !important; stroke: #ffffff !important; }
+
+  /* ============================================
+     HERO ACTIVITÉS
+     ============================================ */
+  .act-hero {
+    position: relative;
+    z-index: 1;
+    padding: clamp(1.5rem, 3vw, 3rem) 0 clamp(2rem, 4vw, 3.5rem);
+  }
+  .act-hero-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.25fr);
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: center;
+  }
+  .act-eyebrow {
+    font-size: 0.78rem;
+    letter-spacing: 0.32em;
+    color: var(--pink);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 1.25rem;
+  }
+  .act-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2rem, 4.2vw, 3.4rem);
+    line-height: 1.08;
+    color: var(--cream);
+    margin-bottom: 1.5rem;
+    letter-spacing: -0.01em;
+  }
+  .act-title em {
+    display: block;
+    color: var(--pink);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .act-title .heart-doodle {
+    width: 28px; height: 24px;
+    color: var(--pink);
+    margin-left: 0.4rem;
+    vertical-align: -0.2em;
+    transform: rotate(-12deg);
+    display: inline-block;
+  }
+  .act-desc {
+    color: var(--cream-soft);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    max-width: 480px;
+    margin-bottom: 2.25rem;
+    opacity: 0.9;
+  }
+  .act-features {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.75rem, 1.8vw, 1.5rem);
+    max-width: 500px;
+  }
+  .act-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.55rem;
+  }
+  .act-feature-icon { width: 30px; height: 30px; color: var(--pink); }
+  .act-feature-icon svg { width: 100%; height: 100%; }
+  .act-feature-icon svg [stroke] { stroke: #ec3a8b !important; }
+  .act-feature span {
+    font-size: 0.78rem;
+    line-height: 1.3;
+    color: var(--cream-soft);
+    font-weight: 500;
+  }
+
+  /* 3 phones side-by-side */
+  .act-phones {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    align-items: center;
+  }
+  .act-phones .ph {
+    background: linear-gradient(165deg, #1a1410, #0a0806);
+    border-radius: 32px;
+    padding: 8px;
+    aspect-ratio: 220 / 460;
+    box-shadow: 0 25px 50px rgba(0,0,0,0.6), 0 0 0 1.5px rgba(212,165,116,0.18);
+    position: relative;
+  }
+  .act-phones .ph--middle { transform: translateY(-15px); }
+  .act-phones .ph-screen {
+    width: 100%; height: 100%;
+    background: linear-gradient(180deg, #0d0908, #14100c);
+    border-radius: 26px;
+    padding: 18px 8px 8px;
+    overflow: hidden;
+    position: relative;
+    color: var(--cream);
+    font-size: 0.45rem;
+    line-height: 1.4;
+  }
+  .act-phones .ph-screen::before {
+    content: "";
+    position: absolute;
+    top: 5px; left: 50%;
+    transform: translateX(-50%);
+    width: 50px; height: 12px;
+    background: #0a0806;
+    border-radius: 8px;
+    z-index: 5;
+  }
+  .ph-status {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 8px;
+    font-size: 0.45rem;
+    color: var(--cream);
+    margin-bottom: 8px;
+    opacity: 0.6;
+  }
+  .ph-tabs {
+    display: flex;
+    gap: 4px;
+    margin-bottom: 8px;
+    padding: 0 4px;
+  }
+  .ph-tab {
+    background: rgba(255,255,255,0.05);
+    border-radius: 999px;
+    padding: 3px 8px;
+    font-size: 0.4rem;
+    color: var(--cream-soft);
+  }
+  .ph-tab.is-on { background: var(--pink); color: white; }
+  .ph-card {
+    background: rgba(255,255,255,0.04);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-radius: 8px;
+    padding: 6px 6px;
+    margin-bottom: 6px;
+  }
+  .ph-row { display: flex; align-items: center; gap: 4px; margin-bottom: 4px; }
+  .ph-avatar {
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ec3a8b, #b8226a);
+    flex-shrink: 0;
+  }
+  .ph-name { font-size: 0.45rem; font-weight: 600; color: var(--cream); }
+  .ph-loc { font-size: 0.4rem; color: var(--text-muted); margin-left: auto; }
+  .ph-img {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 6px;
+    background: linear-gradient(135deg, #4a3826, #2a1f15);
+    background-size: cover;
+    background-position: center;
+    margin: 4px 0;
+  }
+  .ph-actions { display: flex; gap: 6px; align-items: center; font-size: 0.4rem; color: var(--text-muted); }
+  .ph-actions svg { width: 8px; height: 8px; }
+
+  /* Voice room grid (middle phone) */
+  .ph-vroom-head {
+    text-align: center;
+    margin-bottom: 8px;
+  }
+  .ph-vroom-head h4 {
+    font-size: 0.55rem;
+    color: var(--cream);
+    font-weight: 600;
+    margin-bottom: 2px;
+  }
+  .ph-vroom-head .meta {
+    font-size: 0.4rem;
+    color: var(--pink);
+  }
+  .ph-vroom-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 6px;
+    margin-bottom: 8px;
+  }
+  .ph-vroom-cell {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+  }
+  .ph-vroom-cell .av {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d4a574, #8a6438);
+    border: 1.5px solid var(--pink);
+  }
+  .ph-vroom-cell:nth-child(2) .av { background: linear-gradient(135deg, #ec3a8b, #8a1f4a); }
+  .ph-vroom-cell:nth-child(3) .av { background: linear-gradient(135deg, #5fc9d8, #2a7d8a); }
+  .ph-vroom-cell:nth-child(5) .av { background: linear-gradient(135deg, #a877d4, #5a3a7a); }
+  .ph-vroom-cell:nth-child(6) .av { background: linear-gradient(135deg, #7dc88e, #3a6a4a); }
+  .ph-vroom-cell .nm { font-size: 0.38rem; color: var(--cream-soft); }
+  .ph-vroom-controls {
+    display: flex;
+    justify-content: center;
+    gap: 6px;
+    padding: 6px 0;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+  .ph-vroom-btn {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.06);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .ph-vroom-btn.mic { background: var(--pink); }
+
+  /* Live phone (right) */
+  .ph-live-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    background: var(--pink);
+    border-radius: 4px;
+    padding: 2px 5px;
+    font-size: 0.4rem;
+    font-weight: 700;
+    color: white;
+    margin-bottom: 6px;
+  }
+  .ph-live-badge::before {
+    content: ""; width: 4px; height: 4px; border-radius: 50%;
+    background: white; animation: pulse 1.5s infinite;
+  }
+  @keyframes pulse { 50% { opacity: 0.4; } }
+  .ph-live-title {
+    font-size: 0.5rem;
+    color: var(--cream);
+    line-height: 1.2;
+    margin-bottom: 6px;
+    font-weight: 600;
+  }
+  .ph-live-meta { font-size: 0.4rem; color: var(--text-muted); margin-bottom: 6px; }
+  .ph-live-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    background: linear-gradient(135deg, #5a3a30, #2a1f15);
+    border-radius: 6px;
+    margin-bottom: 6px;
+  }
+  .ph-comment {
+    display: flex; gap: 4px;
+    padding: 3px 0;
+    font-size: 0.4rem;
+    color: var(--cream-soft);
+    border-top: 1px solid rgba(255,255,255,0.04);
+  }
+  .ph-comment-input {
+    display: flex; align-items: center;
+    margin-top: 6px;
+    background: rgba(255,255,255,0.05);
+    border-radius: 999px;
+    padding: 3px 8px;
+    font-size: 0.4rem;
+    color: var(--text-muted);
+  }
+  .ph-comment-input svg { width: 8px; height: 8px; margin-left: auto; color: var(--pink); }
+
+  /* ============================================
+     SECTION TIMELINE "Une journée"
+     ============================================ */
+  .act-day {
+    padding: clamp(2rem, 4vw, 3.5rem) 0;
+    text-align: center;
+  }
+  .act-section-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(1.7rem, 3.4vw, 2.6rem);
+    line-height: 1.15;
+    color: var(--cream);
+    margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .act-section-title em {
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .act-section-title .pink {
+    color: var(--pink);
+    font-style: italic;
+  }
+  .act-day-grid {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 16px;
+    position: relative;
+  }
+  .act-day-grid::before {
+    content: "";
+    position: absolute;
+    top: 60px;
+    left: 8%; right: 8%;
+    height: 1px;
+    background: repeating-linear-gradient(90deg, var(--gold) 0 6px, transparent 6px 12px);
+    z-index: 0;
+  }
+  .act-day-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--border-gold);
+    border-radius: 14px;
+    padding: 0;
+    position: relative;
+    z-index: 1;
+    text-align: left;
+    overflow: hidden;
+  }
+  .act-day-card-photo {
+    width: 100%;
+    aspect-ratio: 16 / 10;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .act-day-card-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 35%, rgba(13,9,8,0.92) 100%);
+  }
+  .act-day-card-body {
+    padding: 0.85rem 1.1rem 1.1rem;
+  }
+  .act-day-card-head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 0.5rem;
+    font-size: 0.7rem;
+    letter-spacing: 0.2em;
+    color: var(--gold);
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .act-day-card-head svg { width: 16px; height: 16px; color: var(--gold); }
+  .act-day-card p {
+    font-size: 0.78rem;
+    color: var(--cream-soft);
+    line-height: 1.4;
+    margin-bottom: 0.85rem;
+  }
+  .act-day-mini {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 10px;
+    padding: 0.55rem 0.7rem;
+    font-size: 0.7rem;
+  }
+  .act-day-mini h5 {
+    font-size: 0.75rem;
+    color: var(--cream);
+    font-weight: 600;
+    margin-bottom: 0.3rem;
+  }
+  .act-day-mini-sub { font-size: 0.65rem; color: var(--text-muted); margin-bottom: 0.4rem; }
+  .act-day-mini-avs {
+    display: flex; align-items: center;
+    gap: 0.4rem;
+  }
+  .act-day-mini-avs .a {
+    width: 18px; height: 18px;
+    border-radius: 50%;
+    border: 1.5px solid #0a0806;
+    margin-left: -6px;
+    background: linear-gradient(135deg, #ec3a8b, #b8226a);
+  }
+  .act-day-mini-avs .a:first-child { margin-left: 0; }
+  .act-day-mini-avs .a:nth-child(2) { background: linear-gradient(135deg, #d4a574, #8a6438); }
+  .act-day-mini-avs .a:nth-child(3) { background: linear-gradient(135deg, #5fc9d8, #2a7d8a); }
+  .act-day-mini .badge {
+    display: inline-flex;
+    align-items: center;
+    background: var(--pink);
+    color: white;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.55rem;
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .act-day-mini .count {
+    color: var(--cream);
+    margin-left: auto;
+    font-size: 0.65rem;
+  }
+  .act-day-mini-lock {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-size: 0.7rem;
+    color: var(--cream);
+  }
+  .act-day-mini-lock svg { width: 14px; height: 14px; color: var(--gold); }
+  .act-day-mini-lock .dot {
+    width: 14px; height: 14px;
+    background: var(--pink);
+    color: white;
+    border-radius: 50%;
+    font-size: 0.5rem;
+    font-weight: 700;
+    display: flex; align-items: center; justify-content: center;
+    margin-left: auto;
+  }
+
+  /* ============================================
+     SECTION "Le fil communautaire"
+     ============================================ */
+  .act-feed {
+    padding: clamp(2rem, 4vw, 3.5rem) 0;
+    text-align: center;
+  }
+  .act-feed-grid {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 12px;
+  }
+  .act-feed-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--border-gold);
+    border-radius: 12px;
+    padding: 0.85rem;
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+  .act-feed-card-head {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .act-feed-card-head .av {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d4a574, #8a6438);
+    flex-shrink: 0;
+  }
+  .act-feed-card:nth-child(2) .act-feed-card-head .av { background: linear-gradient(135deg, #5fc9d8, #2a7d8a); }
+  .act-feed-card:nth-child(3) .act-feed-card-head .av { background: linear-gradient(135deg, #ec3a8b, #8a1f4a); }
+  .act-feed-card:nth-child(4) .act-feed-card-head .av { background: linear-gradient(135deg, #a877d4, #5a3a7a); }
+  .act-feed-card-head h4 {
+    font-size: 0.78rem;
+    color: var(--cream);
+    font-weight: 600;
+    line-height: 1.1;
+  }
+  .act-feed-card-head .city {
+    display: block;
+    font-size: 0.6rem;
+    color: var(--text-muted);
+    margin-top: 1px;
+  }
+  .act-feed-photo {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #4a3826, #2a1f15);
+    background-size: cover; background-position: center;
+  }
+  .act-feed-photo--julie { background-image: url('assets/photos/photo-3-cuisine@1x.jpg'); }
+  .act-feed-photo--thomas { background-image: url('assets/photos/photo-2-apero@1x.jpg'); }
+  .act-feed-photo--laura { background-image: url('assets/photos/photo-1-diner@1x.jpg'); }
+  .act-feed-photo--alex { background-image: url('assets/after-work-bg.jpg'); }
+  .act-feed-card p {
+    font-size: 0.72rem;
+    color: var(--cream-soft);
+    line-height: 1.4;
+  }
+  .act-feed-stats {
+    display: flex;
+    gap: 0.85rem;
+    font-size: 0.7rem;
+    color: var(--text-muted);
+  }
+  .act-feed-stats span { display: inline-flex; align-items: center; gap: 0.25rem; }
+  .act-feed-stats svg { width: 12px; height: 12px; }
+  .act-feed-stats .pink { color: var(--pink); }
+
+  /* Carte citation (5ᵉ) */
+  .act-feed-quote {
+    background: linear-gradient(165deg, rgba(236, 58, 139, 0.18), rgba(13, 9, 8, 0.95));
+    border: 1px solid var(--pink);
+    color: var(--cream);
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+  }
+  .act-feed-quote::before {
+    content: "“";
+    font-family: var(--font-display);
+    font-size: 2.5rem;
+    color: var(--pink);
+    line-height: 1;
+    margin-bottom: 0.4rem;
+  }
+  .act-feed-quote p {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--cream);
+    line-height: 1.4;
+  }
+  .act-feed-quote .sig {
+    font-size: 0.7rem;
+    color: var(--cream-soft);
+    margin-top: 0.4rem;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+  }
+  .act-feed-quote .sig svg { width: 12px; height: 12px; color: var(--pink); }
+
+  /* Carte stories (6ᵉ) */
+  .act-feed-stories h4 {
+    color: var(--pink);
+    font-style: italic;
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    text-align: left;
+    margin-bottom: 0.5rem;
+  }
+  .act-feed-stories-row {
+    display: flex; gap: 0.4rem;
+    margin-bottom: 0.5rem;
+  }
+  .act-feed-stories-row .a {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    border: 2px solid var(--pink);
+  }
+  .act-feed-stories-row .a:nth-child(1) { background: linear-gradient(135deg, #d4a574, #8a6438); }
+  .act-feed-stories-row .a:nth-child(2) { background: linear-gradient(135deg, #ec3a8b, #b8226a); }
+  .act-feed-stories-row .a:nth-child(3) { background: linear-gradient(135deg, #5fc9d8, #2a7d8a); }
+  .act-feed-stories-row .a:nth-child(4) { background: linear-gradient(135deg, #a877d4, #5a3a7a); }
+  .act-feed-stories-photo {
+    width: 100%; aspect-ratio: 4 / 3;
+    border-radius: 8px;
+    background: linear-gradient(135deg, #4a3826, #2a1f15);
+    background-image: url('assets/photos/photo-3-cuisine@1x.jpg');
+    background-size: cover;
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+  .act-feed-stories-photo::after {
+    content: "Soirée entre membres";
+    position: absolute;
+    bottom: 6px; left: 6px;
+    color: var(--cream);
+    font-size: 0.65rem;
+    font-weight: 600;
+    text-shadow: 0 2px 6px rgba(0,0,0,0.8);
+  }
+  .act-feed-stories-link {
+    color: var(--pink);
+    font-size: 0.7rem;
+    text-decoration: none;
+    text-align: center;
+  }
+
+  /* ============================================
+     SECTION "Tout ce que tu peux faire" (6 cards)
+     ============================================ */
+  .act-can {
+    padding: clamp(2rem, 4vw, 3.5rem) 0;
+    text-align: center;
+  }
+  .act-can-grid {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+  }
+  .act-can-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--border-gold);
+    border-radius: 16px;
+    padding: 1.25rem;
+    text-align: left;
+    transition: border-color 0.3s, transform 0.3s;
+  }
+  .act-can-card:hover {
+    border-color: var(--pink);
+    transform: translateY(-3px);
+  }
+  .act-can-card-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.6rem;
+  }
+  .act-can-card-icon {
+    width: 36px; height: 36px;
+    border-radius: 10px;
+    background: rgba(236, 58, 139, 0.1);
+    border: 1px solid rgba(236, 58, 139, 0.35);
+    color: var(--pink);
+    display: flex; align-items: center; justify-content: center;
+  }
+  .act-can-card-icon svg { width: 18px; height: 18px; }
+  .act-can-card h3 {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 600;
+    color: var(--pink);
+    font-size: 1.05rem;
+  }
+  .act-can-card p {
+    color: var(--cream-soft);
+    font-size: 0.8rem;
+    line-height: 1.5;
+    margin-bottom: 1rem;
+  }
+
+  /* Sub-mockup interior on cards */
+  .act-can-mock {
+    background: rgba(0,0,0,0.45);
+    border: 1px solid rgba(255,255,255,0.04);
+    border-radius: 10px;
+    padding: 0.6rem;
+    font-size: 0.7rem;
+    color: var(--cream-soft);
+  }
+  .act-can-mock-post-head { display: flex; gap: 0.4rem; align-items: center; margin-bottom: 0.3rem; }
+  .act-can-mock-post-head .av { width: 18px; height: 18px; border-radius: 50%; background: linear-gradient(135deg, #ec3a8b, #b8226a); }
+  .act-can-mock-photo {
+    width: 100%;
+    aspect-ratio: 4 / 3;
+    border-radius: 6px;
+    background-image: url('assets/photos/photo-3-cuisine@1x.jpg');
+    background-size: cover; background-position: center;
+    margin-bottom: 0.4rem;
+  }
+  .act-can-mock-reacts {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.6rem;
+    color: var(--text-muted);
+  }
+  .act-can-mock-reacts svg { width: 12px; height: 12px; color: var(--pink); }
+
+  .act-can-mock-avs { display: flex; gap: 0.3rem; align-items: center; }
+  .act-can-mock-avs .av {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    border: 1.5px solid #0a0806;
+    margin-left: -7px;
+  }
+  .act-can-mock-avs .av:first-child { margin-left: 0; background: linear-gradient(135deg, #d4a574, #8a6438); }
+  .act-can-mock-avs .av:nth-child(2) { background: linear-gradient(135deg, #ec3a8b, #b8226a); }
+  .act-can-mock-avs .av:nth-child(3) { background: linear-gradient(135deg, #5fc9d8, #2a7d8a); }
+  .act-can-mock-avs .av:nth-child(4) { background: linear-gradient(135deg, #a877d4, #5a3a7a); }
+  .act-can-mock-avs .more {
+    color: var(--cream-soft);
+    font-size: 0.7rem;
+    background: rgba(255,255,255,0.06);
+    border-radius: 999px;
+    padding: 2px 8px;
+  }
+
+  .act-can-mock-live {
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+  .act-can-mock-live .live-badge {
+    background: var(--pink);
+    color: white;
+    border-radius: 4px;
+    padding: 2px 6px;
+    font-size: 0.6rem;
+    font-weight: 700;
+  }
+  .act-can-mock-emojis {
+    display: flex; gap: 0.4rem;
+    margin-left: auto;
+    font-size: 0.85rem;
+  }
+
+  .act-can-mock-chat {
+    display: flex; flex-direction: column; gap: 0.35rem;
+  }
+  .act-can-mock-chat .line {
+    display: flex; align-items: center; gap: 0.4rem;
+    font-size: 0.68rem;
+    color: var(--cream-soft);
+  }
+  .act-can-mock-chat .line strong { color: var(--cream); font-weight: 600; }
+  .act-can-mock-emojirow {
+    display: flex; gap: 0.35rem;
+    margin-top: 0.4rem;
+  }
+  .act-can-mock-emojirow span {
+    background: rgba(255,255,255,0.06);
+    border-radius: 999px;
+    width: 24px; height: 24px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 0.85rem;
+  }
+
+  /* Carte avec gros visuel d'arrière-plan */
+  .act-can-card--photo {
+    position: relative;
+    overflow: hidden;
+    min-height: 240px;
+  }
+  .act-can-card--photo .act-can-bg {
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    z-index: 0;
+  }
+  .act-can-card--photo .act-can-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(13,9,8,0.85) 0%, rgba(13,9,8,0.55) 45%, rgba(13,9,8,0.2) 100%);
+  }
+  .act-can-card--photo > *:not(.act-can-bg) { position: relative; z-index: 1; }
+  .act-can-card--photo .act-can-mock {
+    background: rgba(0,0,0,0.6);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+  }
+
+  .act-can-mock-badges { display: flex; align-items: center; gap: 0.4rem; }
+  .act-can-mock-badges .b {
+    width: 26px; height: 26px;
+    border-radius: 50%;
+    background: rgba(236, 58, 139, 0.15);
+    border: 1px solid var(--pink);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--pink);
+    font-size: 0.8rem;
+  }
+  .act-can-mock-profile {
+    display: flex;
+    background: rgba(0,0,0,0.5);
+    border-radius: 8px;
+    padding: 0.4rem;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.4rem;
+  }
+  .act-can-mock-profile .av {
+    width: 34px; height: 34px; border-radius: 50%;
+    background: linear-gradient(135deg, #ec3a8b, #b8226a);
+    flex-shrink: 0;
+  }
+  .act-can-mock-profile h6 { font-size: 0.7rem; color: var(--cream); font-weight: 700; }
+  .act-can-mock-profile small { font-size: 0.6rem; color: var(--text-muted); }
+
+  .act-can-tags {
+    display: flex; flex-wrap: wrap;
+    gap: 0.35rem;
+    margin-bottom: 0.5rem;
+  }
+  .act-can-tag {
+    background: rgba(236, 58, 139, 0.1);
+    border: 1px solid rgba(236, 58, 139, 0.35);
+    color: var(--pink);
+    border-radius: 999px;
+    padding: 0.25rem 0.6rem;
+    font-size: 0.65rem;
+    font-weight: 500;
+  }
+  .act-can-more {
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    color: var(--pink);
+    font-size: 0.72rem;
+    text-decoration: none;
+  }
+
+  /* ============================================
+     SECTION "Pourquoi les membres adorent"
+     ============================================ */
+  .act-love {
+    padding: clamp(2rem, 4vw, 3.5rem) 0;
+    text-align: center;
+  }
+  .act-love-grid {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr)) minmax(0, 1.5fr);
+    gap: 14px;
+  }
+  .act-love-card {
+    background: var(--bg-elev);
+    border: 1px solid var(--border-gold);
+    border-radius: 12px;
+    padding: 1rem 0.85rem;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.55rem;
+  }
+  .act-love-card .icn {
+    width: 32px; height: 32px;
+    color: var(--pink);
+  }
+  .act-love-card .icn svg { width: 100%; height: 100%; }
+  .act-love-card h4 {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 600;
+    color: var(--pink);
+    font-size: 0.95rem;
+  }
+  .act-love-card p {
+    color: var(--cream-soft);
+    font-size: 0.7rem;
+    line-height: 1.4;
+  }
+
+  /* CTA card */
+  .act-love-cta {
+    background: linear-gradient(165deg, rgba(236, 58, 139, 0.15), rgba(13, 9, 8, 0.95));
+    border: 1px solid var(--pink);
+    border-radius: 12px;
+    padding: 1.4rem 1.1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    text-align: center;
+  }
+  .act-love-cta h4 {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    color: var(--cream);
+    line-height: 1.3;
+    font-style: italic;
+  }
+  .act-love-cta h4 em { color: var(--gold); font-style: italic; }
+  .act-love-cta .btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.65rem 1.25rem;
+    border-radius: 999px;
+    background: var(--pink);
+    color: white;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-decoration: none;
+  }
+  .act-love-cta .btn svg { width: 14px; height: 12px; color: white; }
+  .act-love-cta .avstack {
+    display: flex;
+    align-items: center;
+    margin-top: 0.2rem;
+  }
+  .act-love-cta .avstack .av {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    border: 1.5px solid #0a0806;
+    margin-left: -7px;
+    background-size: cover;
+    background-position: center;
+  }
+  .act-love-cta .avstack .av:first-child { margin-left: 0; background: linear-gradient(135deg, #d4a574, #8a6438); }
+  .act-love-cta .avstack .av:nth-child(2) { background: linear-gradient(135deg, #ec3a8b, #b8226a); }
+  .act-love-cta .avstack .av:nth-child(3) { background: linear-gradient(135deg, #5fc9d8, #2a7d8a); }
+  .act-love-cta .avstack .av:nth-child(4) { background: linear-gradient(135deg, #a877d4, #5a3a7a); }
+  .act-love-cta .avstack .av:nth-child(5) { background: linear-gradient(135deg, #7dc88e, #3a6a4a); }
+  .act-love-cta .avstack .av:nth-child(6) { background: linear-gradient(135deg, #e8a04f, #8a5028); }
+  .act-love-cta .avstack .count {
+    background: rgba(255,255,255,0.08);
+    color: var(--cream);
+    border-radius: 999px;
+    padding: 3px 10px;
+    margin-left: 6px;
+    font-size: 0.7rem;
+    font-weight: 600;
+  }
+
+  /* Strip after love cards */
+  .act-love-strip {
+    max-width: var(--container);
+    margin: 1.25rem auto 0;
+    padding: 0.85rem var(--gutter);
+    background: rgba(13,9,8,0.6);
+    border: 1px solid var(--border-gold);
+    border-radius: 12px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .act-love-strip-item { display: flex; align-items: center; gap: 0.7rem; }
+  .act-love-strip-item .icn { width: 26px; height: 26px; color: var(--gold); flex-shrink: 0; }
+  .act-love-strip-item .icn svg { width: 100%; height: 100%; }
+  .act-love-strip-item h5 {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-size: 0.85rem;
+    color: var(--cream);
+    font-weight: 600;
+  }
+  .act-love-strip-item p {
+    font-size: 0.7rem;
+    color: var(--text-muted);
+    line-height: 1.3;
+  }
+
+  /* RESPONSIVE */
+  @media (max-width: 1100px) {
+    .act-hero-inner { grid-template-columns: 1fr; }
+    .act-day-grid::before { display: none; }
+    .act-feed-grid { grid-template-columns: repeat(3, 1fr); }
+    .act-feed-grid > *:nth-child(n+4) { display: none; }
+    .act-can-grid { grid-template-columns: repeat(2, 1fr); }
+    .act-love-grid { grid-template-columns: repeat(3, 1fr); }
+    .act-love-strip { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 720px) {
+    .act-features { grid-template-columns: repeat(2, 1fr); }
+    .act-phones { grid-template-columns: 1fr; }
+    .act-phones .ph--middle { transform: none; }
+    .act-day-grid { grid-template-columns: 1fr 1fr; }
+    .act-feed-grid { grid-template-columns: 1fr 1fr; }
+    .act-can-grid { grid-template-columns: 1fr; }
+    .act-love-grid { grid-template-columns: 1fr 1fr; }
+    .act-love-strip { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ATMOSPHÈRE -->
+<div class="bg-atmosphere" aria-hidden="true">
+    <div class="bg-grain"></div>
+    <div class="bg-gradient"></div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo" aria-label="Ronde et Jolie — accueil">
+            <img class="logo-img" src="assets/logo-rj-full.png" alt="Ronde et Jolie — Communauté & Connexions">
+        </a>
+
+        <nav class="nav" aria-label="Navigation principale">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="page-communaute.html" class="nav-link">Communauté</a></li>
+                <li><a href="page-activites.html" class="nav-link is-active" aria-current="page">Activités</a></li>
+                <li><a href="page-evenements.html" class="nav-link">Événements</a></li>
+                <li><a href="index.html#apropos" class="nav-link">À propos</a></li>
+            </ul>
+        </nav>
+
+        <a href="#rejoindre" class="btn btn-primary btn-header">
+            Rejoindre la communauté
+            <svg viewBox="0 0 32 28" width="14" height="12" aria-hidden="true" style="margin-left:0.4rem;vertical-align:middle">
+                <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </div>
+</header>
+
+<main>
+
+<!-- ============== HERO ============== -->
+<section class="act-hero">
+    <div class="act-hero-inner">
+
+        <div>
+            <p class="act-eyebrow">ACTIVITÉS QUOTIDIENNES</p>
+            <h1 class="act-title">
+                Une communauté qui vit avec toi,
+                <em>chaque jour.
+                    <svg class="heart-doodle" viewBox="0 0 32 28" aria-hidden="true">
+                        <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </em>
+            </h1>
+            <p class="act-desc">
+                Discute, partage, découvre, participe à des lives et échange avec des personnes qui te ressemblent dans un espace bienveillant et authentique.
+            </p>
+
+            <div class="act-features">
+                <div class="act-feature">
+                    <span class="act-feature-icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32"><path d="M16 4 C 10 4, 6 8, 6 14 V 18 L 4 22 H 28 L 26 18 V 14 C 26 8, 22 4, 16 4Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M13 26 H 19" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    </span>
+                    <span>Fil d'actualité<br>actif 24/7</span>
+                </div>
+                <div class="act-feature">
+                    <span class="act-feature-icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32"><circle cx="12" cy="12" r="3" fill="currentColor"/><circle cx="20" cy="12" r="3" fill="currentColor"/><path d="M6 22 H 26" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    </span>
+                    <span>Salons &amp; lives<br>quotidiens</span>
+                </div>
+                <div class="act-feature">
+                    <span class="act-feature-icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32"><circle cx="16" cy="16" r="12" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 16 L 14 21 L 23 11" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>
+                    </span>
+                    <span>Des milliers<br>d'interactions</span>
+                </div>
+                <div class="act-feature">
+                    <span class="act-feature-icon" aria-hidden="true">
+                        <svg viewBox="0 0 32 32"><path d="M16 26 C 6 19, 3 13, 6 8 C 9 4, 14 4, 16 9 C 18 4, 23 4, 26 8 C 29 13, 26 19, 16 26Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                    </span>
+                    <span>Une ambiance<br>bienveillante</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- 3 PHONES -->
+        <div class="act-phones" aria-hidden="true">
+
+            <!-- Phone 1 : Fil d'actualité -->
+            <div class="ph">
+                <div class="ph-screen">
+                    <div class="ph-status"><span>9:31</span><span>📶 100%</span></div>
+                    <div style="text-align:center;font-size:0.6rem;color:var(--cream);margin-bottom:6px;font-weight:600;">Fil d'actualité</div>
+                    <div class="ph-tabs">
+                        <span class="ph-tab is-on">Pour toi</span>
+                        <span class="ph-tab">Abonnements</span>
+                        <span class="ph-tab">Populaire</span>
+                    </div>
+                    <div class="ph-card">
+                        <div class="ph-row">
+                            <span class="ph-avatar"></span>
+                            <span class="ph-name">Mélanie, 32</span>
+                            <span class="ph-loc">Paris</span>
+                        </div>
+                        <div class="ph-img" style="background-image:url('assets/photos/photo-3-cuisine@1x.jpg')"></div>
+                        <div style="font-size:0.4rem;color:var(--cream-soft);margin:4px 0;">Se sentir bien dans sa peau, c'est la plus belle des libertés ✨</div>
+                        <div class="ph-actions"><span>❤️ 128</span><span>💬 45</span><span>🤍 12</span></div>
+                    </div>
+                    <div class="ph-card">
+                        <div class="ph-row">
+                            <span class="ph-avatar" style="background:linear-gradient(135deg,#5fc9d8,#2a7d8a)"></span>
+                            <span class="ph-name">Lucas, 37</span>
+                            <span class="ph-loc">Lyon</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phone 2 : Salon vocal -->
+            <div class="ph ph--middle">
+                <div class="ph-screen">
+                    <div class="ph-status"><span>9:41</span><span>📶</span></div>
+                    <div class="ph-vroom-head">
+                        <h4>Salon vocal</h4>
+                        <div style="color:var(--cream);font-size:0.5rem;">Confiance &amp; positif <span style="color:var(--pink);">✨</span></div>
+                        <div class="meta">78 en ligne</div>
+                    </div>
+                    <div class="ph-vroom-grid">
+                        <div class="ph-vroom-cell"><span class="av"></span><span class="nm">Camille<br>Hôte</span></div>
+                        <div class="ph-vroom-cell"><span class="av"></span><span class="nm">Alex<br>Co-hôte</span></div>
+                        <div class="ph-vroom-cell"><span class="av"></span><span class="nm">Sophie<br>Co-hôte</span></div>
+                        <div class="ph-vroom-cell"><span class="av"></span><span class="nm">Julie</span></div>
+                        <div class="ph-vroom-cell"><span class="av"></span><span class="nm">Thomas</span></div>
+                        <div class="ph-vroom-cell"><span class="av"></span><span class="nm">Laura</span></div>
+                        <div class="ph-vroom-cell"><span class="av"></span><span class="nm">Ben</span></div>
+                        <div class="ph-vroom-cell"><span class="av"></span><span class="nm">Nina</span></div>
+                        <div class="ph-vroom-cell"><span class="av"></span><span class="nm">Marc</span></div>
+                    </div>
+                    <div style="text-align:center;font-size:0.5rem;color:var(--text-muted);margin-bottom:6px;">+72 Participants</div>
+                    <div class="ph-vroom-controls">
+                        <div class="ph-vroom-btn">←</div>
+                        <div class="ph-vroom-btn mic">🎤</div>
+                        <div class="ph-vroom-btn">📞</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Phone 3 : Live -->
+            <div class="ph">
+                <div class="ph-screen">
+                    <div class="ph-status"><span>9:41</span><span>📶</span></div>
+                    <div style="padding:0 4px;">
+                        <span class="ph-live-badge">LIVE</span>
+                        <div class="ph-live-title">Conseils mode spécial grandes tailles</div>
+                        <div class="ph-live-meta">En direct</div>
+                        <div class="ph-live-photo" style="background-image:url('assets/photos/photo-2-apero@1x.jpg')"></div>
+                        <div class="ph-comment"><span class="ph-avatar" style="width:10px;height:10px;background:linear-gradient(135deg,#d4a574,#8a6438)"></span><strong>Sarah, 29</strong> Merci pour ces conseils !</div>
+                        <div class="ph-comment"><span class="ph-avatar" style="width:10px;height:10px;background:linear-gradient(135deg,#ec3a8b,#b8226a)"></span><strong>Chloé, 35</strong> J'adore ton look</div>
+                        <div class="ph-comment"><span class="ph-avatar" style="width:10px;height:10px;background:linear-gradient(135deg,#5fc9d8,#2a7d8a)"></span><strong>Laura, 34</strong> Tellement inspirant</div>
+                        <div class="ph-comment-input">
+                            <span>Écrire un message…</span>
+                            <svg viewBox="0 0 16 16"><path d="M2 8 L 14 2 L 10 14 L 8 9 Z" fill="currentColor"/></svg>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<!-- ============== UNE JOURNÉE SUR RJ ============== -->
+<section class="act-day">
+    <h2 class="act-section-title">Une journée sur <em>Ronde &amp; Jolie</em></h2>
+    <div class="act-day-grid">
+
+        <article class="act-day-card">
+            <div class="act-day-card-photo" style="background-image:url('assets/photos/photo-3-cuisine@1x.jpg')"></div>
+            <div class="act-day-card-body">
+                <div class="act-day-card-head">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M12 2 V 5 M 12 19 V 22 M 2 12 H 5 M 19 12 H 22 M 5 5 L 7 7 M 17 17 L 19 19 M 5 19 L 7 17 M 17 7 L 19 5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    MATIN
+                </div>
+                <p>Tu découvres le fil d'actualité</p>
+                <div class="act-day-mini">
+                    <h5>Nouveaux posts</h5>
+                    <div class="act-day-mini-sub">de la communauté</div>
+                    <div class="act-day-mini-avs">
+                        <span class="a"></span><span class="a"></span><span class="a"></span>
+                        <span style="color:var(--pink);font-size:0.65rem;margin-left:6px;">+24</span>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="act-day-card">
+            <div class="act-day-card-photo" style="background-image:url('assets/photos/photo-2-apero@1x.jpg')"></div>
+            <div class="act-day-card-body">
+                <div class="act-day-card-head">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 16 Q 12 6, 21 16 V 20 H 3 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="18" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+                    APRÈS-MIDI
+                </div>
+                <p>Tu rejoins un salon vocal</p>
+                <div class="act-day-mini">
+                    <h5>Salon chill &amp; partage</h5>
+                    <div style="display:flex;align-items:center;gap:6px;font-size:0.65rem;color:var(--pink);">
+                        <span style="display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--pink);"></span>
+                        45 en ligne
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="act-day-card">
+            <div class="act-day-card-photo" style="background-image:url('assets/photos/photo-1-diner@1x.jpg')"></div>
+            <div class="act-day-card-body">
+                <div class="act-day-card-head">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><rect x="8" y="3" width="8" height="14" rx="4" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 12 V 14 C 5 18, 9 21, 12 21 C 15 21, 19 18, 19 14 V 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                    SOIRÉE
+                </div>
+                <p>Tu participes à un live communautaire</p>
+                <div class="act-day-mini">
+                    <span class="badge">EN DIRECT</span>
+                    <h5>Live : Confiance en soi</h5>
+                    <div style="text-align:right;color:var(--text-muted);font-size:0.65rem;">👁 98</div>
+                </div>
+            </div>
+        </article>
+
+        <article class="act-day-card">
+            <div class="act-day-card-photo" style="background-image:url('assets/after-work-bg.jpg')"></div>
+            <div class="act-day-card-body">
+                <div class="act-day-card-head">
+                    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 14 C 16 16, 12 16, 9 13 C 6 10, 6 6, 8 4 C 5 5, 3 9, 4 13 C 5 18, 11 21, 16 19 C 18 18, 19 16, 19 14Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                    NUIT
+                </div>
+                <p>Tu continues les discussions en privé</p>
+                <div class="act-day-mini">
+                    <div class="act-day-mini-lock">
+                        <svg viewBox="0 0 24 24"><rect x="6" y="11" width="12" height="10" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 11 V 7 C 9 5, 10 4, 12 4 C 14 4, 15 5, 15 7 V 11" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+                        Discussion privée
+                        <span class="dot">3</span>
+                    </div>
+                    <div style="font-size:0.65rem;color:var(--text-muted);margin-top:4px;">Messages sécurisés</div>
+                </div>
+            </div>
+        </article>
+
+    </div>
+</section>
+
+<!-- ============== LE FIL COMMUNAUTAIRE ============== -->
+<section class="act-feed">
+    <h2 class="act-section-title">Le fil <span class="pink">communautaire</span></h2>
+    <div class="act-feed-grid">
+
+        <article class="act-feed-card">
+            <div class="act-feed-card-head">
+                <span class="av"></span>
+                <div><h4>Julie, 28</h4><span class="city">📍 Lille</span></div>
+            </div>
+            <div class="act-feed-photo act-feed-photo--julie"></div>
+            <p>La plus belle chose que j'ai apprise, c'est de m'aimer sans condition. ✨</p>
+            <div class="act-feed-stats">
+                <span class="pink">❤️ 112</span><span>💬 26</span>
+            </div>
+        </article>
+
+        <article class="act-feed-card">
+            <div class="act-feed-card-head">
+                <span class="av"></span>
+                <div><h4>Thomas, 36</h4><span class="city">📍 Toulouse</span></div>
+            </div>
+            <div class="act-feed-photo act-feed-photo--thomas"></div>
+            <p>Le café, les discussions profondes et les bonnes personnes 🤍</p>
+            <div class="act-feed-stats">
+                <span class="pink">❤️ 87</span><span>💬 18</span>
+            </div>
+        </article>
+
+        <article class="act-feed-card">
+            <div class="act-feed-card-head">
+                <span class="av"></span>
+                <div><h4>Laura, 34</h4><span class="city">📍 Marseille</span></div>
+            </div>
+            <div class="act-feed-photo act-feed-photo--laura"></div>
+            <p>Sortie entre amies et fous rires garantis ! 😄</p>
+            <div class="act-feed-stats">
+                <span class="pink">❤️ 164</span><span>💬 32</span>
+            </div>
+        </article>
+
+        <article class="act-feed-card">
+            <div class="act-feed-card-head">
+                <span class="av"></span>
+                <div><h4>Alexandre, 40</h4><span class="city">📍 Bordeaux</span></div>
+            </div>
+            <div class="act-feed-photo act-feed-photo--alex"></div>
+            <p>Toujours avancer, toujours croire en soi. 🌱</p>
+            <div class="act-feed-stats">
+                <span class="pink">❤️ 91</span><span>💬 14</span>
+            </div>
+        </article>
+
+        <article class="act-feed-card act-feed-quote">
+            <p>Entoure-toi de personnes qui te font grandir et te rappellent ta valeur.</p>
+            <span class="sig">Ronde &amp; Jolie
+                <svg viewBox="0 0 32 28" aria-hidden="true"><path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="currentColor"/></svg>
+            </span>
+        </article>
+
+        <article class="act-feed-card act-feed-stories">
+            <h4>Stories &amp; moments</h4>
+            <div class="act-feed-stories-row">
+                <span class="a"></span><span class="a"></span><span class="a"></span><span class="a"></span>
+            </div>
+            <div class="act-feed-stories-photo"></div>
+            <a href="#" class="act-feed-stories-link">Voir toutes les stories</a>
+        </article>
+
+    </div>
+</section>
+
+<!-- ============== TOUT CE QUE TU PEUX FAIRE ============== -->
+<section class="act-can">
+    <h2 class="act-section-title">Tout ce que tu peux faire sur <em>Ronde &amp; Jolie</em></h2>
+    <div class="act-can-grid">
+
+        <article class="act-can-card">
+            <div class="act-can-card-head">
+                <span class="act-can-card-icon">
+                    <svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="1.8"/></svg>
+                </span>
+                <h3>Fil d'actualité</h3>
+            </div>
+            <p>Partage tes moments, tes idées, tes photos et découvre ceux de la communauté.</p>
+            <div class="act-can-mock">
+                <div class="act-can-mock-post-head">
+                    <span class="av"></span>
+                    <strong style="font-size:0.7rem;color:var(--cream);">Sarah, 28</strong>
+                    <span style="margin-left:auto;font-size:0.6rem;color:var(--text-muted);">📍 Marseille</span>
+                </div>
+                <div class="act-can-mock-photo"></div>
+                <div class="act-can-mock-reacts">
+                    <span><svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 20 C 4 14, 1 9, 4 5 C 7 2, 11 4, 12 7 C 13 4, 17 2, 20 5 C 23 9, 20 14, 12 20Z"/></svg> 89</span>
+                    <span>💬 12</span>
+                    <span>😍</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="act-can-card act-can-card--photo">
+            <div class="act-can-bg" style="background-image:url('assets/photos/photo-2-apero@1x.jpg')"></div>
+            <div class="act-can-card-head">
+                <span class="act-can-card-icon">
+                    <svg viewBox="0 0 24 24"><rect x="9" y="3" width="6" height="13" rx="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M5 12 V 14 C 5 18, 9 21, 12 21 C 15 21, 19 18, 19 14 V 12" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </span>
+                <h3>Salons vocaux</h3>
+            </div>
+            <p>Rejoins des salons audio en direct et échange sur des sujets qui te passionnent.</p>
+            <div class="act-can-mock">
+                <div class="act-can-mock-avs">
+                    <span class="av"></span><span class="av"></span><span class="av"></span><span class="av"></span>
+                    <span class="more">+56</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="act-can-card act-can-card--photo">
+            <div class="act-can-bg" style="background-image:url('assets/photos/photo-1-diner@1x.jpg')"></div>
+            <div class="act-can-card-head">
+                <span class="act-can-card-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M5 12 a7 7 0 0 1 14 0" fill="none" stroke="currentColor" stroke-width="1.8"/></svg>
+                </span>
+                <h3>Lives communautaires</h3>
+            </div>
+            <p>Participe à des lives interactifs, des discussions inspirantes et des témoignages authentiques.</p>
+            <div class="act-can-mock">
+                <div class="act-can-mock-live">
+                    <span class="live-badge">EN DIRECT</span>
+                    <div class="act-can-mock-emojis">👍 ❤️ 👏 🔥</div>
+                </div>
+            </div>
+        </article>
+
+        <article class="act-can-card">
+            <div class="act-can-card-head">
+                <span class="act-can-card-icon">
+                    <svg viewBox="0 0 24 24"><path d="M3 5 h 18 v 12 h -12 l -6 5 z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg>
+                </span>
+                <h3>Interactions &amp; réactions</h3>
+            </div>
+            <p>Like, commente, réagis et crée des échanges naturels avec les membres.</p>
+            <div class="act-can-mock">
+                <div class="act-can-mock-chat">
+                    <div class="line"><span class="ph-avatar" style="width:14px;height:14px;"></span><strong>Alex_37</strong> Super message, merci ! 👏</div>
+                    <div class="line"><span class="ph-avatar" style="width:14px;height:14px;background:linear-gradient(135deg,#5fc9d8,#2a7d8a)"></span><strong>Nina_30</strong> Tellement vrai 💕</div>
+                </div>
+                <div class="act-can-mock-emojirow">
+                    <span>❤️</span><span>👍</span><span>👏</span><span>🔥</span><span>😄</span>
+                </div>
+            </div>
+        </article>
+
+        <article class="act-can-card">
+            <div class="act-can-card-head">
+                <span class="act-can-card-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M9 12 L 11 14 L 15 10" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <h3>Badges &amp; profils</h3>
+            </div>
+            <p>Personnalise ton profil, affiche tes passions et débloque des badges qui te représentent.</p>
+            <div class="act-can-mock">
+                <div class="act-can-mock-badges">
+                    <span class="b">🌸</span><span class="b">✈️</span><span class="b">🛡️</span><span class="b">🍷</span><span class="b">🎵</span>
+                </div>
+                <div class="act-can-mock-profile">
+                    <span class="av"></span>
+                    <div>
+                        <h6>Camille, 32</h6>
+                        <small>Lyon · Voyage · Cuisine · Bien-être · Musique · Mode</small>
+                    </div>
+                </div>
+            </div>
+        </article>
+
+        <article class="act-can-card">
+            <div class="act-can-card-head">
+                <span class="act-can-card-icon">
+                    <svg viewBox="0 0 24 24"><circle cx="9" cy="9" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="17" cy="9" r="3" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M3 19 Q 9 14, 14 18 Q 17 14, 22 19" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+                </span>
+                <h3>Groupes &amp; discussions</h3>
+            </div>
+            <p>Rejoins des groupes selon tes centres d'intérêt et participe à des discussions enrichissantes.</p>
+            <div class="act-can-tags">
+                <span class="act-can-tag">🌸 Body positive</span>
+                <span class="act-can-tag">✈️ Voyage</span>
+                <span class="act-can-tag">🍳 Cuisine</span>
+                <span class="act-can-tag">👗 Mode</span>
+                <span class="act-can-tag">💪 Confiance en soi</span>
+                <span class="act-can-tag">🧘 Bien-être</span>
+            </div>
+            <a href="#" class="act-can-more">+ d'autres groupes</a>
+        </article>
+
+    </div>
+</section>
+
+<!-- ============== POURQUOI LES MEMBRES ADORENT ============== -->
+<section class="act-love">
+    <h2 class="act-section-title">Pourquoi les membres <span class="pink">adorent</span> Ronde &amp; Jolie</h2>
+    <div class="act-love-grid">
+
+        <article class="act-love-card">
+            <span class="icn"><svg viewBox="0 0 32 32"><path d="M4 8 H 28 V 22 H 12 L 6 28 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M16 12 V 18 M 13 15 H 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></span>
+            <h4>Active</h4>
+            <p>Toujours du nouveau contenu à découvrir.</p>
+        </article>
+
+        <article class="act-love-card">
+            <span class="icn"><svg viewBox="0 0 32 32"><path d="M4 8 H 28 V 22 H 12 L 6 28 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><circle cx="12" cy="15" r="1.5" fill="currentColor"/><circle cx="20" cy="15" r="1.5" fill="currentColor"/></svg></span>
+            <h4>Vivante</h4>
+            <p>Des échanges en temps réel, partout et à tout moment.</p>
+        </article>
+
+        <article class="act-love-card">
+            <span class="icn"><svg viewBox="0 0 32 32"><path d="M4 8 H 28 V 22 H 12 L 6 28 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M16 19 C 11 16, 9 13, 11 11 C 13 10, 16 11, 16 13 C 16 11, 19 10, 21 11 C 23 13, 21 16, 16 19" fill="currentColor"/></svg></span>
+            <h4>Bienveillante</h4>
+            <p>Une communauté qui respecte et soutient chacun.</p>
+        </article>
+
+        <article class="act-love-card">
+            <span class="icn"><svg viewBox="0 0 32 32"><path d="M4 8 H 28 V 22 H 12 L 6 28 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M16 11 L 18 15 L 22 15.5 L 19 18 L 20 22 L 16 20 L 12 22 L 13 18 L 10 15.5 L 14 15 Z" fill="currentColor"/></svg></span>
+            <h4>Sécurisée</h4>
+            <p>Modération active et profils vérifiés pour une expérience sereine.</p>
+        </article>
+
+        <article class="act-love-card">
+            <span class="icn"><svg viewBox="0 0 32 32"><circle cx="16" cy="12" r="5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M6 28 C 8 22, 12 19, 16 19 C 20 19, 24 22, 26 28" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <h4>Inclusive</h4>
+            <p>Toutes les personnalités, toutes les histoires, tous les parcours.</p>
+        </article>
+
+        <!-- CTA card -->
+        <article class="act-love-cta">
+            <h4>Plus qu'une application,<br>un espace <em>vivant</em> où chaque interaction compte.</h4>
+            <a href="#rejoindre" class="btn">
+                Découvrir les activités
+                <svg viewBox="0 0 32 28" aria-hidden="true">
+                    <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </a>
+            <div class="avstack">
+                <span class="av"></span><span class="av"></span><span class="av"></span><span class="av"></span><span class="av"></span><span class="av"></span>
+                <span class="count">+12k</span>
+            </div>
+        </article>
+
+    </div>
+
+    <!-- Strip 4 items -->
+    <div class="act-love-strip">
+
+        <div class="act-love-strip-item">
+            <span class="icn"><svg viewBox="0 0 32 32"><path d="M16 4 L 26 8 V 16 C 26 22, 21 26, 16 28 C 11 26, 6 22, 6 16 V 8 Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/><path d="M12 16 L 15 19 L 21 13" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+            <div>
+                <h5>Ta sécurité, notre priorité.</h5>
+            </div>
+        </div>
+
+        <div class="act-love-strip-item">
+            <span class="icn"><svg viewBox="0 0 32 32"><rect x="6" y="6" width="20" height="22" rx="2" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M10 14 L 12 16 L 16 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg></span>
+            <div>
+                <h5>Profils vérifiés</h5>
+                <p>Des membres authentiques et bienveillants.</p>
+            </div>
+        </div>
+
+        <div class="act-love-strip-item">
+            <span class="icn"><svg viewBox="0 0 32 32"><circle cx="11" cy="11" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/><circle cx="21" cy="11" r="3.5" fill="none" stroke="currentColor" stroke-width="1.8"/><path d="M4 24 Q 11 19, 16 22 Q 21 19, 28 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg></span>
+            <div>
+                <h5>Modération active</h5>
+                <p>Un environnement sain et respectueux pour tous.</p>
+            </div>
+        </div>
+
+        <div class="act-love-strip-item">
+            <span class="icn"><svg viewBox="0 0 32 32"><path d="M16 26 C 6 19, 3 13, 6 8 C 9 4, 14 4, 16 9 C 18 4, 23 4, 26 8 C 29 13, 26 19, 16 26Z" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linejoin="round"/></svg></span>
+            <div>
+                <h5>Communauté RJ</h5>
+                <p>Des liens authentiques et durables.</p>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+</main>
+
+<!-- ============ BANNIÈRE PROPOSE + CTA + FOOTER (shared) ============ -->
+<section class="ev-propose">
+    <div class="ev-propose-inner">
+        <div class="ev-propose-content">
+            <h3>Propose ton événement</h3>
+            <p>Partage ton idée avec la communauté et crée des moments inoubliables ensemble.</p>
+            <a href="#proposer" class="ev-propose-btn">
+                Proposer un événement
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 3 L 14 9 L 21 10 L 16 14 L 17 21 L 12 17 L 7 21 L 8 14 L 3 10 L 10 9 Z" fill="currentColor"/>
+                </svg>
+            </a>
+        </div>
+        <div class="ev-propose-photo" aria-hidden="true"></div>
+    </div>
+</section>
+
+<footer class="ev-footer">
+    <svg class="ev-footer-deco-circles" viewBox="0 0 400 400" aria-hidden="true">
+        <defs><linearGradient id="footCirGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ec3a8b" stop-opacity="0.5"/><stop offset="100%" stop-color="#ec3a8b" stop-opacity="0.05"/></linearGradient></defs>
+        <circle cx="200" cy="200" r="180" fill="none" stroke="url(#footCirGrad)" stroke-width="1"/>
+        <circle cx="200" cy="200" r="140" fill="none" stroke="url(#footCirGrad)" stroke-width="1"/>
+        <circle cx="200" cy="200" r="100" fill="none" stroke="url(#footCirGrad)" stroke-width="1"/>
+    </svg>
+    <svg class="ev-footer-deco-heart" viewBox="0 0 32 28" aria-hidden="true">
+        <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="ev-footer-inner">
+        <div class="ev-footer-grid">
+            <div class="ev-footer-brand">
+                <div class="ev-footer-brand-head">
+                    <div class="ev-footer-brand-mark">RJ</div>
+                    <div class="ev-footer-brand-text"><h4>Ronde et Jolie</h4><small>Communauté &amp; Connexions</small></div>
+                </div>
+                <p>Une communauté bienveillante où les femmes rondes et les hommes qui les aiment se rencontrent, échangent et créent des liens authentiques.</p>
+                <a href="#rejoindre" class="ev-footer-aventure">
+                    Rejoins l'aventure !
+                    <svg viewBox="0 0 32 28" aria-hidden="true"><path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <div class="ev-footer-stores">
+                    <a href="#" class="ev-footer-store"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.18 1.78-3.23 1.86-3.28-1.01-1.49-2.59-1.69-3.16-1.71-1.34-.14-2.62.79-3.31.79-.68 0-1.74-.78-2.86-.75-1.47.02-2.83.85-3.59 2.16-1.53 2.65-.39 6.58 1.1 8.74.73 1.06 1.6 2.24 2.74 2.2 1.1-.05 1.52-.71 2.85-.71 1.33 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.64-2.13.84-1.22 1.18-2.41 1.2-2.47-.03-.01-2.29-.88-2.32-3.49zm-2.18-6.42c.61-.74 1.02-1.77.91-2.79-.88.04-1.94.59-2.57 1.33-.57.66-1.07 1.71-.93 2.72.98.08 1.98-.5 2.59-1.26z"/></svg><span><small>Télécharger dans</small><strong>l'App Store</strong></span></a>
+                    <a href="#" class="ev-footer-store"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 20.83V3.17c0-.31.18-.58.43-.71l10.45 10-10.43 10c-.27-.12-.45-.4-.45-.63zm12.31-8.83l2.27 2.27-12.39 7.11 10.12-9.38zm0-2L5.37 1.46l12.39 7.11-2.27 2.4zm5.85 1.91l-2.71 1.56-2.31-2.47 2.31-2.47 2.71 1.56c.69.4.69 1.42 0 1.82z"/></svg><span><small>Disponible sur</small><strong>Google Play</strong></span></a>
+                </div>
+            </div>
+            <div class="ev-footer-col">
+                <h5>Pages utiles</h5>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="page-communaute.html">Communauté</a></li>
+                    <li><a href="page-activites.html">Activités</a></li>
+                    <li><a href="page-evenements.html">Événements</a></li>
+                    <li><a href="index.html#apropos">À propos</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="page-contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="ev-footer-col"><h5>Liens rapides</h5><ul><li><a href="#cgu">CGU – CGV</a></li></ul></div>
+            <div class="ev-footer-col ev-footer-social">
+                <h5>Réseaux sociaux</h5>
+                <p>Suis-nous sur les réseaux pour des témoignages authentiques, des conseils bienveillants et une dose quotidienne de body positive.</p>
+                <div class="ev-footer-social-icons">
+                    <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+                    <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 4v2.5c0 2 1.6 3.5 3.5 3.5h.5v3c-1.5 0-3-.4-4-1v6c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.3 0 .7 0 1 .1V15c-.3-.1-.7-.2-1-.2-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3V4h3z"/></svg></a>
+                </div>
+            </div>
+        </div>
+        <div class="ev-footer-bottom">
+            <span>Ronde &amp; Jolie par <a href="#" style="color:var(--pink);text-decoration:none;">Celine Harbane</a></span>
+            <span>Copyright <span class="gold">© 2025</span>. Tous droits réservés</span>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,870 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pourquoi rejoindre Ronde et Jolie : la communauté qu'on aurait aimé trouver.">
+<title>Pourquoi nous rejoindre — Ronde et Jolie</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="footer.css">
+
+<style>
+  :root {
+    --pink: #ec3a8b;
+    --pink-deep: #d62a7c;
+    --pink-soft: rgba(236, 58, 139, 0.12);
+  }
+
+  /* ============================================
+     PAGE POURQUOI — 2 cols : texte gauche / mockup phone droite
+     ============================================ */
+  .pq {
+    position: relative;
+    z-index: 1;
+    padding: clamp(2rem, 4vw, 4rem) 0;
+    overflow: hidden;
+  }
+
+  .pq-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+  }
+
+  .pq-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+    gap: clamp(2rem, 5vw, 5rem);
+    align-items: center;
+  }
+
+  /* --- COLONNE GAUCHE --- */
+  .pq-eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--pink);
+    letter-spacing: 0.01em;
+    margin-bottom: 1.25rem;
+    font-family: var(--font-display);
+    font-style: italic;
+  }
+  .pq-eyebrow::after {
+    content: "";
+    display: inline-block;
+    width: 60px;
+    height: 1px;
+    background: linear-gradient(90deg, var(--pink), transparent);
+  }
+
+  .pq-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2rem, 4.5vw, 3.4rem);
+    line-height: 1.1;
+    color: var(--cream);
+    margin-bottom: 2.25rem;
+    letter-spacing: -0.01em;
+  }
+  .pq-title em {
+    display: block;
+    color: var(--gold);
+    font-style: italic;
+    font-weight: 500;
+    margin-top: 0.25rem;
+  }
+  .pq-title .heart-doodle {
+    width: 26px;
+    height: 24px;
+    color: var(--gold);
+    margin-left: 0.4rem;
+    vertical-align: middle;
+  }
+
+  /* --- FEATURES (4 items) --- */
+  .pq-features {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    margin-bottom: 2.5rem;
+  }
+
+  .pq-feature {
+    display: grid;
+    grid-template-columns: 52px 1fr;
+    gap: 1rem;
+    align-items: flex-start;
+  }
+
+  .pq-feature-icon {
+    width: 52px;
+    height: 52px;
+    border-radius: 50%;
+    background: var(--bg-elev);
+    border: 1.5px solid var(--border-gold);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--gold);
+    flex-shrink: 0;
+  }
+  .pq-feature-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .pq-feature h3 {
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.1rem;
+    color: var(--pink);
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.01em;
+  }
+
+  .pq-feature p {
+    color: var(--cream-soft);
+    font-size: 0.88rem;
+    line-height: 1.55;
+    opacity: 0.9;
+  }
+
+  /* --- CTA pill outline pink --- */
+  .pq-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.95rem 1.75rem;
+    border-radius: 999px;
+    border: 1.5px solid var(--pink);
+    color: var(--cream);
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-decoration: none;
+    transition: background 0.3s var(--ease-out), transform 0.3s var(--ease-out);
+    letter-spacing: 0.02em;
+  }
+  .pq-cta:hover {
+    background: var(--pink-soft);
+    transform: translateY(-2px);
+  }
+  .pq-cta svg {
+    width: 18px;
+    height: 16px;
+    color: var(--pink);
+  }
+
+  /* ============================================
+     COLONNE DROITE — MOCKUP PHONE
+     ============================================ */
+  .pq-phone-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 620px;
+  }
+
+  /* Décor : cercles dorés autour du phone */
+  .pq-deco-circles {
+    position: absolute;
+    inset: -30px;
+    pointer-events: none;
+    z-index: 1;
+    animation: rotateSlow 200s linear infinite;
+  }
+
+  /* Petits éléments flottants (cœurs / formes) */
+  .pq-deco-float {
+    position: absolute;
+    color: var(--pink);
+    opacity: 0.6;
+    pointer-events: none;
+    z-index: 1;
+  }
+  .pq-deco-float--1 { top: 30%; left: 8%; width: 30px; }
+  .pq-deco-float--2 { top: 56%; right: 6%; width: 34px; color: var(--gold); }
+
+  /* Phone */
+  .pq-phone {
+    position: relative;
+    z-index: 2;
+    width: clamp(280px, 28vw, 340px);
+    aspect-ratio: 280 / 580;
+    background: linear-gradient(165deg, #1a1410, #0a0806);
+    border-radius: 44px;
+    padding: 12px;
+    box-shadow:
+      0 30px 60px rgba(0, 0, 0, 0.7),
+      0 0 0 2px rgba(212, 165, 116, 0.15),
+      inset 0 0 0 1px rgba(255, 255, 255, 0.05);
+  }
+
+  .pq-phone-screen {
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, #0d0908, #14100c);
+    border-radius: 34px;
+    padding: 28px 16px 14px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    position: relative;
+  }
+
+  /* Notch */
+  .pq-phone-screen::before {
+    content: "";
+    position: absolute;
+    top: 8px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 18px;
+    background: #0a0806;
+    border-radius: 12px;
+    z-index: 5;
+  }
+
+  /* Header app */
+  .pq-app-header {
+    margin-top: 14px;
+    text-align: center;
+  }
+  .pq-app-logo {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    margin: 0 auto 6px;
+    background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 800;
+    color: var(--black);
+    font-size: 1rem;
+  }
+  .pq-app-brand {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    color: var(--cream);
+    font-weight: 600;
+  }
+  .pq-app-tag {
+    font-size: 0.45rem;
+    letter-spacing: 0.3em;
+    color: var(--gold-soft);
+    text-transform: uppercase;
+    margin-top: 2px;
+  }
+
+  .pq-app-welcome {
+    text-align: center;
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    color: var(--cream);
+    line-height: 1.3;
+    padding: 4px 6px;
+  }
+
+  /* 4 rounds shortcuts */
+  .pq-app-shortcuts {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 6px;
+    margin: 2px 0;
+  }
+  .pq-app-shortcut {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.5rem;
+    color: var(--cream-soft);
+  }
+  .pq-app-shortcut-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: rgba(236, 58, 139, 0.12);
+    border: 1px solid rgba(236, 58, 139, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--pink);
+  }
+  .pq-app-shortcut-icon svg {
+    width: 18px;
+    height: 18px;
+  }
+
+  /* Card cercle du jour */
+  .pq-app-card {
+    background: rgba(255, 255, 255, 0.04);
+    border: 1px solid rgba(212, 165, 116, 0.18);
+    border-radius: 12px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.55rem;
+  }
+  .pq-app-avatars {
+    display: flex;
+    margin-right: 2px;
+  }
+  .pq-app-avatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #d4a574, #8a6438);
+    border: 1.5px solid #14100c;
+    margin-left: -7px;
+  }
+  .pq-app-avatar:first-child { margin-left: 0; }
+  .pq-app-avatar:nth-child(2) { background: linear-gradient(135deg, #ec3a8b, #8a1f4a); }
+  .pq-app-avatar:nth-child(3) { background: linear-gradient(135deg, #d4a574, #b8895a); }
+  .pq-app-card-info {
+    flex: 1;
+    min-width: 0;
+  }
+  .pq-app-card-title {
+    color: var(--gold);
+    font-size: 0.55rem;
+    margin-bottom: 1px;
+  }
+  .pq-app-card-sub {
+    color: var(--cream-soft);
+    font-size: 0.55rem;
+    opacity: 0.85;
+  }
+  .pq-app-card-btn {
+    background: var(--pink);
+    color: white;
+    border-radius: 999px;
+    padding: 3px 9px;
+    font-size: 0.5rem;
+    font-weight: 600;
+  }
+
+  /* Fil actu header */
+  .pq-app-feed-head {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    font-size: 0.62rem;
+    color: var(--cream);
+    margin-top: 4px;
+  }
+  .pq-app-feed-head .voir {
+    color: var(--pink);
+    font-size: 0.55rem;
+  }
+
+  /* Post */
+  .pq-app-post {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    font-size: 0.55rem;
+  }
+  .pq-app-post-head {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .pq-app-post-avatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #ec3a8b, #8a1f4a);
+  }
+  .pq-app-post-name {
+    color: var(--cream);
+    font-weight: 600;
+  }
+  .pq-app-post-time {
+    color: var(--text-muted);
+    margin-left: auto;
+    font-size: 0.5rem;
+  }
+  .pq-app-post-body {
+    color: var(--cream-soft);
+    line-height: 1.4;
+    font-style: italic;
+  }
+  .pq-app-post-actions {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: var(--text-muted);
+    font-size: 0.55rem;
+  }
+  .pq-app-post-actions svg {
+    width: 11px;
+    height: 11px;
+  }
+  .pq-app-post-actions .heart-active { color: var(--pink); }
+  .pq-app-post-share {
+    margin-left: auto;
+    color: var(--pink);
+  }
+
+  /* Bottom nav */
+  .pq-app-bottom {
+    margin-top: auto;
+    margin-left: -16px;
+    margin-right: -16px;
+    margin-bottom: -14px;
+    padding: 8px 14px 12px;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    background: #0a0806;
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    position: relative;
+  }
+  .pq-app-tab {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+    font-size: 0.45rem;
+    color: var(--text-muted);
+  }
+  .pq-app-tab.is-active { color: var(--pink); }
+  .pq-app-tab svg { width: 14px; height: 14px; }
+
+  .pq-app-fab {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: var(--pink);
+    box-shadow: 0 6px 16px rgba(236, 58, 139, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+
+  /* ---- RESPONSIVE ---- */
+  @media (max-width: 980px) {
+    .pq-grid {
+      grid-template-columns: 1fr;
+      gap: 3rem;
+    }
+    .pq-phone-wrap { min-height: 580px; }
+  }
+  @media (max-width: 540px) {
+    .pq-eyebrow::after { width: 30px; }
+    .pq-phone { width: 280px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ATMOSPHÈRE DE FOND -->
+<div class="bg-atmosphere" aria-hidden="true">
+    <div class="bg-grain"></div>
+    <div class="bg-gradient"></div>
+</div>
+
+<!-- HEADER (identique aux autres) -->
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo" aria-label="Ronde et Jolie — accueil">
+            <img class="logo-img" src="assets/logo-rj-full.png" alt="Ronde et Jolie — Communauté & Connexions">
+        </a>
+
+        <nav class="nav" aria-label="Navigation principale">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link">
+                    <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12L12 4l9 8v8a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1v-8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                    Accueil
+                </a></li>
+                <li><a href="page-communaute.html" class="nav-link">Communauté</a></li>
+                <li><a href="page-cuisine.html" class="nav-link">Activités</a></li>
+                <li><a href="after-work-poster.html" class="nav-link">Événements</a></li>
+                <li><a href="page-pourquoi.html" class="nav-link is-active">Pourquoi nous ?</a></li>
+            </ul>
+        </nav>
+
+        <a href="#rejoindre" class="btn btn-primary btn-header">Rejoindre la communauté</a>
+    </div>
+</header>
+
+<!-- SECTION POURQUOI -->
+<main>
+<section class="pq" id="pourquoi">
+    <div class="pq-inner">
+
+        <div class="pq-grid">
+
+            <!-- COLONNE GAUCHE -->
+            <div class="pq-content">
+
+                <p class="pq-eyebrow"><span>Pourquoi rejoindre Ronde &amp; Jolie ?</span></p>
+
+                <h1 class="pq-title">
+                    On a créé la communauté
+                    <em>qu'on aurait aimé trouver.</em>
+                    <svg class="heart-doodle" viewBox="0 0 32 28" aria-hidden="true">
+                        <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </h1>
+
+                <div class="pq-features">
+
+                    <article class="pq-feature">
+                        <span class="pq-feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 32 32">
+                                <circle cx="10" cy="11" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                <circle cx="22" cy="11" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                <circle cx="16" cy="20" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M4 25 Q 10 21, 13 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M28 25 Q 22 21, 19 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <path d="M11 28 Q 16 26, 21 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <div>
+                            <h3>Des liens qui comptent</h3>
+                            <p>Des échanges vrais, des amitiés solides et un soutien quotidien dans un espace bienveillant.</p>
+                        </div>
+                    </article>
+
+                    <article class="pq-feature">
+                        <span class="pq-feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 32 32">
+                                <path d="M16 4 L 26 8 V 16 C 26 22, 21 26, 16 28 C 11 26, 6 22, 6 16 V 8 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                                <path d="M12 16 L 15 19 L 21 13" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <div>
+                            <h3>Un espace sûr et respectueux</h3>
+                            <p>Tolérance zéro pour le jugement et les comportements toxiques. Ici, tu peux être toi-même, en toute sécurité.</p>
+                        </div>
+                    </article>
+
+                    <article class="pq-feature">
+                        <span class="pq-feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 32 32">
+                                <rect x="5" y="7" width="22" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
+                                <line x1="5" y1="13" x2="27" y2="13" stroke="currentColor" stroke-width="1.5"/>
+                                <line x1="11" y1="4" x2="11" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                                <line x1="21" y1="4" x2="21" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
+                            </svg>
+                        </span>
+                        <div>
+                            <h3>Des activités &amp; événements inspirants</h3>
+                            <p>Ateliers, rencontres, lives, discussions… Participe à des expériences qui nourrissent ton bien-être et ta confiance.</p>
+                        </div>
+                    </article>
+
+                    <article class="pq-feature">
+                        <span class="pq-feature-icon" aria-hidden="true">
+                            <svg viewBox="0 0 32 32">
+                                <path d="M16 25 C 6 18, 3 13, 5 8 C 7 4, 12 4, 16 9 C 20 4, 25 4, 27 8 C 29 13, 26 18, 16 25Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                            </svg>
+                        </span>
+                        <div>
+                            <h3>Une communauté qui te comprend</h3>
+                            <p>Des milliers de femmes rondes qui partagent tes réalités, tes joies et tes défis. Tu n'es plus seule.</p>
+                        </div>
+                    </article>
+
+                </div>
+
+                <a href="#rejoindre" class="pq-cta">
+                    <svg viewBox="0 0 32 28" aria-hidden="true">
+                        <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    Rejoindre la communauté
+                </a>
+
+            </div>
+
+            <!-- COLONNE DROITE : MOCKUP PHONE -->
+            <div class="pq-phone-wrap">
+
+                <!-- Cercles dorés derrière -->
+                <svg class="pq-deco-circles" viewBox="0 0 500 500" aria-hidden="true">
+                    <defs>
+                        <linearGradient id="pqCircleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#e8b87a" stop-opacity="0.5"/>
+                            <stop offset="100%" stop-color="#d4a574" stop-opacity="0.05"/>
+                        </linearGradient>
+                    </defs>
+                    <circle cx="250" cy="250" r="240" fill="none" stroke="url(#pqCircleGrad)" stroke-width="1"/>
+                    <circle cx="250" cy="250" r="200" fill="none" stroke="url(#pqCircleGrad)" stroke-width="1"/>
+                    <circle cx="250" cy="250" r="160" fill="none" stroke="url(#pqCircleGrad)" stroke-width="1"/>
+                </svg>
+
+                <!-- Cœur flottant rose -->
+                <svg class="pq-deco-float pq-deco-float--1" viewBox="0 0 32 28" aria-hidden="true">
+                    <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+
+                <!-- Étoile/sparkle doré -->
+                <svg class="pq-deco-float pq-deco-float--2" viewBox="0 0 32 32" aria-hidden="true">
+                    <path d="M16 4 L 18 14 L 28 16 L 18 18 L 16 28 L 14 18 L 4 16 L 14 14 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                </svg>
+
+                <!-- Le téléphone -->
+                <div class="pq-phone" aria-hidden="true">
+                    <div class="pq-phone-screen">
+
+                        <div class="pq-app-header">
+                            <div class="pq-app-logo">RJ</div>
+                            <div class="pq-app-brand">Ronde <em style="font-style:italic;">et</em> Jolie</div>
+                            <div class="pq-app-tag">Communauté &amp; Connexions</div>
+                        </div>
+
+                        <div class="pq-app-welcome">
+                            Bienvenue dans ton<br>espace bienveillant
+                        </div>
+
+                        <div class="pq-app-shortcuts">
+                            <div class="pq-app-shortcut">
+                                <span class="pq-app-shortcut-icon">
+                                    <svg viewBox="0 0 24 24"><path d="M4 6h16v10H7l-3 3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                                </span>
+                                Discussions
+                            </div>
+                            <div class="pq-app-shortcut">
+                                <span class="pq-app-shortcut-icon">
+                                    <svg viewBox="0 0 24 24"><rect x="4" y="6" width="16" height="14" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="4" y1="10" x2="20" y2="10" stroke="currentColor" stroke-width="1.5"/><line x1="8" y1="3" x2="8" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><line x1="16" y1="3" x2="16" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                </span>
+                                Événements
+                            </div>
+                            <div class="pq-app-shortcut">
+                                <span class="pq-app-shortcut-icon">
+                                    <svg viewBox="0 0 24 24"><circle cx="8" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><circle cx="16" cy="9" r="2.5" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M3 20 Q 8 15, 13 19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/><path d="M21 20 Q 16 15, 11 19" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                </span>
+                                Groupes
+                            </div>
+                            <div class="pq-app-shortcut">
+                                <span class="pq-app-shortcut-icon">
+                                    <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3" fill="currentColor"/><path d="M5 12 a7 7 0 0 1 14 0" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M8 12 a4 4 0 0 1 8 0" fill="none" stroke="currentColor" stroke-width="1.5"/></svg>
+                                </span>
+                                Live
+                            </div>
+                        </div>
+
+                        <div class="pq-app-card">
+                            <div class="pq-app-avatars">
+                                <span class="pq-app-avatar"></span>
+                                <span class="pq-app-avatar"></span>
+                                <span class="pq-app-avatar"></span>
+                            </div>
+                            <div class="pq-app-card-info">
+                                <div class="pq-app-card-title">Cercle du jour</div>
+                                <div class="pq-app-card-sub">Estime de soi &amp; confiance</div>
+                            </div>
+                            <div class="pq-app-card-btn">Rejoindre</div>
+                        </div>
+
+                        <div class="pq-app-feed-head">
+                            <span>Fil d'actualités</span>
+                            <span class="voir">Voir tout</span>
+                        </div>
+
+                        <div class="pq-app-post">
+                            <div class="pq-app-post-head">
+                                <span class="pq-app-post-avatar"></span>
+                                <span class="pq-app-post-name">Camille</span>
+                                <span class="pq-app-post-time">il y a 2h</span>
+                            </div>
+                            <p class="pq-app-post-body">
+                                Merci pour cette discussion incroyable hier soir. Vous êtes une vraie source d'inspiration !
+                            </p>
+                            <div class="pq-app-post-actions">
+                                <svg class="heart-active" viewBox="0 0 24 24"><path d="M12 20 C 4 14, 1 9, 4 5 C 7 2, 11 4, 12 7 C 13 4, 17 2, 20 5 C 23 9, 20 14, 12 20Z" fill="currentColor"/></svg>
+                                <span>128</span>
+                                <svg viewBox="0 0 24 24"><path d="M4 6h16v10H7l-3 3z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                                <span>32</span>
+                                <span class="pq-app-post-share">Partager</span>
+                            </div>
+                        </div>
+
+                        <div class="pq-app-bottom">
+                            <div class="pq-app-tab is-active">
+                                <svg viewBox="0 0 24 24"><path d="M3 12L12 4l9 8v8a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1v-8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                                Accueil
+                            </div>
+                            <div class="pq-app-tab">
+                                <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 16 L 21 21" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                Explorer
+                            </div>
+                            <div class="pq-app-fab">+</div>
+                            <div class="pq-app-tab">
+                                <svg viewBox="0 0 24 24"><path d="M4 6 h 16 v 12 h -16 z M 4 6 l 8 6 l 8 -6" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
+                                Messages
+                            </div>
+                            <div class="pq-app-tab">
+                                <svg viewBox="0 0 24 24"><circle cx="12" cy="9" r="4" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M4 20 C 6 16, 10 14, 12 14 C 14 14, 18 16, 20 20" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
+                                Profil
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+</section>
+</main>
+
+<!-- ============ BANNIÈRE "PROPOSE TON ÉVÉNEMENT" ============ -->
+<section class="ev-propose">
+    <div class="ev-propose-inner">
+        <div class="ev-propose-content">
+            <h3>Propose ton événement</h3>
+            <p>Partage ton idée avec la communauté et crée des moments inoubliables ensemble.</p>
+            <a href="#proposer" class="ev-propose-btn">
+                Proposer un événement
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M12 3 L 14 9 L 21 10 L 16 14 L 17 21 L 12 17 L 7 21 L 8 14 L 3 10 L 10 9 Z" fill="currentColor"/>
+                </svg>
+            </a>
+        </div>
+        <div class="ev-propose-photo" aria-hidden="true"></div>
+    </div>
+</section>
+
+<!-- ============ LIGNE CTA CENTRALE ============ -->
+<div class="ev-cta-row">
+    <div class="ev-cta-side">
+        <svg viewBox="0 0 32 28" aria-hidden="true">
+            <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+        <span>Chaque événement est pensé pour favoriser<br>les rencontres authentiques et les beaux moments.</span>
+    </div>
+    <a href="page-evenements.html" class="ev-cta-btn">
+        <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
+            <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
+            <line x1="8" y1="2" x2="8" y2="7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+            <line x1="16" y1="2" x2="16" y2="7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+        </svg>
+        Découvrir tous les événements
+    </a>
+    <div class="ev-cta-side ev-cta-side--right">
+        <span>Une communauté bienveillante,<br>des souvenirs inoubliables.</span>
+        <svg viewBox="0 0 32 28" aria-hidden="true">
+            <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        </svg>
+    </div>
+</div>
+
+<!-- ============ FOOTER 4 COLONNES ============ -->
+<footer class="ev-footer">
+    <svg class="ev-footer-deco-circles" viewBox="0 0 400 400" aria-hidden="true">
+        <defs>
+            <linearGradient id="footCirGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stop-color="#ec3a8b" stop-opacity="0.5"/>
+                <stop offset="100%" stop-color="#ec3a8b" stop-opacity="0.05"/>
+            </linearGradient>
+        </defs>
+        <circle cx="200" cy="200" r="180" fill="none" stroke="url(#footCirGrad)" stroke-width="1"/>
+        <circle cx="200" cy="200" r="140" fill="none" stroke="url(#footCirGrad)" stroke-width="1"/>
+        <circle cx="200" cy="200" r="100" fill="none" stroke="url(#footCirGrad)" stroke-width="1"/>
+    </svg>
+    <svg class="ev-footer-deco-heart" viewBox="0 0 32 28" aria-hidden="true">
+        <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="ev-footer-inner">
+        <div class="ev-footer-grid">
+            <div class="ev-footer-brand">
+                <div class="ev-footer-brand-head">
+                    <div class="ev-footer-brand-mark">RJ</div>
+                    <div class="ev-footer-brand-text">
+                        <h4>Ronde et Jolie</h4>
+                        <small>Communauté &amp; Connexions</small>
+                    </div>
+                </div>
+                <p>Une communauté bienveillante où les femmes rondes et les hommes qui les aiment se rencontrent, échangent et créent des liens authentiques.</p>
+                <a href="#rejoindre" class="ev-footer-aventure">
+                    Rejoins l'aventure !
+                    <svg viewBox="0 0 32 28" aria-hidden="true">
+                        <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </a>
+                <div class="ev-footer-stores">
+                    <a href="#" class="ev-footer-store" aria-label="Télécharger sur l'App Store">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.18 1.78-3.23 1.86-3.28-1.01-1.49-2.59-1.69-3.16-1.71-1.34-.14-2.62.79-3.31.79-.68 0-1.74-.78-2.86-.75-1.47.02-2.83.85-3.59 2.16-1.53 2.65-.39 6.58 1.1 8.74.73 1.06 1.6 2.24 2.74 2.2 1.1-.05 1.52-.71 2.85-.71 1.33 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.64-2.13.84-1.22 1.18-2.41 1.2-2.47-.03-.01-2.29-.88-2.32-3.49zm-2.18-6.42c.61-.74 1.02-1.77.91-2.79-.88.04-1.94.59-2.57 1.33-.57.66-1.07 1.71-.93 2.72.98.08 1.98-.5 2.59-1.26z"/></svg>
+                        <span><small>Télécharger dans</small><strong>l'App Store</strong></span>
+                    </a>
+                    <a href="#" class="ev-footer-store" aria-label="Disponible sur Google Play">
+                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 20.83V3.17c0-.31.18-.58.43-.71l10.45 10-10.43 10c-.27-.12-.45-.4-.45-.63zm12.31-8.83l2.27 2.27-12.39 7.11 10.12-9.38zm0-2L5.37 1.46l12.39 7.11-2.27 2.4zm5.85 1.91l-2.71 1.56-2.31-2.47 2.31-2.47 2.71 1.56c.69.4.69 1.42 0 1.82z"/></svg>
+                        <span><small>Disponible sur</small><strong>Google Play</strong></span>
+                    </a>
+                </div>
+            </div>
+            <div class="ev-footer-col">
+                <h5>Pages utiles</h5>
+                <ul>
+                    <li><a href="index.html">Accueil</a></li>
+                    <li><a href="page-communaute.html">Communauté</a></li>
+                    <li><a href="page-cuisine.html">Activités</a></li>
+                    <li><a href="page-evenements.html">Événements</a></li>
+                    <li><a href="index.html#apropos">À propos</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="page-contact.html">Contact</a></li>
+                </ul>
+            </div>
+            <div class="ev-footer-col">
+                <h5>Liens rapides</h5>
+                <ul>
+                    <li><a href="#cgu">CGU – CGV</a></li>
+                </ul>
+            </div>
+            <div class="ev-footer-col ev-footer-social">
+                <h5>Réseaux sociaux</h5>
+                <p>Suis-nous sur les réseaux pour des témoignages authentiques, des conseils bienveillants et une dose quotidienne de body positive.</p>
+                <div class="ev-footer-social-icons">
+                    <a href="#" aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
+                            <rect x="3" y="3" width="18" height="18" rx="5"/>
+                            <circle cx="12" cy="12" r="4"/>
+                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
+                        </svg>
+                    </a>
+                    <a href="#" aria-label="TikTok">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M16 4v2.5c0 2 1.6 3.5 3.5 3.5h.5v3c-1.5 0-3-.4-4-1v6c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.3 0 .7 0 1 .1V15c-.3-.1-.7-.2-1-.2-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3V4h3z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="ev-footer-bottom">
+            <span>Ronde &amp; Jolie par <a href="#" style="color:var(--pink);text-decoration:none;">Celine Harbane</a></span>
+            <span>Copyright <span class="gold">© 2025</span>. Tous droits réservés</span>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
