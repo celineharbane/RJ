@@ -480,16 +480,9 @@ ul { list-style: none; }
 
 .hero-visual {
     position: relative;
-    width: 100%;
+    /* Aspect ~1.245 (635/510) comme la maquette — paysage, pas carré */
+    height: clamp(440px, 36vw, 540px);
     animation: fadeIn 1.2s var(--ease-out) 0.5s both;
-}
-
-.hero-bloc {
-    width: 100%;
-    height: auto;
-    display: block;
-    /* Subtile float pour rappeler le dynamisme des sous-éléments d'avant */
-    animation: floatA 8s ease-in-out infinite;
 }
 
 /* Cercles concentriques décoratifs centrés sur la photo ronde (31% / 69%) */
@@ -628,10 +621,15 @@ ul { list-style: none; }
     z-index: 2;
 }
 
-.photo-badge img {
+.photo-badge img,
+.photo-badge svg {
     width: 100%;
     height: 100%;
     object-fit: contain;
+}
+
+.photo-badge svg {
+    color: var(--gold-bright);
 }
 
 /* Cœur flottant manuscrit */

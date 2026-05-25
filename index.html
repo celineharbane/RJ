@@ -71,7 +71,7 @@
             <p class="hero-eyebrow">
                 <span>Bienvenue dans la communauté</span>
                 <svg class="heart-doodle" viewBox="0 0 32 28" aria-hidden="true">
-                    <path d="M16 25 C 6 18, 2 12, 4 7 C 6 3, 12 3, 16 8 C 20 3, 26 3, 28 7 C 30 12, 26 18, 16 25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
                 <span class="eyebrow-line" aria-hidden="true"></span>
             </p>
@@ -93,7 +93,7 @@
                         </svg>
                     </span>
                     <svg class="heart-doodle heart-inline" viewBox="0 0 32 28" aria-hidden="true">
-                        <path d="M16 25 C 6 18, 2 12, 4 7 C 6 3, 12 3, 16 8 C 20 3, 26 3, 28 7 C 30 12, 26 18, 16 25" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                        <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
                     </svg>
                 </span>
             </h1>
@@ -142,13 +142,100 @@
             </div>
         </div>
 
-        <!-- Colonne visuelle : composition complète (logo + 3 photos + cercles concentriques) en image unique -->
-        <div class="hero-visual">
-            <img class="hero-bloc"
-                 src="assets/hero-bloc.png"
-                 alt="Composition visuelle Ronde et Jolie : logo central, photo de groupe rooftop avec Tour Eiffel, voyage à Londres, atelier cuisine, entourés de cercles décoratifs dorés"
-                 width="550" height="396"
-                 loading="eager">
+        <!-- Colonne visuelle : composition vectorielle (cercles + logo SVG + 3 photos + cœur) -->
+        <div class="hero-visual" aria-hidden="false">
+
+            <!-- Cercles concentriques décoratifs (vectoriel SVG, gradient or) -->
+            <svg class="visual-circles" viewBox="0 0 1245 1000" preserveAspectRatio="xMidYMid slice" aria-hidden="true">
+                <defs>
+                    <linearGradient id="visualCirclesGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#e8b87a" stop-opacity="0.55"/>
+                        <stop offset="55%" stop-color="#d4a574" stop-opacity="0.22"/>
+                        <stop offset="100%" stop-color="#d4a574" stop-opacity="0"/>
+                    </linearGradient>
+                </defs>
+                <circle cx="386" cy="690" r="540" fill="none" stroke="url(#visualCirclesGrad)" stroke-width="1.2"/>
+                <circle cx="386" cy="690" r="445" fill="none" stroke="url(#visualCirclesGrad)" stroke-width="1.2"/>
+                <circle cx="386" cy="690" r="360" fill="none" stroke="url(#visualCirclesGrad)" stroke-width="1.2"/>
+                <circle cx="386" cy="690" r="280" fill="none" stroke="url(#visualCirclesGrad)" stroke-width="1.2"/>
+                <circle cx="386" cy="690" r="205" fill="none" stroke="url(#visualCirclesGrad)" stroke-width="1.2"/>
+                <circle cx="386" cy="690" r="135" fill="none" stroke="url(#visualCirclesGrad)" stroke-width="1.2"/>
+            </svg>
+
+            <!-- Logo central RJ (vectoriel SVG inline — cercle sombre + ring or + RJ italique) -->
+            <div class="visual-logo" aria-hidden="true">
+                <svg viewBox="0 0 120 120">
+                    <defs>
+                        <linearGradient id="bigLogoGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+                            <stop offset="0%" stop-color="#e8b87a"/>
+                            <stop offset="100%" stop-color="#a07548"/>
+                        </linearGradient>
+                        <radialGradient id="bigLogoBg" cx="35%" cy="30%">
+                            <stop offset="0%" stop-color="#2a2018"/>
+                            <stop offset="100%" stop-color="#0a0806"/>
+                        </radialGradient>
+                    </defs>
+                    <circle cx="60" cy="60" r="58" fill="url(#bigLogoBg)" stroke="url(#bigLogoGrad)" stroke-width="1.5"/>
+                    <circle cx="60" cy="60" r="52" fill="none" stroke="url(#bigLogoGrad)" stroke-width="0.6" opacity="0.5"/>
+                    <text x="60" y="76" text-anchor="middle" font-family="Cormorant Garamond, Playfair Display, serif" font-weight="700" font-size="46" fill="url(#bigLogoGrad)" font-style="italic">RJ</text>
+                </svg>
+            </div>
+
+            <!-- Photo principale ronde (centre) — Cocktails vue Tour Eiffel -->
+            <figure class="photo photo-circle">
+                <picture>
+                    <source type="image/webp"
+                            srcset="assets/photos/photo-2-apero@1x.webp 1x,
+                                    assets/photos/photo-2-apero@2x.webp 2x">
+                    <img src="assets/photos/photo-2-apero@1x.jpg"
+                         srcset="assets/photos/photo-2-apero@1x.jpg 1x,
+                                 assets/photos/photo-2-apero@2x.jpg 2x"
+                         alt="Soirée afterwork Ronde et Jolie : membres souriants partageant cocktails et tapas avec vue sur la Tour Eiffel"
+                         loading="eager"
+                         width="800" height="800">
+                </picture>
+                <span class="photo-ring" aria-hidden="true"></span>
+            </figure>
+
+            <!-- Photo top-right — Dîner privé -->
+            <figure class="photo photo-tr">
+                <picture>
+                    <source type="image/webp"
+                            srcset="assets/photos/photo-1-diner@1x.webp 1x,
+                                    assets/photos/photo-1-diner@2x.webp 2x">
+                    <img src="assets/photos/photo-1-diner@1x.jpg"
+                         srcset="assets/photos/photo-1-diner@1x.jpg 1x,
+                                 assets/photos/photo-1-diner@2x.jpg 2x"
+                         alt="Dîner privé Ronde et Jolie : membres trinquent ensemble devant le panneau « L'expérience qui te ressemble »"
+                         loading="eager"
+                         width="800" height="600">
+                </picture>
+                <span class="photo-badge" aria-hidden="true">
+                    <svg viewBox="0 0 32 32"><path d="M 16 24 C 6 17, 2 10, 7 6 C 11 4, 16 7, 16 11 C 16 7, 21 4, 25 6 C 30 10, 26 17, 16 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+            </figure>
+
+            <!-- Photo bottom-right — Atelier cuisine -->
+            <figure class="photo photo-br">
+                <picture>
+                    <source type="image/webp"
+                            srcset="assets/photos/photo-3-cuisine@1x.webp 1x,
+                                    assets/photos/photo-3-cuisine@2x.webp 2x">
+                    <img src="assets/photos/photo-3-cuisine@1x.jpg"
+                         srcset="assets/photos/photo-3-cuisine@1x.jpg 1x,
+                                 assets/photos/photo-3-cuisine@2x.jpg 2x"
+                         alt="Atelier cuisine Ronde et Jolie : membres en tabliers RJ préparant ensemble un repas autour d'une table d'ingrédients frais"
+                         loading="eager"
+                         width="800" height="600">
+                </picture>
+                <span class="photo-badge" aria-hidden="true">
+                    <svg viewBox="0 0 32 32"><path d="M 16 24 C 6 17, 2 10, 7 6 C 11 4, 16 7, 16 11 C 16 7, 21 4, 25 6 C 30 10, 26 17, 16 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </span>
+                <!-- Cœur flottant manuscrit (vectoriel SVG, path dessiné-main) -->
+                <svg class="heart-doodle heart-floating" viewBox="0 0 32 28" aria-hidden="true">
+                    <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </figure>
         </div>
 
     </div>
