@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="FAQ Ronde et Jolie : toutes les réponses sur la communauté, la sécurité, les fonctionnalités et plus.">
+<title>FAQ — Ronde et Jolie</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="footer.css">
+
+<style>
+  :root {
+    --pink: #ec3a8b;
+    --pink-deep: #b8226a;
+    --pink-bright: #f25aa0;
+    --pink-soft: rgba(236, 58, 139, 0.12);
+  }
+  .nav-link.is-active { color: var(--pink) !important; }
+  .nav-link.is-active::after { background: var(--pink) !important; }
+  .btn-header {
+    border: none !important;
+    background: linear-gradient(135deg, #ec3a8b, #d62a7c) !important;
+    color: #ffffff !important;
+    box-shadow: 0 10px 24px rgba(236, 58, 139, 0.35) !important;
+  }
+  .btn-header svg { color: #ffffff !important; stroke: #ffffff !important; }
+
+  /* =========================================
+     HERO FAQ
+     ========================================= */
+  .faq-hero {
+    position: relative;
+    z-index: 1;
+    padding: clamp(1.5rem, 3vw, 3rem) 0 clamp(1.5rem, 3vw, 2.5rem);
+  }
+  .faq-hero-inner {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+    gap: clamp(1.5rem, 3vw, 3rem);
+    align-items: center;
+  }
+  .faq-eyebrow {
+    font-size: 0.8rem;
+    letter-spacing: 0.3em;
+    color: var(--pink);
+    text-transform: uppercase;
+    font-weight: 600;
+    margin-bottom: 0.85rem;
+  }
+  .faq-title {
+    font-family: var(--font-display);
+    font-weight: 500;
+    font-size: clamp(2rem, 4.2vw, 3.4rem);
+    line-height: 1.05;
+    color: var(--cream);
+    margin-bottom: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+  .faq-title em {
+    display: block;
+    color: var(--pink);
+    font-style: italic;
+    font-weight: 500;
+  }
+  .faq-title .heart-doodle {
+    width: 28px; height: 24px;
+    color: var(--pink);
+    margin-left: 0.4rem;
+    vertical-align: -0.2em;
+    transform: rotate(-12deg);
+    display: inline-block;
+  }
+  .faq-desc {
+    color: var(--cream-soft);
+    font-size: 0.92rem;
+    line-height: 1.65;
+    margin-bottom: 1.75rem;
+    opacity: 0.9;
+    max-width: 460px;
+  }
+
+  /* 4 mini features */
+  .faq-mini {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(0.75rem, 1.5vw, 1.5rem);
+    max-width: 440px;
+  }
+  .faq-mini-item {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 0.45rem;
+    text-align: left;
+  }
+  .faq-mini-icon {
+    width: 32px; height: 32px;
+    color: var(--pink);
+  }
+  .faq-mini-icon svg { width: 100%; height: 100%; }
+  .faq-mini-item span {
+    font-size: 0.75rem;
+    line-height: 1.3;
+    color: var(--cream-soft);
+    font-weight: 500;
+  }
+
+  /* Right side photo + badge */
+  .faq-hero-photo {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 16/11;
+    border-radius: 18px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    border: 1px solid var(--border-gold);
+    background: url('assets/photos/photo-1-diner@2x.jpg') center/cover;
+  }
+  .faq-hero-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, transparent 40%, rgba(0,0,0,0.4) 100%);
+  }
+  .faq-hero-badge {
+    position: absolute;
+    top: clamp(1rem, 2.5vw, 2rem);
+    right: clamp(1rem, 2.5vw, 2rem);
+    width: clamp(110px, 12vw, 150px);
+    height: clamp(110px, 12vw, 150px);
+    border-radius: 50%;
+    background: rgba(13,9,8,0.85);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    border: 1.5px solid var(--pink);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--cream);
+    font-size: 0.7rem;
+    padding: 0.6rem;
+    z-index: 2;
+  }
+  .faq-hero-badge strong {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--pink);
+    font-weight: 700;
+    margin-bottom: 0.15rem;
+  }
+  .faq-hero-badge svg {
+    width: 18px; height: 16px;
+    color: var(--pink);
+    margin-top: 0.35rem;
+  }
+
+  /* =========================================
+     FAQ ITEMS (accordion-style, all open)
+     ========================================= */
+  .faq-list {
+    max-width: var(--container);
+    margin: 0 auto;
+    padding: 0 var(--gutter);
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+  }
+  .faq-item {
+    background: var(--bg-elev);
+    border: 1px solid var(--border-gold);
+    border-radius: 14px;
+    padding: 1rem 1.25rem;
+    display: grid;
+    grid-template-columns: 44px 1fr 24px;
+    gap: 1rem;
+    align-items: flex-start;
+    transition: border-color 0.3s;
+  }
+  .faq-item:hover { border-color: var(--pink); }
+
+  .faq-item-icon {
+    width: 48px; height: 48px;
+    border-radius: 50%;
+    background: rgba(236,58,139,0.18);
+    border: 2px solid var(--pink);
+    color: var(--pink);
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 0 4px rgba(236,58,139,0.08);
+    flex-shrink: 0;
+  }
+  .faq-item-icon svg {
+    width: 26px; height: 26px;
+    display: block;
+  }
+  .faq-item-icon svg [stroke] { stroke: currentColor !important; }
+  .faq-item-icon svg [fill]:not([fill="none"]):not([fill="currentColor"]) {
+    fill: currentColor !important;
+  }
+
+  .faq-item-body {
+    min-width: 0;
+  }
+  .faq-item-q {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.05rem;
+    color: var(--cream);
+    margin-bottom: 0.4rem;
+    line-height: 1.25;
+  }
+  .faq-item-q .num {
+    color: var(--pink);
+    margin-right: 0.3rem;
+  }
+  .faq-item-a {
+    color: var(--cream-soft);
+    font-size: 0.82rem;
+    line-height: 1.55;
+    opacity: 0.88;
+  }
+  .faq-item-chev {
+    color: var(--cream-soft);
+    align-self: center;
+    font-size: 1rem;
+  }
+
+  /* Couleurs par item (icône + numéro + hover border) */
+  .faq-item--c1  .faq-item-icon { background: rgba(236,58,139,0.12);  border-color: #ec3a8b; color: #ec3a8b; }
+  .faq-item--c1  .num { color: #ec3a8b; }
+  .faq-item--c1:hover { border-color: #ec3a8b; }
+
+  .faq-item--c2  .faq-item-icon { background: rgba(232,160,79,0.12);  border-color: #e8a04f; color: #e8a04f; }
+  .faq-item--c2  .num { color: #e8a04f; }
+  .faq-item--c2:hover { border-color: #e8a04f; }
+
+  .faq-item--c3  .faq-item-icon { background: rgba(125,200,142,0.12); border-color: #7dc88e; color: #7dc88e; }
+  .faq-item--c3  .num { color: #7dc88e; }
+  .faq-item--c3:hover { border-color: #7dc88e; }
+
+  .faq-item--c4  .faq-item-icon { background: rgba(168,119,212,0.12); border-color: #a877d4; color: #a877d4; }
+  .faq-item--c4  .num { color: #a877d4; }
+  .faq-item--c4:hover { border-color: #a877d4; }
+
+  .faq-item--c5  .faq-item-icon { background: rgba(95,201,216,0.12);  border-color: #5fc9d8; color: #5fc9d8; }
+  .faq-item--c5  .num { color: #5fc9d8; }
+  .faq-item--c5:hover { border-color: #5fc9d8; }
+
+  .faq-item--c6  .faq-item-icon { background: rgba(79,191,169,0.12);  border-color: #4fbfa9; color: #4fbfa9; }
+  .faq-item--c6  .num { color: #4fbfa9; }
+  .faq-item--c6:hover { border-color: #4fbfa9; }
+
+  .faq-item--c7  .faq-item-icon { background: rgba(236,58,139,0.12);  border-color: #ec3a8b; color: #ec3a8b; }
+  .faq-item--c7  .num { color: #ec3a8b; }
+  .faq-item--c7:hover { border-color: #ec3a8b; }
+
+  .faq-item--c8  .faq-item-icon { background: rgba(212,165,116,0.12); border-color: #d4a574; color: #d4a574; }
+  .faq-item--c8  .num { color: #d4a574; }
+  .faq-item--c8:hover { border-color: #d4a574; }
+
+  .faq-item--c9  .faq-item-icon { background: rgba(141,150,161,0.12); border-color: #8d96a1; color: #8d96a1; }
+  .faq-item--c9  .num { color: #8d96a1; }
+  .faq-item--c9:hover { border-color: #8d96a1; }
+
+  .faq-item--c10 .faq-item-icon { background: rgba(168,119,212,0.12); border-color: #a877d4; color: #a877d4; }
+  .faq-item--c10 .num { color: #a877d4; }
+  .faq-item--c10:hover { border-color: #a877d4; }
+
+  /* =========================================
+     CONTACT CTA CARD
+     ========================================= */
+  .faq-contact {
+    max-width: var(--container);
+    margin: clamp(2rem, 4vw, 3rem) auto 0;
+    padding: 0 var(--gutter);
+  }
+  .faq-contact-inner {
+    background: var(--bg-elev);
+    border: 1px solid var(--border-gold);
+    border-radius: 18px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 240px 1fr 260px;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .faq-contact-photo {
+    background: url('assets/photos/photo-3-cuisine@2x.jpg') center/cover;
+    position: relative;
+  }
+  .faq-contact-photo::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, transparent 60%, rgba(13,9,8,0.9));
+  }
+  .faq-contact-text {
+    padding: 1.75rem 0;
+    align-self: center;
+  }
+  .faq-contact-text h3 {
+    font-family: var(--font-display);
+    font-weight: 500;
+    color: var(--cream);
+    font-size: 1.45rem;
+    line-height: 1.15;
+  }
+  .faq-contact-text h3 em {
+    display: block;
+    color: var(--pink);
+    font-style: italic;
+    font-weight: 500;
+    margin-top: 0.2rem;
+  }
+  .faq-contact-text p {
+    color: var(--cream-soft);
+    font-size: 0.85rem;
+    line-height: 1.55;
+    margin-top: 0.85rem;
+    max-width: 380px;
+    opacity: 0.9;
+  }
+  .faq-contact-actions {
+    padding: 1.5rem 1.5rem 1.5rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0.8rem;
+    justify-content: center;
+  }
+  .faq-contact-btn {
+    background: rgba(0,0,0,0.4);
+    border: 1px solid var(--border-gold);
+    border-radius: 14px;
+    padding: 0.85rem 1rem;
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    text-decoration: none;
+    color: var(--cream);
+    transition: border-color 0.25s;
+  }
+  .faq-contact-btn:hover { border-color: var(--pink); }
+  .faq-contact-btn .ic {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    background: rgba(236,58,139,0.1);
+    border: 1px solid var(--pink);
+    color: var(--pink);
+    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .faq-contact-btn .ic svg { width: 18px; height: 18px; }
+  .faq-contact-btn h4 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: var(--cream);
+    margin-bottom: 0.1rem;
+  }
+  .faq-contact-btn p {
+    font-size: 0.75rem;
+    color: var(--text-muted);
+  }
+
+  /* =========================================
+     STRIP (4 items) sous le contact
+     ========================================= */
+  .faq-strip {
+    max-width: var(--container);
+    margin: 1rem auto 0;
+    padding: 0.85rem clamp(1.25rem, 2vw, 2rem);
+    background: rgba(13,9,8,0.6);
+    border: 1px solid var(--border-gold);
+    border-radius: 14px;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr) 220px;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  .faq-strip-item {
+    display: flex; align-items: center; gap: 0.7rem;
+  }
+  .faq-strip-item .icn {
+    width: 26px; height: 26px;
+    color: var(--pink);
+    flex-shrink: 0;
+  }
+  .faq-strip-item .icn svg { width: 100%; height: 100%; }
+  .faq-strip-item h5 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 0.92rem;
+    color: var(--cream);
+  }
+  .faq-strip-item p {
+    color: var(--text-muted);
+    font-size: 0.72rem;
+    line-height: 1.3;
+  }
+  .faq-strip-logo {
+    display: flex; align-items: center; gap: 0.55rem;
+    color: var(--gold);
+    font-family: var(--font-display);
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.15rem;
+    justify-content: flex-end;
+  }
+  .faq-strip-logo .rj {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--gold-bright), var(--gold-deep));
+    display: flex; align-items: center; justify-content: center;
+    color: var(--black);
+    font-weight: 800;
+    font-size: 0.85rem;
+  }
+  .faq-strip-logo small {
+    display: block;
+    font-size: 0.4rem;
+    letter-spacing: 0.25em;
+    color: var(--gold);
+    font-style: normal;
+    text-transform: uppercase;
+    margin-top: 1px;
+  }
+
+  /* Responsive */
+  @media (max-width: 1100px) {
+    .faq-hero-inner { grid-template-columns: 1fr; }
+    .faq-contact-inner { grid-template-columns: 1fr; }
+    .faq-contact-photo { aspect-ratio: 16/9; }
+    .faq-contact-actions { padding: 1rem 1.5rem 1.5rem; }
+    .faq-strip { grid-template-columns: 1fr 1fr; }
+  }
+  @media (max-width: 640px) {
+    .faq-mini { grid-template-columns: repeat(2, 1fr); }
+    .faq-item { grid-template-columns: 38px 1fr; }
+    .faq-item-chev { display: none; }
+    .faq-strip { grid-template-columns: 1fr; }
+    .faq-hero-badge { width: 90px; height: 90px; font-size: 0.55rem; }
+    .faq-hero-badge strong { font-size: 0.85rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ATMOSPHÈRE -->
+<div class="bg-atmosphere" aria-hidden="true">
+    <div class="bg-grain"></div>
+    <div class="bg-gradient"></div>
+</div>
+
+<!-- HEADER -->
+<header class="header">
+    <div class="header-inner">
+        <a href="index.html" class="logo" aria-label="Ronde et Jolie — accueil">
+            <img class="logo-img" src="assets/logo-rj-full.png" alt="Ronde et Jolie — Communauté & Connexions">
+        </a>
+        <nav class="nav" aria-label="Navigation principale">
+            <ul class="nav-list">
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="page-communaute.html" class="nav-link">Communauté</a></li>
+                <li><a href="page-activites.html" class="nav-link">Activités</a></li>
+                <li><a href="page-evenements.html" class="nav-link">Événements</a></li>
+                <li><a href="page-faq.html" class="nav-link is-active" aria-current="page">FAQ</a></li>
+            </ul>
+        </nav>
+        <a href="#rejoindre" class="btn btn-primary btn-header">
+            Rejoindre la communauté
+            <svg viewBox="0 0 32 28" width="14" height="12" aria-hidden="true" style="margin-left:0.4rem;vertical-align:middle">
+                <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </a>
+    </div>
+</header>
+
+<main>
+
+<!-- ============ HERO FAQ ============ -->
+<section class="faq-hero">
+    <div class="faq-hero-inner">
+
+        <div>
+            <p class="faq-eyebrow">FAQ</p>
+            <h1 class="faq-title">
+                Vos questions,
+                <em>nos réponses
+                    <svg class="heart-doodle" viewBox="0 0 32 28" aria-hidden="true">
+                        <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </em>
+            </h1>
+            <p class="faq-desc">
+                Tout ce que tu veux savoir sur la communauté Ronde &amp; Jolie et son fonctionnement.
+                Des réponses claires pour une expérience sereine et bienveillante.
+            </p>
+            <div class="faq-mini">
+                <div class="faq-mini-item">
+                    <span class="faq-mini-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 4 L 26 8 V 16 C 26 22, 21 26, 16 28 C 11 26, 6 22, 6 16 V 8 Z" stroke-linejoin="round"/><path d="M12 16 L 15 19 L 21 13" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <span>Environnement<br>sécurisé</span>
+                </div>
+                <div class="faq-mini-item">
+                    <span class="faq-mini-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="3.5"/><circle cx="21" cy="11" r="3.5"/><path d="M4 25 Q 11 19, 16 23 Q 21 19, 28 25" stroke-linecap="round"/></svg></span>
+                    <span>Communauté<br>bienveillante</span>
+                </div>
+                <div class="faq-mini-item">
+                    <span class="faq-mini-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="14" width="16" height="13" rx="2"/><path d="M11 14 V 10 C 11 7, 13 5, 16 5 C 19 5, 21 7, 21 10 V 14"/></svg></span>
+                    <span>Confidentialité<br>respectée</span>
+                </div>
+                <div class="faq-mini-item">
+                    <span class="faq-mini-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 3 L 18 12 L 27 14 L 18 16 L 16 25 L 14 16 L 5 14 L 14 12 Z" stroke-linejoin="round"/></svg></span>
+                    <span>Expérience<br>authentique</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="faq-hero-photo" aria-hidden="true">
+            <div class="faq-hero-badge">
+                <strong>+12 000</strong>
+                membres actifs<br>chaque mois
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="9" cy="9" r="3"/><circle cx="15" cy="9" r="3"/><path d="M3 19 Q 9 14, 14 18 Q 17 14, 21 19" stroke-linecap="round"/></svg>
+            </div>
+        </div>
+
+    </div>
+</section>
+
+<!-- ============ FAQ ITEMS ============ -->
+<section class="faq-list">
+
+    <article class="faq-item faq-item--c1">
+        <span class="faq-item-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="9" r="3"/><path d="M5 21 C 6 17, 9 15, 12 15 C 15 15, 18 17, 19 21" stroke-linecap="round"/></svg>
+        </span>
+        <div class="faq-item-body">
+            <h3 class="faq-item-q"><span class="num">1.</span> Qui peut rejoindre la communauté Ronde &amp; Jolie ?</h3>
+            <p class="faq-item-a">La communauté est ouverte à toutes les femmes rondes et aux hommes qui les aiment, dans le respect, la bienveillance et l'authenticité. Chacun vient ici pour partager, échanger et créer de vraies connexions.</p>
+        </div>
+        <span class="faq-item-chev" aria-hidden="true">⌄</span>
+    </article>
+
+    <article class="faq-item faq-item--c2">
+        <span class="faq-item-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 L 20 6 V 12 C 20 17, 16 20, 12 21 C 8 20, 4 17, 4 12 V 6 Z" stroke-linejoin="round"/><path d="M9 12 L 11 14 L 15 10" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        </span>
+        <div class="faq-item-body">
+            <h3 class="faq-item-q"><span class="num">2.</span> Comment la communauté assure-t-elle la sécurité des membres ?</h3>
+            <p class="faq-item-a">Nous avons une équipe de modération active 24h/24 et des outils de vérification des profils. Chaque membre s'engage à respecter les valeurs de la communauté. Tout comportement inapproprié est sanctionné.</p>
+        </div>
+        <span class="faq-item-chev" aria-hidden="true">⌄</span>
+    </article>
+
+    <article class="faq-item faq-item--c3">
+        <span class="faq-item-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="5" y="11" width="14" height="10" rx="2"/><path d="M8 11 V 7 C 8 5, 10 4, 12 4 C 14 4, 16 5, 16 7 V 11"/><circle cx="12" cy="16" r="1.5" fill="currentColor"/></svg>
+        </span>
+        <div class="faq-item-body">
+            <h3 class="faq-item-q"><span class="num">3.</span> Mes données personnelles sont-elles protégées ?</h3>
+            <p class="faq-item-a">Oui. Ta confidentialité est une priorité. Tes informations ne sont jamais partagées. Tu peux gérer tes préférences de confidentialité à tout moment dans les paramètres de ton compte.</p>
+        </div>
+        <span class="faq-item-chev" aria-hidden="true">⌄</span>
+    </article>
+
+    <article class="faq-item faq-item--c4">
+        <span class="faq-item-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="9" r="3"/><circle cx="15" cy="9" r="3"/><path d="M3 20 Q 9 15, 14 18 Q 17 15, 21 20" stroke-linecap="round"/></svg>
+        </span>
+        <div class="faq-item-body">
+            <h3 class="faq-item-q"><span class="num">4.</span> Comment fonctionnent les échanges au sein de la communauté ?</h3>
+            <p class="faq-item-a">Tu peux participer aux discussions, commenter, réagir, rejoindre des salons vocaux, des lives et des groupes. Tout est pensé pour favoriser des échanges vrais, respectueux et enrichissants.</p>
+        </div>
+        <span class="faq-item-chev" aria-hidden="true">⌄</span>
+    </article>
+
+    <article class="faq-item faq-item--c5">
+        <span class="faq-item-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 12 V 14 C 5 18, 9 21, 12 21 C 15 21, 19 18, 19 14 V 12"/><rect x="9" y="4" width="6" height="12" rx="3"/><line x1="12" y1="21" x2="12" y2="24" stroke-linecap="round"/></svg>
+        </span>
+        <div class="faq-item-body">
+            <h3 class="faq-item-q"><span class="num">5.</span> Qu'est-ce que les salons vocaux et lives communautaires ?</h3>
+            <p class="faq-item-a">Ce sont des espaces en direct où les membres peuvent discuter, partager leurs expériences, poser des questions ou simplement passer un bon moment ensemble.</p>
+        </div>
+        <span class="faq-item-chev" aria-hidden="true">⌄</span>
+    </article>
+
+    <article class="faq-item faq-item--c6">
+        <span class="faq-item-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="16" rx="2"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="8" y1="3" x2="8" y2="7" stroke-linecap="round"/><line x1="16" y1="3" x2="16" y2="7" stroke-linecap="round"/></svg>
+        </span>
+        <div class="faq-item-body">
+            <h3 class="faq-item-q"><span class="num">6.</span> Comment participer aux activités de la communauté ?</h3>
+            <p class="faq-item-a">Tu peux rejoindre les discussions, salons vocaux, lives et groupes à tout moment depuis l'application. Aucune réservation ou inscription nécessaire, tout est accessible en quelques clics.</p>
+        </div>
+        <span class="faq-item-chev" aria-hidden="true">⌄</span>
+    </article>
+
+    <article class="faq-item faq-item--c7">
+        <span class="faq-item-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="6" width="18" height="14" rx="2"/><path d="M7 6 L 8 4 H 16 L 17 6"/><circle cx="12" cy="13" r="4"/></svg>
+        </span>
+        <div class="faq-item-body">
+            <h3 class="faq-item-q"><span class="num">7.</span> Puis-je partager du contenu (photos, vidéos, stories) ?</h3>
+            <p class="faq-item-a">Oui, tu peux partager tes moments, tes idées et ton quotidien dans le fil d'actualité ou en stories. Chaque publication doit respecter les règles de la communauté.</p>
+        </div>
+        <span class="faq-item-chev" aria-hidden="true">⌄</span>
+    </article>
+
+    <article class="faq-item faq-item--c8">
+        <span class="faq-item-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 L 14 9 L 21 10 L 16 14 L 17 21 L 12 17 L 7 21 L 8 14 L 3 10 L 10 9 Z" stroke-linejoin="round"/></svg>
+        </span>
+        <div class="faq-item-body">
+            <h3 class="faq-item-q"><span class="num">8.</span> Comment sont attribués les badges et récompenses ?</h3>
+            <p class="faq-item-a">Les badges sont attribués selon ton engagement, ta participation positive et ton authenticité. Ils permettent de mettre en valeur ton activité au sein de la communauté.</p>
+        </div>
+        <span class="faq-item-chev" aria-hidden="true">⌄</span>
+    </article>
+
+    <article class="faq-item faq-item--c9">
+        <span class="faq-item-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        </span>
+        <div class="faq-item-body">
+            <h3 class="faq-item-q"><span class="num">9.</span> Puis-je signaler un comportement inapproprié ?</h3>
+            <p class="faq-item-a">Bien sûr. Tu peux signaler tout contenu ou comportement qui ne respecte pas nos valeurs. Notre équipe de modération intervient rapidement.</p>
+        </div>
+        <span class="faq-item-chev" aria-hidden="true">⌄</span>
+    </article>
+
+    <article class="faq-item faq-item--c10">
+        <span class="faq-item-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 21 C 4 15, 1 10, 4 6 C 7 3, 11 5, 12 8 C 13 5, 17 3, 20 6 C 23 10, 20 15, 12 21Z" stroke-linejoin="round"/></svg>
+        </span>
+        <div class="faq-item-body">
+            <h3 class="faq-item-q"><span class="num">10.</span> Comment supprimer ou désactiver mon compte ?</h3>
+            <p class="faq-item-a">Tu peux supprimer ton compte à tout moment depuis les paramètres. Ta décision sera respectée et toutes tes données seront supprimées conformément à notre politique de confidentialité.</p>
+        </div>
+        <span class="faq-item-chev" aria-hidden="true">⌄</span>
+    </article>
+
+</section>
+
+<!-- ============ CONTACT CTA ============ -->
+<section class="faq-contact">
+    <div class="faq-contact-inner">
+        <div class="faq-contact-photo" aria-hidden="true"></div>
+        <div class="faq-contact-text">
+            <h3>Une question ?<em>On est là pour toi</em></h3>
+            <p>Si tu ne trouves pas la réponse à ta question, contacte notre équipe. Nous te répondrons avec plaisir !</p>
+        </div>
+        <div class="faq-contact-actions">
+            <a href="mailto:support@rondeetjolie.app" class="faq-contact-btn">
+                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7 L 12 13 L 21 7"/></svg></span>
+                <div>
+                    <h4>Nous écrire</h4>
+                    <p>support@rondeetjolie.app</p>
+                </div>
+            </a>
+            <a href="#aide" class="faq-contact-btn">
+                <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="9"/><path d="M9 9 C 9 6, 15 6, 15 9 C 15 12, 12 12, 12 14 M 12 17 V 17.3" stroke-linecap="round"/></svg></span>
+                <div>
+                    <h4>Centre d'aide</h4>
+                    <p>Retrouve toutes nos ressources</p>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ STRIP 4 ITEMS ============ -->
+<div class="faq-strip">
+    <div class="faq-strip-item">
+        <span class="icn"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 26 C 6 19, 3 13, 6 8 C 9 4, 14 4, 16 9 C 18 4, 23 4, 26 8 C 29 13, 26 19, 16 26Z" stroke-linejoin="round"/></svg></span>
+        <div>
+            <h5>Respect &amp; bienveillance</h5>
+            <p>Nos valeurs avant tout.</p>
+        </div>
+    </div>
+    <div class="faq-strip-item">
+        <span class="icn"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 4 L 26 8 V 16 C 26 22, 21 26, 16 28 C 11 26, 6 22, 6 16 V 8 Z" stroke-linejoin="round"/><path d="M12 16 L 15 19 L 21 13" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+        <div>
+            <h5>Modération active</h5>
+            <p>Pour un espace sûr et agréable.</p>
+        </div>
+    </div>
+    <div class="faq-strip-item">
+        <span class="icn"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="3.5"/><circle cx="21" cy="11" r="3.5"/><path d="M4 24 Q 11 19, 16 22 Q 21 19, 28 24" stroke-linecap="round"/></svg></span>
+        <div>
+            <h5>Communauté authentique</h5>
+            <p>Des échanges vrais et positifs.</p>
+        </div>
+    </div>
+    <div class="faq-strip-logo">
+        <span>Ronde et Jolie<br><small>Communauté &amp; Connexions</small></span>
+        <span class="rj">RJ</span>
+    </div>
+</div>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="ev-footer">
+    <svg class="ev-footer-deco-circles" viewBox="0 0 400 400" aria-hidden="true">
+        <defs><linearGradient id="footCirGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#ec3a8b" stop-opacity="0.5"/><stop offset="100%" stop-color="#ec3a8b" stop-opacity="0.05"/></linearGradient></defs>
+        <circle cx="200" cy="200" r="180" fill="none" stroke="url(#footCirGrad)" stroke-width="1"/>
+        <circle cx="200" cy="200" r="140" fill="none" stroke="url(#footCirGrad)" stroke-width="1"/>
+        <circle cx="200" cy="200" r="100" fill="none" stroke="url(#footCirGrad)" stroke-width="1"/>
+    </svg>
+    <svg class="ev-footer-deco-heart" viewBox="0 0 32 28" aria-hidden="true">
+        <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <div class="ev-footer-inner">
+        <div class="ev-footer-grid">
+            <div class="ev-footer-brand">
+                <div class="ev-footer-brand-head">
+                    <div class="ev-footer-brand-mark">RJ</div>
+                    <div class="ev-footer-brand-text"><h4>Ronde et Jolie</h4><small>Communauté &amp; Connexions</small></div>
+                </div>
+                <p>Une communauté bienveillante où les femmes rondes et les hommes qui les aiment se rencontrent, échangent et créent des liens authentiques.</p>
+                <a href="#rejoindre" class="ev-footer-aventure">Rejoins l'aventure !
+                    <svg viewBox="0 0 32 28" aria-hidden="true"><path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+                <div class="ev-footer-stores">
+                    <a href="#" class="ev-footer-store"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.18 1.78-3.23 1.86-3.28-1.01-1.49-2.59-1.69-3.16-1.71-1.34-.14-2.62.79-3.31.79-.68 0-1.74-.78-2.86-.75-1.47.02-2.83.85-3.59 2.16-1.53 2.65-.39 6.58 1.1 8.74.73 1.06 1.6 2.24 2.74 2.2 1.1-.05 1.52-.71 2.85-.71 1.33 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.64-2.13.84-1.22 1.18-2.41 1.2-2.47-.03-.01-2.29-.88-2.32-3.49zm-2.18-6.42c.61-.74 1.02-1.77.91-2.79-.88.04-1.94.59-2.57 1.33-.57.66-1.07 1.71-.93 2.72.98.08 1.98-.5 2.59-1.26z"/></svg><span><small>Télécharger dans</small><strong>l'App Store</strong></span></a>
+                    <a href="#" class="ev-footer-store"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 20.83V3.17c0-.31.18-.58.43-.71l10.45 10-10.43 10c-.27-.12-.45-.4-.45-.63zm12.31-8.83l2.27 2.27-12.39 7.11 10.12-9.38zm0-2L5.37 1.46l12.39 7.11-2.27 2.4zm5.85 1.91l-2.71 1.56-2.31-2.47 2.31-2.47 2.71 1.56c.69.4.69 1.42 0 1.82z"/></svg><span><small>Disponible sur</small><strong>Google Play</strong></span></a>
+                </div>
+            </div>
+            <div class="ev-footer-col"><h5>Pages utiles</h5><ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="page-bienvenue.html">Bienvenue</a></li>
+                <li><a href="page-communaute.html">Communauté</a></li>
+                <li><a href="page-pourquoi.html">Pourquoi nous ?</a></li>
+                <li><a href="page-espace.html">Ton espace</a></li>
+                <li><a href="page-activites.html">Activités</a></li>
+                <li><a href="page-evenements.html">Événements</a></li>
+                <li><a href="page-faq.html">FAQ</a></li>
+                <li><a href="page-contact.html">Contact</a></li>
+            </ul></div>
+            <div class="ev-footer-col"><h5>Liens rapides</h5><ul><li><a href="#cgu">CGU – CGV</a></li></ul></div>
+            <div class="ev-footer-col ev-footer-social">
+                <h5>Réseaux sociaux</h5>
+                <p>Suis-nous sur les réseaux pour des témoignages authentiques, des conseils bienveillants et une dose quotidienne de body positive.</p>
+                <div class="ev-footer-social-icons">
+                    <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+                    <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 4v2.5c0 2 1.6 3.5 3.5 3.5h.5v3c-1.5 0-3-.4-4-1v6c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.3 0 .7 0 1 .1V15c-.3-.1-.7-.2-1-.2-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3V4h3z"/></svg></a>
+                </div>
+            </div>
+        </div>
+        <div class="ev-footer-bottom">
+            <span>Ronde &amp; Jolie par <a href="#" style="color:var(--pink);text-decoration:none;">Celine Harbane</a></span>
+            <span>Copyright <span class="gold">© 2025</span>. Tous droits réservés</span>
+        </div>
+    </div>
+</footer>
+
+<script src="script.js"></script>
+
+</body>
+</html>
