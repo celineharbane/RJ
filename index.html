@@ -21,23 +21,31 @@
   }
 
   /* ============================================
-     SLIDER WRAPPER
+     SLIDER WRAPPER (hauteur dynamique)
      ============================================ */
   .home-slider {
     position: relative;
     z-index: 1;
     overflow: hidden;
-    min-height: calc(100vh - 120px);
+    transition: height 0.6s cubic-bezier(0.65, 0, 0.35, 1);
   }
   .slider-track {
     display: flex;
+    align-items: flex-start;
     transition: transform 0.7s cubic-bezier(0.65, 0, 0.35, 1);
     will-change: transform;
   }
   .slide {
     flex: 0 0 100%;
     width: 100%;
-    padding: clamp(1rem, 2vw, 2rem) 0 clamp(2rem, 4vw, 3rem);
+    padding: clamp(1.5rem, 3vw, 3rem) 0 clamp(2.5rem, 5vw, 4rem);
+    display: flex;
+    align-items: center;
+  }
+  .slide > .slide-inner,
+  .slide > .s5,
+  .slide > .s7 {
+    width: 100%;
   }
   .slide-inner {
     max-width: var(--container);
@@ -679,26 +687,47 @@
   .s7-secure svg { width: 18px; height: 18px; color: var(--gold); }
 
   /* ============================================
-     CONTRÔLES SLIDER
+     CONTRÔLES SLIDER — flèches sur les côtés
      ============================================ */
+  /* Flèches : positionnées en absolu sur les bords du slider */
+  .slider-arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 20;
+    width: 56px; height: 56px;
+    border-radius: 50%;
+    background: rgba(13, 9, 8, 0.55);
+    -webkit-backdrop-filter: blur(6px);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(212, 165, 116, 0.2);
+    color: var(--gold);
+    display: flex; align-items: center; justify-content: center;
+    cursor: pointer;
+    transition: background 0.3s var(--ease-out), border-color 0.3s var(--ease-out), color 0.3s var(--ease-out);
+  }
+  .slider-arrow:hover {
+    background: var(--gold);
+    border-color: var(--gold);
+    color: var(--black);
+  }
+  .slider-arrow svg {
+    width: 22px; height: 22px;
+    transition: transform 0.3s var(--ease-out);
+  }
+  .slider-arrow.slider-prev { left: clamp(0.5rem, 1.5vw, 1.5rem); }
+  .slider-arrow.slider-next { right: clamp(0.5rem, 1.5vw, 1.5rem); }
+  .slider-arrow.slider-prev:hover svg { transform: translateX(-3px); }
+  .slider-arrow.slider-next:hover svg { transform: translateX(3px); }
+
+  /* Dots + progress sous le slider, centrés */
   .slider-controls {
     max-width: var(--container);
     margin: 0 auto;
     padding: 0 var(--gutter) clamp(1.5rem, 3vw, 2.5rem);
     display: flex; justify-content: center; align-items: center;
-    gap: 1.5rem;
   }
-  .slider-arrow {
-    width: 48px; height: 48px; border-radius: 50%;
-    background: var(--bg-elev); border: 1px solid var(--border-gold);
-    color: var(--cream);
-    display: flex; align-items: center; justify-content: center;
-    cursor: pointer;
-    transition: background 0.25s, border-color 0.25s, transform 0.25s;
-  }
-  .slider-arrow:hover { background: rgba(212, 165, 116, 0.1); border-color: var(--gold); transform: translateY(-2px); }
-  .slider-arrow svg { width: 18px; height: 18px; }
-  .slider-dots { display: flex; gap: 0.55rem; align-items: center; }
+  .slider-dots { display: flex; gap: 0.6rem; align-items: center; }
   .slider-dot {
     width: 10px; height: 10px; border-radius: 50%;
     background: rgba(245, 230, 211, 0.2);
@@ -1186,11 +1215,16 @@
 <!-- Barre de progression -->
 <div class="slider-progress" aria-hidden="true"></div>
 
-<!-- Contrôles -->
+<!-- Flèches latérales sur le slider lui-même -->
+<button class="slider-arrow slider-prev" type="button" aria-label="Slide précédent">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6 L 9 12 L 15 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+<button class="slider-arrow slider-next" type="button" aria-label="Slide suivant">
+    <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6 L 15 12 L 9 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</button>
+
+<!-- Dots centrés sous le slider -->
 <div class="slider-controls">
-    <button class="slider-arrow slider-prev" type="button" aria-label="Slide précédent">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M15 6 L 9 12 L 15 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
     <div class="slider-dots">
         <button class="slider-dot is-active" type="button" data-slide="0" aria-label="Slide 1"></button>
         <button class="slider-dot" type="button" data-slide="1" aria-label="Slide 2"></button>
@@ -1200,9 +1234,6 @@
         <button class="slider-dot" type="button" data-slide="5" aria-label="Slide 6"></button>
         <button class="slider-dot" type="button" data-slide="6" aria-label="Slide 7"></button>
     </div>
-    <button class="slider-arrow slider-next" type="button" aria-label="Slide suivant">
-        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 6 L 15 12 L 9 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-    </button>
 </div>
 
 </section>
@@ -1283,12 +1314,20 @@
     let timer = null;
     const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+    function adjustHeight() {
+        const activeSlide = slides[current];
+        if (!activeSlide) return;
+        // Mesure la hauteur réelle du contenu du slide actif
+        const h = activeSlide.offsetHeight;
+        slider.style.height = h + 'px';
+    }
     function goTo(idx) {
         current = ((idx % total) + total) % total;
         track.style.transform = `translateX(-${current * 100}%)`;
         dots.forEach((d, i) => d.classList.toggle('is-active', i === current));
         slides.forEach((s, i) => s.setAttribute('aria-hidden', i !== current));
         restartProgressBar();
+        adjustHeight();
     }
     function startAutoplay() {
         if (reducedMotion) return;
@@ -1324,6 +1363,16 @@
 
     goTo(0);
     startAutoplay();
+
+    // Recalcule la hauteur au resize de fenêtre
+    let resizeTimer;
+    window.addEventListener('resize', () => {
+        clearTimeout(resizeTimer);
+        resizeTimer = setTimeout(adjustHeight, 150);
+    });
+
+    // Recalcule après chargement des images (qui peuvent changer la hauteur)
+    window.addEventListener('load', adjustHeight);
 })();
 </script>
 
