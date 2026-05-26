@@ -218,6 +218,21 @@
   .s2-photo-main { grid-column: 1 / -1; aspect-ratio: 16 / 9; }
   .s2-photo-sm { aspect-ratio: 4 / 3; }
   .s2-photo img { width: 100%; height: 100%; object-fit: cover; }
+  .s2-strip {
+    margin-top: clamp(2rem, 4vw, 3rem);
+    padding: 1.25rem clamp(1.25rem, 2vw, 2rem);
+    background: var(--bg-elev);
+    border: 1px solid var(--border-gold);
+    border-radius: 16px;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: clamp(0.85rem, 2vw, 1.5rem);
+    align-items: center;
+  }
+  .s2-strip-item { display: flex; align-items: center; gap: 0.7rem; min-width: 0; }
+  .s2-strip-item .icn { width: 32px; height: 32px; color: var(--gold); flex-shrink: 0; }
+  .s2-strip-item .icn svg { width: 100%; height: 100%; }
+  .s2-strip-item .lbl { font-size: 0.78rem; line-height: 1.35; color: var(--cream-soft); font-weight: 500; }
 
   /* ============================================
      SLIDE 3 — "Tout ce que tu trouveras" (6 cards)
@@ -271,6 +286,16 @@
   .s3-card--highlight .s3-card-icon, .s3-card--highlight h3 { color: white; }
   .s3-card--highlight h3::after { background: linear-gradient(90deg, transparent, white, transparent); }
   .s3-card--highlight p { color: rgba(255, 255, 255, 0.92); opacity: 1; }
+  /* Décor cœur rose flottant */
+  .s3-deco-heart {
+    position: absolute;
+    right: -30px; top: 45%;
+    width: 80px; height: auto;
+    color: rgba(236, 58, 139, 0.3);
+    pointer-events: none;
+    transform: rotate(-12deg);
+    z-index: 0;
+  }
 
   /* ============================================
      SLIDE 4 — "Pourquoi rejoindre" (phone mockup)
@@ -788,6 +813,7 @@
     .s7-row-label { grid-column: 1 / -1; flex-direction: row; align-items: center; gap: 1rem; }
     .s7-row-label h3 br { display: none; }
     .s4-phone-wrap, .s6-phone-wrap { min-height: 0; padding: 1rem 0; }
+    .s2-strip { grid-template-columns: repeat(2, 1fr); }
     .slider-arrow { width: 48px; height: 48px; }
   }
   @media (max-width: 720px) {
@@ -816,6 +842,7 @@
     .s7-row { grid-template-columns: 1fr; }
     .s7-row .s7-profile:nth-child(n+3) { display: none; }
     .s5-features, .s7-features { grid-template-columns: 1fr; }
+    .s2-strip { grid-template-columns: 1fr; }
     .slider-arrow.slider-prev { left: 0.25rem; }
     .slider-arrow.slider-next { right: 0.25rem; }
   }
@@ -925,6 +952,10 @@
                         <span class="s2-feature-icon"><svg viewBox="0 0 32 32"><rect x="5" y="7" width="22" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><line x1="5" y1="13" x2="27" y2="13" stroke="currentColor" stroke-width="1.5"/></svg></span>
                         <div><h3>Des expériences uniques</h3><p>Participez à des activités, des événements et des ateliers pensés pour nourrir votre bien-être et votre épanouissement.</p></div>
                     </div>
+                    <div class="s2-feature">
+                        <span class="s2-feature-icon"><svg viewBox="0 0 32 32"><rect x="6" y="8" width="20" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/><path d="M16 21 C 11 17, 9 14, 11 11 C 13 9, 16 11, 16 13 C 16 11, 19 9, 21 11 C 23 14, 21 17, 16 21Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg></span>
+                        <div><h3>Bienvenue chez vous</h3><p>Ronde et Jolie, c'est plus qu'une communauté. C'est un mouvement. Rejoignez-nous et faites partie d'une aventure humaine inspirante.</p></div>
+                    </div>
                 </div>
             </div>
             <div class="s2-photos">
@@ -933,12 +964,37 @@
                 <figure class="s2-photo s2-photo-sm"><img src="assets/photos/photo-1-diner@1x.jpg" alt="Dîner privé" loading="lazy"></figure>
             </div>
         </div>
+
+        <!-- Strip bas : 5 piliers de la communauté -->
+        <div class="s2-strip">
+            <div class="s2-strip-item">
+                <span class="icn"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="11" cy="11" r="3.5"/><circle cx="21" cy="11" r="3.5"/><path d="M4 24 Q 11 19, 16 22 Q 21 19, 28 24" stroke-linecap="round"/></svg></span>
+                <span class="lbl">Une communauté<br>bienveillante</span>
+            </div>
+            <div class="s2-strip-item">
+                <span class="icn"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M16 25 C 6 18, 3 13, 5 8 C 7 4, 12 4, 16 9 C 20 4, 25 4, 27 8 C 29 13, 26 18, 16 25Z" stroke-linejoin="round"/></svg></span>
+                <span class="lbl">Des échanges<br>authentiques</span>
+            </div>
+            <div class="s2-strip-item">
+                <span class="icn"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="7" width="22" height="20" rx="2"/><line x1="5" y1="13" x2="27" y2="13"/><line x1="11" y1="4" x2="11" y2="10" stroke-linecap="round"/><line x1="21" y1="4" x2="21" y2="10" stroke-linecap="round"/></svg></span>
+                <span class="lbl">Des activités &amp; événements<br>inspirants</span>
+            </div>
+            <div class="s2-strip-item">
+                <span class="icn"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M11 14 V 23 M 21 14 V 23 M 11 18 C 11 13, 16 11, 16 16 C 16 11, 21 13, 21 18" stroke-linecap="round" stroke-linejoin="round"/><path d="M9 23 H 23" stroke-linecap="round"/></svg></span>
+                <span class="lbl">Un espace pour grandir<br>et s'épanouir</span>
+            </div>
+            <div class="s2-strip-item">
+                <span class="icn"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="8" y="14" width="16" height="13" rx="2"/><path d="M11 14 V 10 C 11 7, 13 5, 16 5 C 19 5, 21 7, 21 10 V 14"/></svg></span>
+                <span class="lbl">Respect, sécurité<br>et confidentialité</span>
+            </div>
+        </div>
     </div>
 </article>
 
 <!-- ====================== SLIDE 3 — Tout ce que tu trouveras ====================== -->
 <article class="slide" aria-roledescription="slide" aria-label="Slide 3 sur 7">
-    <div class="slide-inner">
+    <div class="slide-inner" style="position:relative;">
+        <svg class="s3-deco-heart" viewBox="0 0 32 28" aria-hidden="true"><path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
         <div class="s3-grid">
             <div>
                 <p class="se-eyebrow"><span>Bienvenue dans ton espace</span><svg viewBox="0 0 32 28" aria-hidden="true"><path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></p>
