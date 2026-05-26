@@ -166,39 +166,39 @@
     overflow: hidden;
   }
   .s1-photo--round {
-    left: 0;
+    left: 4%;
     top: 50%;
     transform: translateY(-50%);
-    width: 56%;
+    width: 52%;
     aspect-ratio: 1 / 1;
     border-radius: 50%;
     background-image: url('assets/photos/APERO.png');
-    z-index: 3;
+    z-index: 2;
   }
   .s1-photo--top {
     right: 0;
     top: 0;
-    width: 56%;
+    width: 48%;
     aspect-ratio: 5 / 4;
     border-radius: 18px;
     background-image: url('assets/photos/LONDRE%20VOYAGE.png');
-    z-index: 2;
+    z-index: 1;
   }
   .s1-photo--bottom {
-    right: 4%;
+    right: 0;
     bottom: 0;
-    width: 56%;
+    width: 48%;
     aspect-ratio: 5 / 4;
     border-radius: 18px;
     background-image: url('assets/photos/CUISINE.png');
-    z-index: 2;
+    z-index: 1;
   }
-  /* Logo RJ monogramme PNG (cercle + bordure or déjà dans l'image) */
+  /* Logo RJ monogramme PNG, superposé en haut-gauche du rond APERO */
   .s1-logo {
     position: absolute;
-    top: 0;
+    top: 8%;
     left: 0;
-    width: 22%;
+    width: 20%;
     aspect-ratio: 1 / 1;
     z-index: 4;
     filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.6));
@@ -211,8 +211,8 @@
   /* Cœur manuscrit décoratif sur la photo cuisine — version or */
   .s1-heart {
     position: absolute;
-    bottom: 35%;
-    right: 0;
+    bottom: 38%;
+    right: -2%;
     width: 38px;
     height: auto;
     color: var(--gold);
