@@ -474,7 +474,10 @@
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
+    min-width: 0;
+    overflow: hidden;
   }
+  .act-feed-grid > * { min-width: 0; }
   .act-feed-card-head {
     display: flex;
     align-items: center;
@@ -962,7 +965,6 @@
     .act-hero-inner { grid-template-columns: 1fr; }
     .act-day-grid::before { display: none; }
     .act-feed-grid { grid-template-columns: repeat(3, 1fr); }
-    .act-feed-grid > *:nth-child(n+4) { display: none; }
     .act-can-grid { grid-template-columns: repeat(2, 1fr); }
     .act-love-grid { grid-template-columns: repeat(3, 1fr); }
     .act-love-strip { grid-template-columns: repeat(2, 1fr); }
