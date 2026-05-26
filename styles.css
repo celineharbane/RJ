@@ -454,8 +454,8 @@ ul { list-style: none; }
     padding: 1.1rem 0.75rem;
     text-align: center;
     transition: all 0.4s var(--ease-out);
-    backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
+    backdrop-filter: blur(10px);
     position: relative;
     overflow: hidden;
 }
