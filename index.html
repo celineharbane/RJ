@@ -150,11 +150,48 @@
     animation: rotateSlow 180s linear infinite;
     transform-origin: 50% 50%;
   }
-  .s1-visual img {
-    position: relative; z-index: 2;
+  /* Composition photo : 1 rond gauche + 2 rectangles droite */
+  .s1-composition {
+    position: relative;
+    z-index: 2;
     width: 100%; height: 100%;
-    object-fit: contain;
-    filter: drop-shadow(0 18px 40px rgba(0,0,0,0.45));
+    max-width: 640px;
+  }
+  .s1-photo {
+    position: absolute;
+    background-size: cover;
+    background-position: center;
+    border: 2px solid rgba(212, 165, 116, 0.25);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55);
+    overflow: hidden;
+  }
+  .s1-photo--round {
+    left: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 56%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background-image: url('assets/photos/APERO.png');
+    z-index: 3;
+  }
+  .s1-photo--top {
+    right: 0;
+    top: 0;
+    width: 56%;
+    aspect-ratio: 5 / 4;
+    border-radius: 18px;
+    background-image: url('assets/photos/LONDRE%20VOYAGE.png');
+    z-index: 2;
+  }
+  .s1-photo--bottom {
+    right: 4%;
+    bottom: 0;
+    width: 56%;
+    aspect-ratio: 5 / 4;
+    border-radius: 18px;
+    background-image: url('assets/photos/CUISINE.png');
+    z-index: 2;
   }
   .s1-cta {
     display: flex;
@@ -920,7 +957,11 @@
                     <circle cx="300" cy="250" r="140" fill="none" stroke="url(#s1Grad)" stroke-width="1"/>
                     <circle cx="300" cy="250" r="90" fill="none" stroke="url(#s1Grad)" stroke-width="1"/>
                 </svg>
-                <img src="assets/BLOC%20PHOTO%20LOGO2-bg-noir.png?v=7" alt="Communauté Ronde et Jolie" loading="eager" decoding="async">
+                <div class="s1-composition" aria-label="Communauté Ronde et Jolie : apéro, voyage à Londres et atelier cuisine">
+                    <div class="s1-photo s1-photo--round" role="img" aria-label="Apéro Ronde et Jolie"></div>
+                    <div class="s1-photo s1-photo--top" role="img" aria-label="Voyage Ronde et Jolie à Londres"></div>
+                    <div class="s1-photo s1-photo--bottom" role="img" aria-label="Atelier cuisine Ronde et Jolie"></div>
+                </div>
             </div>
         </div>
     </div>
