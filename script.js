@@ -5,15 +5,45 @@
 (function () {
     'use strict';
 
-    /* --- Burger menu mobile --- */
+    /* --- Burger menu mobile + drawer --- */
     const burger = document.querySelector('.burger');
     const nav = document.querySelector('.nav');
+    let overlay = document.querySelector('.nav-overlay');
 
     if (burger && nav) {
+        if (!overlay) {
+            overlay = document.createElement('div');
+            overlay.className = 'nav-overlay';
+            overlay.setAttribute('aria-hidden', 'true');
+            document.body.appendChild(overlay);
+        }
+
+        const closeMenu = () => {
+            nav.classList.remove('is-open');
+            burger.classList.remove('is-active');
+            burger.setAttribute('aria-expanded', 'false');
+            overlay.classList.remove('is-visible');
+            document.body.classList.remove('no-scroll');
+        };
+        const openMenu = () => {
+            nav.classList.add('is-open');
+            burger.classList.add('is-active');
+            burger.setAttribute('aria-expanded', 'true');
+            overlay.classList.add('is-visible');
+            document.body.classList.add('no-scroll');
+        };
+
         burger.addEventListener('click', () => {
-            const isOpen = nav.classList.toggle('is-open');
-            burger.setAttribute('aria-expanded', isOpen);
-            burger.classList.toggle('is-active', isOpen);
+            nav.classList.contains('is-open') ? closeMenu() : openMenu();
+        });
+        overlay.addEventListener('click', closeMenu);
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && nav.classList.contains('is-open')) closeMenu();
+        });
+        nav.querySelectorAll('a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (nav.classList.contains('is-open')) closeMenu();
+            });
         });
     }
 
