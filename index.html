@@ -193,21 +193,6 @@
     background-image: url('assets/photos/CUISINE.png');
     z-index: 1;
   }
-  /* Logo RJ monogramme PNG, superposé en haut-gauche du rond APERO */
-  .s1-logo {
-    position: absolute;
-    top: 8%;
-    left: 0;
-    width: 20%;
-    aspect-ratio: 1 / 1;
-    z-index: 4;
-    filter: drop-shadow(0 10px 24px rgba(0, 0, 0, 0.6));
-  }
-  .s1-logo img {
-    width: 100%;
-    height: 100%;
-    display: block;
-  }
   /* Cœur manuscrit décoratif sur la photo cuisine — version or */
   .s1-heart {
     position: absolute;
@@ -869,7 +854,7 @@
   @media (max-width: 1100px) {
     .slide-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .slide-grid > div:first-child { text-align: left; }
-    .s1-visual { order: -1; max-width: 500px; margin: 0 auto; height: clamp(380px, 60vw, 500px); }
+    .s1-visual { order: -1; width: 100%; max-width: 500px; margin: 0 auto; height: clamp(380px, 60vw, 500px); }
     .s3-grid { grid-template-columns: 1fr; gap: 2rem; }
     .s3-cards { grid-template-columns: repeat(3, 1fr); }
     .s5-features, .s7-features { grid-template-columns: repeat(2, 1fr); gap: 1.75rem; }
@@ -988,9 +973,6 @@
                     <div class="s1-photo s1-photo--round" role="img" aria-label="Apéro Ronde et Jolie"></div>
                     <div class="s1-photo s1-photo--top" role="img" aria-label="Voyage Ronde et Jolie à Londres"></div>
                     <div class="s1-photo s1-photo--bottom" role="img" aria-label="Atelier cuisine Ronde et Jolie"></div>
-                    <div class="s1-logo" aria-hidden="true">
-                        <img src="assets/logo-rj-monogramme.png" alt="">
-                    </div>
                     <svg class="s1-heart" viewBox="0 0 40 36" aria-hidden="true">
                         <path d="M 21 32 C 5 22, 2 12, 7 6 C 13 2, 19 5, 21 13 C 23 4, 30 1, 34 6 C 38 13, 30 22, 21 32"
                               fill="none" stroke="currentColor" stroke-width="2.4"
