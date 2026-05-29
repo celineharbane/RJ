@@ -3,626 +3,652 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="Ronde et Jolie — plus qu'un espace, une expérience. Une communauté bienveillante qui célèbre l'authenticité et la diversité.">
+<meta name="description" content="La communauté Ronde et Jolie : une communauté qui célèbre la vraie vie. Rejoins des milliers de membres bienveillants.">
 <title>Communauté — Ronde et Jolie</title>
 
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500;1,600&family=Inter:wght@300;400;500;600&family=Caveat:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
 <link rel="stylesheet" href="styles.css">
 <link rel="stylesheet" href="footer.css">
 
 <style>
-  /* ============================================
-     PAGE COMMUNAUTÉ — layout 2 colonnes + pilliers
-     ============================================ */
-  .comm {
-    position: relative;
-    z-index: 1;
-    padding: clamp(2rem, 4vw, 4rem) 0 clamp(2rem, 4vw, 3rem);
+  :root {
+    --pink: #C82677;
+    --pink-deep: #891348;
+    --pink-soft: rgba(200, 38, 119, 0.12);
+    --co-gold: #C38846;
+    --co-bg: #0C0B0B;
+    --co-text: #F5F2EE;
+    --co-muted: #A7A7A6;
   }
 
-  .comm-inner {
+  /* Override accents magenta sur cette page */
+  .nav-link.is-active { color: var(--pink) !important; }
+  .nav-link.is-active::after { background: var(--pink) !important; }
+  .btn-header {
+    border: none !important;
+    background: linear-gradient(135deg, #C82677, #891348) !important;
+    color: #fff !important;
+    box-shadow: 0 10px 24px rgba(200, 38, 119, 0.35) !important;
+  }
+  .btn-header svg { color: #fff !important; stroke: #fff !important; }
+
+  .co-title {
+    font-family: 'Abril Fatface', serif;
+    font-weight: 400;
+    letter-spacing: 0;
+  }
+
+  /* ============================================
+     SECTION COMMUNE
+     ============================================ */
+  .co-section {
+    position: relative;
+    z-index: 1;
+    padding: clamp(2.5rem, 5vw, 4.5rem) 0;
+  }
+  .co-inner {
     max-width: var(--container);
     margin: 0 auto;
     padding: 0 var(--gutter);
   }
-
-  .comm-grid {
-    display: grid;
-    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
-    gap: clamp(2rem, 4vw, 4rem);
-    align-items: start;
-  }
-
-  /* --- COLONNE GAUCHE --- */
-  .comm-eyebrow {
+  .co-eyebrow {
     display: inline-flex;
     align-items: center;
-    gap: 0.6rem;
+    gap: 0.5rem;
     font-family: var(--font-display);
     font-style: italic;
     font-size: 1rem;
-    color: var(--gold);
+    color: var(--pink);
+    margin-bottom: 1rem;
+  }
+  .co-eyebrow svg { width: 18px; height: 16px; }
+  .co-section-head { text-align: center; max-width: 720px; margin: 0 auto clamp(2rem, 4vw, 3rem); }
+  .co-section-head .co-title {
+    font-size: clamp(1.9rem, 4vw, 3rem);
+    line-height: 1.1;
+    color: var(--co-text);
+    margin-bottom: 1rem;
+  }
+  .co-section-head .co-title em { color: var(--pink); font-style: normal; }
+  .co-section-head p { color: var(--co-muted); font-size: 0.95rem; line-height: 1.65; }
+
+  /* ============================================
+     HERO (p11) — titre + 4 stats + grille 7 portraits
+     ============================================ */
+  .co-hero { padding-top: clamp(1.5rem, 3vw, 3rem); }
+  .co-hero-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.1fr);
+    gap: clamp(2rem, 4vw, 4rem);
+    align-items: center;
+  }
+  .co-hero-title {
+    font-family: 'Abril Fatface', serif;
+    font-size: clamp(2.2rem, 4.6vw, 3.6rem);
+    line-height: 1.08;
+    color: var(--co-text);
     margin-bottom: 1.25rem;
   }
-
-  .comm-eyebrow .heart-doodle {
-    width: 18px;
-    height: 16px;
-    color: var(--gold);
+  .co-hero-title em { color: var(--pink); font-style: normal; }
+  .co-hero-title .heart {
+    display: inline-block; width: 28px; height: 24px;
+    color: var(--pink); margin-left: 0.3rem; vertical-align: -0.2em;
+    transform: rotate(-10deg);
   }
+  .co-hero-desc { color: var(--co-muted); font-size: 0.98rem; line-height: 1.7; margin-bottom: 1.75rem; max-width: 480px; }
 
-  .comm-title {
-    font-family: var(--font-display);
-    font-size: clamp(2.2rem, 4.2vw, 3.6rem);
-    font-weight: 500;
-    line-height: 1.08;
-    color: var(--cream);
-    margin-bottom: 1.5rem;
-    letter-spacing: -0.01em;
-  }
-
-  .comm-title em {
-    color: var(--gold);
-    font-style: italic;
-    font-weight: 500;
-    position: relative;
-    display: inline-block;
-  }
-
-  .comm-title em::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -2px;
-    height: 1px;
-    background: linear-gradient(90deg, transparent, var(--gold) 20%, var(--gold) 80%, transparent);
-  }
-
-  .comm-title .heart-doodle {
-    width: 22px;
-    height: 20px;
-    color: var(--gold);
-    margin-left: 0.4rem;
-    vertical-align: middle;
-  }
-
-  .comm-desc {
-    color: var(--text-muted);
-    font-size: 0.95rem;
-    line-height: 1.65;
-    max-width: 520px;
-    margin-bottom: 2rem;
-  }
-
-  /* --- FEATURES (4 items empilés) --- */
-  .comm-features {
-    display: flex;
-    flex-direction: column;
-    gap: 0.85rem;
-  }
-
-  .comm-feature {
+  /* 4 stats */
+  .co-stats {
     display: grid;
-    grid-template-columns: 44px 1fr;
-    gap: 1rem;
-    padding: 1rem 1.1rem;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.85rem;
+    max-width: 460px;
+  }
+  .co-stat {
     background: var(--bg-elev);
     border: 1px solid var(--border-gold);
     border-radius: 14px;
-    transition: border-color 0.3s var(--ease-out), transform 0.3s var(--ease-out);
-  }
-
-  .comm-feature:hover {
-    border-color: var(--border-gold-strong);
-    transform: translateY(-2px);
-  }
-
-  .comm-feature-icon {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: rgba(212, 165, 116, 0.08);
-    border: 1px solid var(--border-gold);
+    padding: 1rem 1.1rem;
     display: flex;
     align-items: center;
-    justify-content: center;
-    color: var(--gold);
-    flex-shrink: 0;
+    gap: 0.7rem;
   }
-
-  .comm-feature-icon svg {
-    width: 22px;
-    height: 22px;
+  .co-stat-icon {
+    width: 38px; height: 38px; border-radius: 10px;
+    background: var(--pink-soft);
+    border: 1px solid rgba(200, 38, 119, 0.3);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--pink); flex-shrink: 0;
   }
+  .co-stat-icon svg { width: 20px; height: 20px; }
+  .co-stat b { display: block; font-family: 'Abril Fatface', serif; font-size: 1.25rem; color: var(--co-text); line-height: 1; }
+  .co-stat span { font-size: 0.72rem; color: var(--co-muted); }
 
-  .comm-feature h3 {
-    font-family: var(--font-display);
-    font-size: 1.1rem;
-    font-weight: 600;
-    font-style: italic;
-    color: var(--gold);
-    margin-bottom: 0.25rem;
-    letter-spacing: 0.01em;
-  }
-
-  .comm-feature p {
-    color: var(--cream-soft);
-    font-size: 0.83rem;
-    line-height: 1.55;
-    opacity: 0.85;
-  }
-
-  /* --- COLONNE DROITE : COLLAGE PHOTOS --- */
-  .comm-photos {
+  /* Grille 7 portraits (photos, pas de monogramme) */
+  .co-portraits {
     display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: auto auto;
-    gap: 14px;
-  }
-
-  .comm-photo {
-    overflow: hidden;
-    border-radius: 16px;
-    position: relative;
-    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
-    border: 1px solid var(--border-gold);
-  }
-
-  .comm-photo-main {
-    grid-column: 1 / -1;
-    aspect-ratio: 16 / 9;
-  }
-
-  .comm-photo-sm {
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+    gap: 12px;
     aspect-ratio: 4 / 3;
   }
-
-  .comm-photo img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.7s var(--ease-out);
-  }
-
-  .comm-photo:hover img {
-    transform: scale(1.04);
-  }
-
-  /* --- BARRE PILLIERS (5 items) --- */
-  .comm-pillars {
-    margin-top: clamp(2rem, 4vw, 3.5rem);
-    padding: 1.5rem clamp(1.25rem, 3vw, 2.5rem);
-    background: var(--bg-elev);
+  .co-portrait {
+    border-radius: 14px;
+    overflow: hidden;
     border: 1px solid var(--border-gold);
-    border-radius: 18px;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+  }
+  .co-portrait::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 55%, rgba(12,11,11,0.7) 100%);
+  }
+  /* La 1ère et 4e vignette s'étendent sur 2 lignes */
+  .co-portrait:nth-child(1) { grid-row: 1 / 3; grid-column: 1; }
+  .co-portrait:nth-child(2) { grid-column: 2; }
+  .co-portrait:nth-child(3) { grid-column: 3; }
+  .co-portrait:nth-child(4) { grid-row: 1 / 3; grid-column: 4; }
+  .co-portrait:nth-child(5) { grid-column: 2; }
+  .co-portrait:nth-child(6) { grid-column: 3; }
+  /* Placeholders dégradés (le client fournira les vraies photos) */
+  .co-portrait:nth-child(1) { background-image: linear-gradient(135deg, #5a3a30, #2a1810); }
+  .co-portrait:nth-child(2) { background-image: linear-gradient(135deg, #4a3a26, #241c14); }
+  .co-portrait:nth-child(3) { background-image: linear-gradient(135deg, #5a2a40, #2a1420); }
+  .co-portrait:nth-child(4) { background-image: linear-gradient(135deg, #3a3045, #1c1626); }
+  .co-portrait:nth-child(5) { background-image: linear-gradient(135deg, #503028, #281610); }
+  .co-portrait:nth-child(6) { background-image: linear-gradient(135deg, #2a4540, #142420); }
+  .co-portrait .ph-label {
+    position: absolute; bottom: 8px; left: 10px; z-index: 1;
+    font-size: 0.6rem; color: rgba(245,242,238,0.5);
+    letter-spacing: 0.1em; text-transform: uppercase;
+  }
+
+  /* ============================================
+     UNIVERS (p12) — 5 cartes
+     ============================================ */
+  .co-univers {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
-    gap: clamp(1rem, 2vw, 2rem);
+    gap: clamp(0.85rem, 1.5vw, 1.25rem);
   }
-
-  .comm-pillar {
-    display: flex;
-    align-items: center;
-    gap: 0.85rem;
-    min-width: 0;
-  }
-
-  .comm-pillar-icon {
-    width: 36px;
-    height: 36px;
-    border-radius: 50%;
-    background: rgba(212, 165, 116, 0.08);
+  .co-univers-card {
+    background: var(--bg-elev);
     border: 1px solid var(--border-gold);
+    border-radius: 16px;
+    padding: 1.5rem 1.1rem;
+    text-align: left;
+    transition: transform 0.3s var(--ease-out), border-color 0.3s var(--ease-out);
+  }
+  .co-univers-card:hover { transform: translateY(-4px); border-color: var(--pink); }
+  .co-univers-icon {
+    width: 48px; height: 48px; border-radius: 12px;
+    background: var(--pink-soft);
+    border: 1px solid rgba(200, 38, 119, 0.3);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--pink); margin-bottom: 1rem;
+  }
+  .co-univers-icon svg { width: 24px; height: 24px; }
+  .co-univers-card h3 {
+    font-family: var(--font-display);
+    font-style: italic; font-weight: 600;
+    font-size: 1.05rem; color: var(--pink);
+    margin-bottom: 0.6rem;
+  }
+  .co-univers-card ul { list-style: none; padding: 0; margin: 0; }
+  .co-univers-card li {
+    font-size: 0.78rem; color: var(--co-muted); line-height: 1.5;
+    padding-left: 1rem; position: relative; margin-bottom: 0.35rem;
+  }
+  .co-univers-card li::before {
+    content: ""; position: absolute; left: 0; top: 0.5em;
+    width: 5px; height: 5px; border-radius: 50%; background: var(--pink);
+  }
+
+  /* ============================================
+     MEMBRES INSPIRANTS (p13) — carrousel
+     ============================================ */
+  .co-members-wrap { position: relative; }
+  .co-members-track {
     display: flex;
+    gap: 16px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+    padding: 0.5rem var(--gutter);
+    max-width: var(--container);
+    margin: 0 auto;
+    scrollbar-width: none;
+  }
+  .co-members-track::-webkit-scrollbar { display: none; }
+  .co-member {
+    flex: 0 0 clamp(220px, 24vw, 280px);
+    scroll-snap-align: start;
+    background: var(--bg-elev);
+    border: 1px solid var(--border-gold);
+    border-radius: 16px;
+    overflow: hidden;
+  }
+  .co-member-photo {
+    width: 100%; aspect-ratio: 5 / 6;
+    background-size: cover; background-position: center;
+  }
+  .co-member:nth-child(1) .co-member-photo { background-image: linear-gradient(135deg, #5a3a30, #2a1810); }
+  .co-member:nth-child(2) .co-member-photo { background-image: linear-gradient(135deg, #5a2a40, #2a1420); }
+  .co-member:nth-child(3) .co-member-photo { background-image: linear-gradient(135deg, #3a3045, #1c1626); }
+  .co-member:nth-child(4) .co-member-photo { background-image: linear-gradient(135deg, #2a4540, #142420); }
+  .co-member:nth-child(5) .co-member-photo { background-image: linear-gradient(135deg, #503028, #281610); }
+  .co-member-body { padding: 0.85rem 1rem; }
+  .co-member-body h4 { color: var(--co-text); font-size: 0.95rem; font-weight: 600; }
+  .co-member-body .loc { font-size: 0.72rem; color: var(--co-muted); display: inline-flex; align-items: center; gap: 0.25rem; margin-bottom: 0.5rem; }
+  .co-member-body p { font-size: 0.78rem; color: var(--co-muted); line-height: 1.5; font-style: italic; }
+  .co-members-arrows { display: flex; justify-content: center; gap: 0.75rem; margin-top: 1.5rem; }
+  .co-arrow {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: var(--bg-elev); border: 1px solid var(--border-gold);
+    color: var(--pink); cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    transition: background 0.25s, transform 0.25s;
+  }
+  .co-arrow:hover { background: var(--pink-soft); transform: translateY(-2px); }
+  .co-arrow svg { width: 18px; height: 18px; }
+
+  /* ============================================
+     ÉVÉNEMENTS (p14) — cartes + CTA
+     ============================================ */
+  .co-events {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: clamp(1rem, 2vw, 1.5rem);
+    margin-bottom: 2rem;
+  }
+  .co-event {
+    background: var(--bg-elev);
+    border: 1px solid var(--border-gold);
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    display: block;
+    transition: transform 0.3s, border-color 0.3s;
+  }
+  .co-event:hover { transform: translateY(-4px); border-color: var(--pink); }
+  .co-event-photo {
+    width: 100%; aspect-ratio: 16 / 10;
+    background-size: cover; background-position: center;
+    position: relative;
+  }
+  .co-event:nth-child(1) .co-event-photo { background-image: url('assets/photos/APERO.png'); }
+  .co-event:nth-child(2) .co-event-photo { background-image: url('assets/photos/CUISINE.png'); }
+  .co-event:nth-child(3) .co-event-photo { background-image: url('assets/photos/SORTIE.png'); }
+  .co-event-date {
+    position: absolute; top: 10px; left: 10px;
+    background: rgba(12,11,11,0.85);
+    border: 1px solid var(--pink);
+    border-radius: 8px; padding: 4px 9px;
+    text-align: center; line-height: 1;
+    color: var(--pink); font-weight: 700; font-size: 0.95rem;
+  }
+  .co-event-date small { display: block; font-size: 0.5rem; letter-spacing: 0.15em; color: var(--co-muted); text-transform: uppercase; margin-top: 2px; }
+  .co-event-body { padding: 0.85rem 1rem 1.1rem; }
+  .co-event-body h4 { color: var(--co-text); font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 0.3rem; }
+  .co-event-body .loc { font-size: 0.75rem; color: var(--co-muted); display: inline-flex; align-items: center; gap: 0.3rem; }
+  .co-event-body .loc svg { width: 12px; height: 12px; color: var(--pink); }
+  .co-events-cta { text-align: center; }
+
+  /* Boutons */
+  .btn-magenta {
+    display: inline-flex; align-items: center; gap: 0.6rem;
+    padding: 0.95rem 2rem; border-radius: 999px;
+    background: linear-gradient(135deg, #C82677, #891348);
+    color: #fff; font-weight: 600; text-decoration: none;
+    box-shadow: 0 12px 28px rgba(200, 38, 119, 0.35);
+    transition: transform 0.25s, box-shadow 0.25s;
+  }
+  .btn-magenta:hover { transform: translateY(-2px); box-shadow: 0 16px 36px rgba(200, 38, 119, 0.5); }
+  .btn-magenta svg { width: 18px; height: 16px; }
+
+  /* ============================================
+     VALEURS (p15)
+     ============================================ */
+  .co-values {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(1rem, 2vw, 1.75rem);
+    margin-bottom: clamp(2rem, 4vw, 3rem);
+    align-items: start;
+  }
+  .co-value { text-align: center; display: flex; flex-direction: column; align-items: center; gap: 0.7rem; }
+  .co-value-icon {
+    width: 60px; height: 60px; border-radius: 50%;
+    border: 1.5px solid var(--pink); background: var(--pink-soft);
+    display: flex; align-items: center; justify-content: center;
+    color: var(--pink);
+  }
+  .co-value-icon svg { width: 28px; height: 28px; }
+  .co-value h4 { font-family: var(--font-display); font-style: italic; color: var(--pink); font-size: 1rem; }
+  .co-value p { font-size: 0.8rem; color: var(--co-muted); line-height: 1.5; max-width: 220px; }
+
+  /* Encart rejoindre */
+  .co-join {
+    background: linear-gradient(160deg, rgba(200,38,119,0.15), rgba(12,11,11,0.95));
+    border: 1px solid var(--pink);
+    border-radius: 20px;
+    padding: clamp(2rem, 4vw, 3rem);
+    text-align: center;
+    margin-bottom: 1.25rem;
+  }
+  .co-join h3 { font-family: 'Abril Fatface', serif; font-size: clamp(1.5rem, 3vw, 2.2rem); color: var(--co-text); margin-bottom: 0.75rem; }
+  .co-join p { color: var(--co-muted); font-size: 0.9rem; max-width: 480px; margin: 0 auto 1.5rem; line-height: 1.6; }
+
+  /* Bandeau sécurité (logos couleur conservés) */
+  .co-secure {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    padding: 1.25rem clamp(1.25rem, 2vw, 2rem);
+    background: rgba(12,11,11,0.6);
+    border: 1px solid var(--border-gold);
+    border-radius: 14px;
     align-items: center;
-    justify-content: center;
-    color: var(--gold);
-    flex-shrink: 0;
   }
+  .co-secure-item { display: flex; align-items: center; gap: 0.75rem; }
+  .co-secure-item .icn { width: 30px; height: 30px; color: var(--co-gold); flex-shrink: 0; }
+  .co-secure-item .icn svg { width: 100%; height: 100%; }
+  .co-secure-item h5 { font-family: var(--font-display); font-style: italic; font-size: 0.92rem; color: var(--co-text); }
+  .co-secure-item p { font-size: 0.72rem; color: var(--co-muted); }
 
-  .comm-pillar-icon svg {
-    width: 18px;
-    height: 18px;
-  }
-
-  .comm-pillar-text {
-    font-size: 0.82rem;
-    line-height: 1.35;
-    color: var(--cream-soft);
-    font-weight: 500;
-  }
-
-  /* --- RESPONSIVE --- */
+  /* RESPONSIVE */
   @media (max-width: 1100px) {
-    .comm-grid {
-      grid-template-columns: 1fr;
-    }
-    .comm-pillars {
-      grid-template-columns: repeat(2, 1fr);
-    }
+    .co-hero-grid { grid-template-columns: 1fr; }
+    .co-univers { grid-template-columns: repeat(3, 1fr); }
+    .co-events { grid-template-columns: repeat(3, 1fr); }
+    .co-values { grid-template-columns: repeat(2, 1fr); }
+    .co-secure { grid-template-columns: 1fr; gap: 1rem; }
   }
-
   @media (max-width: 720px) {
-    .comm-photos {
-      grid-template-columns: 1fr;
-    }
-    .comm-photo-main {
-      aspect-ratio: 4 / 3;
-    }
-    .comm-pillars {
-      grid-template-columns: 1fr;
-    }
-    .comm-title {
-      font-size: clamp(1.8rem, 7vw, 2.4rem);
-    }
+    .co-stats { grid-template-columns: 1fr 1fr; max-width: 100%; }
+    .co-portraits { aspect-ratio: 3 / 4; }
+    .co-univers { grid-template-columns: 1fr; }
+    .co-events { grid-template-columns: 1fr; }
+    .co-values { grid-template-columns: 1fr 1fr; }
   }
 </style>
 </head>
 <body>
 
-<!-- ATMOSPHÈRE DE FOND (identique index) -->
+<!-- ATMOSPHÈRE -->
 <div class="bg-atmosphere" aria-hidden="true">
     <div class="bg-grain"></div>
     <div class="bg-gradient"></div>
-    <svg class="bg-circles" viewBox="0 0 800 800" preserveAspectRatio="xMidYMid meet" aria-hidden="true">
-        <circle cx="400" cy="400" r="380" fill="none" stroke="url(#circleGradComm)" stroke-width="0.5"/>
-        <circle cx="400" cy="400" r="300" fill="none" stroke="url(#circleGradComm)" stroke-width="0.5"/>
-        <circle cx="400" cy="400" r="220" fill="none" stroke="url(#circleGradComm)" stroke-width="0.5"/>
-        <circle cx="400" cy="400" r="140" fill="none" stroke="url(#circleGradComm)" stroke-width="0.5"/>
-        <defs>
-            <linearGradient id="circleGradComm" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#d4a574" stop-opacity="0.4"/>
-                <stop offset="50%" stop-color="#d4a574" stop-opacity="0.15"/>
-                <stop offset="100%" stop-color="#d4a574" stop-opacity="0"/>
-            </linearGradient>
-        </defs>
-    </svg>
 </div>
 
-<!-- HEADER (identique index) -->
+<!-- HEADER (nav complète avec À propos + FAQ) -->
 <header class="header">
     <div class="header-inner">
-        <a href="index.html" class="logo" aria-label="Ronde et Jolie — accueil">
-            <img class="logo-img" src="assets/LOGO%20OR.png" alt="Ronde et Jolie — Communauté & Connexions">
-        </a>
-
+        <a href="index.html" class="logo" aria-label="Ronde et Jolie — accueil"><img class="logo-img" src="assets/LOGO%20OR.png" alt="Ronde et Jolie"></a>
         <nav class="nav" aria-label="Navigation principale">
             <ul class="nav-list">
-                <li><a href="index.html" class="nav-link is-active">
-                    <svg class="nav-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12L12 4l9 8v8a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1v-8z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/></svg>
-                    Accueil
-                </a></li>
-                <li><a href="page-communaute.html" class="nav-link">Communauté</a></li>
-                <li><a href="page-cuisine.html" class="nav-link">Activités</a></li>
-                <li><a href="after-work-poster.html" class="nav-link">Événements</a></li>
+                <li><a href="index.html" class="nav-link">Accueil</a></li>
+                <li><a href="page-communaute.html" class="nav-link is-active" aria-current="page">Communauté</a></li>
+                <li><a href="page-activites.html" class="nav-link">Activités</a></li>
+                <li><a href="page-evenements.html" class="nav-link">Événements</a></li>
                 <li><a href="index.html#apropos" class="nav-link">À propos</a></li>
+                <li><a href="page-faq.html" class="nav-link">FAQ</a></li>
+                <li><a href="page-contact.html" class="nav-link">Contact</a></li>
             </ul>
         </nav>
-
-        <a href="index.html#rejoindre" class="btn btn-primary btn-header">Rejoindre la communauté
-        <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" type="button">
-            <span></span><span></span><span></span>
-        </button>
-    </a>
+        <a href="page-contact.html" class="btn btn-primary btn-header">Rejoindre la communauté</a>
+        <button class="burger" aria-label="Ouvrir le menu" aria-expanded="false" type="button"><span></span><span></span><span></span></button>
     </div>
 </header>
 
-<!-- SECTION COMMUNAUTÉ -->
 <main>
-<section class="comm" id="communaute">
-    <div class="comm-inner">
 
-        <div class="comm-grid">
-
-            <!-- COLONNE GAUCHE : CONTENU -->
-            <div class="comm-content">
-                <p class="comm-eyebrow">
-                    <span>Plus qu'un espace, une expérience</span>
-                    <svg class="heart-doodle" viewBox="0 0 32 28" aria-hidden="true">
-                        <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+<!-- ============ HERO (p11) ============ -->
+<section class="co-section co-hero">
+    <div class="co-inner">
+        <div class="co-hero-grid">
+            <div>
+                <p class="co-eyebrow">
+                    <span>Bienvenue dans la communauté</span>
+                    <svg viewBox="0 0 32 28" aria-hidden="true"><path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </p>
-
-                <h1 class="comm-title">
-                    Ici, chaque personne compte et chaque histoire
-                    <em>mérite d'être partagée.</em>
-                    <svg class="heart-doodle" viewBox="0 0 32 28" aria-hidden="true">
-                        <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
+                <h1 class="co-hero-title">Une communauté qui <em>célèbre la vraie vie</em>
+                    <svg class="heart" viewBox="0 0 32 28" aria-hidden="true"><path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </h1>
-
-                <p class="comm-desc">
-                    Ronde et Jolie est une communauté bienveillante qui célèbre la beauté, l'authenticité et la diversité. Nous croyons en des connexions vraies, des échanges sincères et des expériences qui enrichissent le quotidien.
-                </p>
-
-                <div class="comm-features">
-                    <article class="comm-feature">
-                        <span class="comm-feature-icon" aria-hidden="true">
-                            <svg viewBox="0 0 32 32">
-                                <circle cx="10" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                                <circle cx="22" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                                <circle cx="16" cy="21" r="3.5" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                                <path d="M5 26 Q 10 22, 13 25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                                <path d="M27 26 Q 22 22, 19 25" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                                <path d="M11 28 Q 16 26, 21 28" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                            </svg>
-                        </span>
-                        <div>
-                            <h3>Conçue pour vous</h3>
-                            <p>Ronde et Jolie est née d'une envie simple : créer un espace chaleureux où chacun peut se sentir à sa place, sans jugement. Ici, vous êtes libre d'être vous-même.</p>
-                        </div>
-                    </article>
-
-                    <article class="comm-feature">
-                        <span class="comm-feature-icon" aria-hidden="true">
-                            <svg viewBox="0 0 32 32">
-                                <path d="M16 25 C 6 18, 3 13, 5 8 C 7 4, 12 4, 16 9 C 20 4, 25 4, 27 8 C 29 13, 26 18, 16 25Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                            </svg>
-                        </span>
-                        <div>
-                            <h3>Des connexions authentiques</h3>
-                            <p>Échangez, partagez, inspirez-vous. Notre communauté vous permet de tisser des liens profonds et sincères avec des personnes qui vous ressemblent.</p>
-                        </div>
-                    </article>
-
-                    <article class="comm-feature">
-                        <span class="comm-feature-icon" aria-hidden="true">
-                            <svg viewBox="0 0 32 32">
-                                <rect x="5" y="7" width="22" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                                <line x1="5" y1="13" x2="27" y2="13" stroke="currentColor" stroke-width="1.5"/>
-                                <line x1="11" y1="4" x2="11" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                                <line x1="21" y1="4" x2="21" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                                <circle cx="11" cy="18" r="1.5" fill="currentColor"/>
-                                <circle cx="16" cy="18" r="1.5" fill="currentColor"/>
-                                <circle cx="21" cy="18" r="1.5" fill="currentColor"/>
-                            </svg>
-                        </span>
-                        <div>
-                            <h3>Des expériences uniques</h3>
-                            <p>Participez à des activités, des événements et des ateliers pensés pour nourrir votre bien-être, votre confiance et votre épanouissement.</p>
-                        </div>
-                    </article>
-
-                    <article class="comm-feature">
-                        <span class="comm-feature-icon" aria-hidden="true">
-                            <svg viewBox="0 0 32 32">
-                                <rect x="6" y="8" width="20" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                                <path d="M16 21 C 11 17, 9 14, 11 11 C 13 9, 16 11, 16 13 C 16 11, 19 9, 21 11 C 23 14, 21 17, 16 21Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                            </svg>
-                        </span>
-                        <div>
-                            <h3>Bienvenue chez vous</h3>
-                            <p>Ronde et Jolie, c'est plus qu'une communauté. C'est un mouvement. Rejoignez-nous et faites partie d'une aventure humaine inspirante.</p>
-                        </div>
-                    </article>
+                <p class="co-hero-desc">Des milliers de membres bienveillants qui se rencontrent, échangent et créent de vrais liens. Ici, chacun a sa place, sans jugement, dans le respect et l'authenticité.</p>
+                <div class="co-stats">
+                    <div class="co-stat">
+                        <span class="co-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="9" r="3"/><circle cx="15" cy="9" r="3"/><path d="M3 19 Q 9 14, 14 18 Q 17 14, 21 19" stroke-linecap="round"/></svg></span>
+                        <div><b>+12 000</b><span>membres actifs</span></div>
+                    </div>
+                    <div class="co-stat">
+                        <span class="co-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="15" rx="2"/><line x1="4" y1="9" x2="20" y2="9"/><line x1="8" y1="3" x2="8" y2="7" stroke-linecap="round"/><line x1="16" y1="3" x2="16" y2="7" stroke-linecap="round"/></svg></span>
+                        <div><b>+350</b><span>événements</span></div>
+                    </div>
+                    <div class="co-stat">
+                        <span class="co-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 L 20 6 V 12 C 20 17, 16 20, 12 21 C 8 20, 4 17, 4 12 V 6 Z" stroke-linejoin="round"/><path d="M9 12 L 11 14 L 15 10" stroke-width="2" stroke-linecap="round"/></svg></span>
+                        <div><b>Modérée</b><span>communauté saine</span></div>
+                    </div>
+                    <div class="co-stat">
+                        <span class="co-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="9" r="3.5"/><path d="M5 20 C 6 16, 9 14, 12 14 C 15 14, 18 16, 19 20" stroke-linecap="round"/><path d="M16 5 L 18 7 L 22 3" stroke-width="2" stroke-linecap="round"/></svg></span>
+                        <div><b>Vérifiés</b><span>profils authentiques</span></div>
+                    </div>
                 </div>
             </div>
-
-            <!-- COLONNE DROITE : COLLAGE PHOTOS -->
-            <div class="comm-photos">
-
-                <figure class="comm-photo comm-photo-main">
-                    <picture>
-                        <source type="image/webp"
-                                srcset="assets/photos/photo-2-apero@1x.webp 1x, assets/photos/photo-2-apero@2x.webp 2x">
-                        <img src="assets/photos/photo-2-apero@1x.jpg"
-                             srcset="assets/photos/photo-2-apero@1x.jpg 1x, assets/photos/photo-2-apero@2x.jpg 2x"
-                             alt="Soirée afterwork Ronde et Jolie : membres souriants partageant cocktails et tapas avec vue sur la Tour Eiffel"
-                             loading="eager"
-                             width="1600" height="900">
-                    </picture>
-                </figure>
-
-                <figure class="comm-photo comm-photo-sm">
-                    <picture>
-                        <source type="image/webp"
-                                srcset="assets/photos/photo-3-cuisine@1x.webp 1x, assets/photos/photo-3-cuisine@2x.webp 2x">
-                        <img src="assets/photos/photo-3-cuisine@1x.jpg"
-                             srcset="assets/photos/photo-3-cuisine@1x.jpg 1x, assets/photos/photo-3-cuisine@2x.jpg 2x"
-                             alt="Atelier cuisine Ronde et Jolie : membres autour d'une table préparant un repas"
-                             loading="lazy"
-                             width="800" height="600">
-                    </picture>
-                </figure>
-
-                <figure class="comm-photo comm-photo-sm">
-                    <picture>
-                        <source type="image/webp"
-                                srcset="assets/photos/photo-1-diner@1x.webp 1x, assets/photos/photo-1-diner@2x.webp 2x">
-                        <img src="assets/photos/photo-1-diner@1x.jpg"
-                             srcset="assets/photos/photo-1-diner@1x.jpg 1x, assets/photos/photo-1-diner@2x.jpg 2x"
-                             alt="Dîner privé Ronde et Jolie : membres trinquant ensemble"
-                             loading="lazy"
-                             width="800" height="600">
-                    </picture>
-                </figure>
-
+            <!-- Grille 7 portraits (placeholders photos, PAS de monogramme) -->
+            <div class="co-portraits" aria-label="Membres de la communauté Ronde et Jolie">
+                <div class="co-portrait"><span class="ph-label">Photo</span></div>
+                <div class="co-portrait"><span class="ph-label">Photo</span></div>
+                <div class="co-portrait"><span class="ph-label">Photo</span></div>
+                <div class="co-portrait"><span class="ph-label">Photo</span></div>
+                <div class="co-portrait"><span class="ph-label">Photo</span></div>
+                <div class="co-portrait"><span class="ph-label">Photo</span></div>
             </div>
         </div>
-
-        <!-- BARRE PILLIERS BAS -->
-        <div class="comm-pillars">
-
-            <div class="comm-pillar">
-                <span class="comm-pillar-icon" aria-hidden="true">
-                    <svg viewBox="0 0 32 32">
-                        <circle cx="10" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                        <circle cx="22" cy="12" r="3" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M4 24 Q 10 19, 16 24 Q 22 19, 28 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                </span>
-                <span class="comm-pillar-text">Une communauté<br>bienveillante</span>
-            </div>
-
-            <div class="comm-pillar">
-                <span class="comm-pillar-icon" aria-hidden="true">
-                    <svg viewBox="0 0 32 32">
-                        <path d="M16 25 C 6 18, 3 13, 5 8 C 7 4, 12 4, 16 9 C 20 4, 25 4, 27 8 C 29 13, 26 18, 16 25Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
-                    </svg>
-                </span>
-                <span class="comm-pillar-text">Des échanges<br>authentiques</span>
-            </div>
-
-            <div class="comm-pillar">
-                <span class="comm-pillar-icon" aria-hidden="true">
-                    <svg viewBox="0 0 32 32">
-                        <rect x="5" y="7" width="22" height="20" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                        <line x1="5" y1="13" x2="27" y2="13" stroke="currentColor" stroke-width="1.5"/>
-                        <line x1="11" y1="4" x2="11" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                        <line x1="21" y1="4" x2="21" y2="10" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                </span>
-                <span class="comm-pillar-text">Des activités &amp; événements<br>inspirants</span>
-            </div>
-
-            <div class="comm-pillar">
-                <span class="comm-pillar-icon" aria-hidden="true">
-                    <svg viewBox="0 0 32 32">
-                        <path d="M11 14 V 23 M 21 14 V 23 M 11 18 C 11 13, 16 11, 16 16 C 16 11, 21 13, 21 18" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-                        <path d="M9 23 H 23" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-                    </svg>
-                </span>
-                <span class="comm-pillar-text">Un espace pour grandir<br>et s'épanouir</span>
-            </div>
-
-            <div class="comm-pillar">
-                <span class="comm-pillar-icon" aria-hidden="true">
-                    <svg viewBox="0 0 32 32">
-                        <rect x="8" y="14" width="16" height="13" rx="2" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                        <path d="M11 14 V 10 C 11 7, 13 5, 16 5 C 19 5, 21 7, 21 10 V 14" fill="none" stroke="currentColor" stroke-width="1.5"/>
-                        <circle cx="16" cy="20" r="1.5" fill="currentColor"/>
-                    </svg>
-                </span>
-                <span class="comm-pillar-text">Respect, sécurité<br>et confidentialité</span>
-            </div>
-
-        </div>
-
     </div>
 </section>
+
+<!-- ============ UNIVERS (p12) ============ -->
+<section class="co-section">
+    <div class="co-inner">
+        <div class="co-section-head">
+            <h2 class="co-title">Des univers pour <em>t'inspirer</em></h2>
+            <p>Explore les multiples facettes de la communauté et trouve l'espace qui te ressemble.</p>
+        </div>
+        <div class="co-univers">
+            <article class="co-univers-card">
+                <span class="co-univers-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5 h16 v11 h-11 l-5 4 z" stroke-linejoin="round"/></svg></span>
+                <h3>Discussions &amp; entraide</h3>
+                <ul><li>Échanges bienveillants</li><li>Conseils &amp; soutien</li><li>Groupes thématiques</li></ul>
+            </article>
+            <article class="co-univers-card">
+                <span class="co-univers-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="15" rx="2"/><line x1="4" y1="9" x2="20" y2="9"/></svg></span>
+                <h3>Sorties &amp; événements</h3>
+                <ul><li>Brunchs &amp; dîners</li><li>Afterworks</li><li>Voyages de groupe</li></ul>
+            </article>
+            <article class="co-univers-card">
+                <span class="co-univers-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 12 V 14 C 5 18, 9 21, 12 21 C 15 21, 19 18, 19 14 V 12" stroke-linecap="round"/></svg></span>
+                <h3>Lives &amp; salons vocaux</h3>
+                <ul><li>Lives en direct</li><li>Salons audio</li><li>Témoignages</li></ul>
+            </article>
+            <article class="co-univers-card">
+                <span class="co-univers-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 L 14 9 L 21 10 L 16 14 L 17 21 L 12 17 L 7 21 L 8 14 L 3 10 L 10 9 Z" stroke-linejoin="round"/></svg></span>
+                <h3>Inspiration &amp; valorisation</h3>
+                <ul><li>Confiance en soi</li><li>Body positive</li><li>Réussites partagées</li></ul>
+            </article>
+            <article class="co-univers-card">
+                <span class="co-univers-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><circle cx="12" cy="16" r="3"/><path d="M8 11 L 11 14 M 16 11 L 13 14" stroke-linecap="round"/></svg></span>
+                <h3>Réseau &amp; connexions</h3>
+                <ul><li>Rencontres locales</li><li>Amitiés durables</li><li>Belles histoires</li></ul>
+            </article>
+        </div>
+    </div>
+</section>
+
+<!-- ============ MEMBRES INSPIRANTS (p13) — carrousel ============ -->
+<section class="co-section">
+    <div class="co-inner">
+        <div class="co-section-head">
+            <h2 class="co-title">Des membres <em>inspirants</em></h2>
+            <p>Derrière chaque profil, une histoire vraie. Découvre celles et ceux qui font vivre la communauté.</p>
+        </div>
+    </div>
+    <div class="co-members-wrap">
+        <div class="co-members-track" id="membersTrack">
+            <article class="co-member"><div class="co-member-photo"></div><div class="co-member-body"><h4>Camille, 32</h4><span class="loc">📍 Lyon</span><p>« Ici j'ai trouvé des amies en or et bien plus encore. »</p></div></article>
+            <article class="co-member"><div class="co-member-photo"></div><div class="co-member-body"><h4>Thomas, 36</h4><span class="loc">📍 Bordeaux</span><p>« Des échanges vrais, sans superficiel. Ça change tout. »</p></div></article>
+            <article class="co-member"><div class="co-member-photo"></div><div class="co-member-body"><h4>Sarah, 29</h4><span class="loc">📍 Paris</span><p>« Je me sens enfin à ma place, valorisée pour qui je suis. »</p></div></article>
+            <article class="co-member"><div class="co-member-photo"></div><div class="co-member-body"><h4>Alexandre, 40</h4><span class="loc">📍 Toulouse</span><p>« Les afterworks sont devenus mes rendez-vous préférés. »</p></div></article>
+            <article class="co-member"><div class="co-member-photo"></div><div class="co-member-body"><h4>Laura, 34</h4><span class="loc">📍 Marseille</span><p>« Une communauté qui soutient, qui inspire, qui élève. »</p></div></article>
+        </div>
+        <div class="co-members-arrows">
+            <button class="co-arrow" type="button" data-dir="-1" aria-label="Précédent"><svg viewBox="0 0 24 24"><path d="M15 6 L 9 12 L 15 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+            <button class="co-arrow" type="button" data-dir="1" aria-label="Suivant"><svg viewBox="0 0 24 24"><path d="M9 6 L 15 12 L 9 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+        </div>
+    </div>
+</section>
+
+<!-- ============ ÉVÉNEMENTS (p14) ============ -->
+<section class="co-section">
+    <div class="co-inner">
+        <div class="co-section-head">
+            <h2 class="co-title">Des événements pour <em>se rencontrer</em></h2>
+            <p>La communauté prend vie dans la vraie vie. Voici quelques moments à venir.</p>
+        </div>
+        <div class="co-events">
+            <a href="page-contact.html" class="co-event">
+                <div class="co-event-photo"><span class="co-event-date">18<small>Juin</small></span></div>
+                <div class="co-event-body"><h4>Apéro &amp; rencontres</h4><span class="loc"><svg viewBox="0 0 12 12"><path d="M6 11 C 3 8, 2 6, 2 4 C 2 2, 4 1, 6 1 C 8 1, 10 2, 10 4 C 10 6, 9 8, 6 11Z" fill="currentColor"/></svg>Paris</span></div>
+            </a>
+            <a href="page-contact.html" class="co-event">
+                <div class="co-event-photo"><span class="co-event-date">22<small>Juin</small></span></div>
+                <div class="co-event-body"><h4>Atelier cuisine healthy</h4><span class="loc"><svg viewBox="0 0 12 12"><path d="M6 11 C 3 8, 2 6, 2 4 C 2 2, 4 1, 6 1 C 8 1, 10 2, 10 4 C 10 6, 9 8, 6 11Z" fill="currentColor"/></svg>Lyon</span></div>
+            </a>
+            <a href="page-contact.html" class="co-event">
+                <div class="co-event-photo"><span class="co-event-date">29<small>Juin</small></span></div>
+                <div class="co-event-body"><h4>Soirée afterwork</h4><span class="loc"><svg viewBox="0 0 12 12"><path d="M6 11 C 3 8, 2 6, 2 4 C 2 2, 4 1, 6 1 C 8 1, 10 2, 10 4 C 10 6, 9 8, 6 11Z" fill="currentColor"/></svg>Bordeaux</span></div>
+            </a>
+        </div>
+        <div class="co-events-cta">
+            <a href="page-evenements.html" class="btn-magenta">
+                Voir tous les événements
+                <svg viewBox="0 0 24 24"><path d="M5 12 H 19 M 13 6 L 19 12 L 13 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ============ VALEURS (p15) ============ -->
+<section class="co-section">
+    <div class="co-inner">
+        <div class="co-section-head">
+            <h2 class="co-title">Nos valeurs, <em>notre force</em></h2>
+            <p>Ce qui fait de Ronde et Jolie une communauté unique et bienveillante.</p>
+        </div>
+        <div class="co-values">
+            <div class="co-value">
+                <span class="co-value-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 26 C 6 19, 3 13, 6 8 C 9 4, 14 4, 16 9 C 18 4, 23 4, 26 8 C 29 13, 26 19, 16 26Z" stroke-linejoin="round"/></svg></span>
+                <h4>Bienveillance</h4>
+                <p>Le respect et l'écoute au cœur de chaque échange.</p>
+            </div>
+            <div class="co-value">
+                <span class="co-value-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 4 L 26 8 V 16 C 26 22, 21 26, 16 28 C 11 26, 6 22, 6 16 V 8 Z" stroke-linejoin="round"/><path d="M12 16 L 15 19 L 21 13" stroke-width="2" stroke-linecap="round"/></svg></span>
+                <h4>Sécurité</h4>
+                <p>Modération active et profils vérifiés en continu.</p>
+            </div>
+            <div class="co-value">
+                <span class="co-value-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 3 L 19 12 L 28 13 L 21 19 L 23 28 L 16 23 L 9 28 L 11 19 L 4 13 L 13 12 Z" stroke-linejoin="round"/></svg></span>
+                <h4>Authenticité</h4>
+                <p>Des personnes vraies, sans filtre ni faux-semblant.</p>
+            </div>
+            <div class="co-value">
+                <span class="co-value-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="3.5"/><circle cx="21" cy="11" r="3.5"/><path d="M4 25 Q 11 19, 16 22 Q 21 19, 28 25" stroke-linecap="round"/></svg></span>
+                <h4>Inclusion</h4>
+                <p>Ouvert à toutes et tous, sans exception.</p>
+            </div>
+        </div>
+
+        <div class="co-join">
+            <h3>Prêt(e) à nous rejoindre ?</h3>
+            <p>Fais partie d'une communauté qui te ressemble et vis des expériences authentiques près de chez toi.</p>
+            <a href="page-contact.html" class="btn-magenta">
+                Rejoindre la communauté
+                <svg viewBox="0 0 32 28" aria-hidden="true"><path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+            </a>
+        </div>
+
+        <!-- Bandeau sécurité (logos couleur conservés) -->
+        <div class="co-secure">
+            <div class="co-secure-item">
+                <span class="icn"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 4 L 26 8 V 16 C 26 22, 21 26, 16 28 C 11 26, 6 22, 6 16 V 8 Z" stroke-linejoin="round"/><path d="M12 16 L 15 19 L 21 13" stroke-width="2" stroke-linecap="round"/></svg></span>
+                <div><h5>Ta sécurité, notre priorité</h5><p>Modération 24h/24, signalement facile.</p></div>
+            </div>
+            <div class="co-secure-item">
+                <span class="icn"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="16" cy="12" r="5"/><path d="M6 28 C 8 22, 12 19, 16 19 C 20 19, 24 22, 26 28" stroke-linecap="round"/><path d="M22 6 L 24 8 L 28 4" stroke-width="2" stroke-linecap="round"/></svg></span>
+                <div><h5>Profils vérifiés</h5><p>Des membres authentiques et bienveillants.</p></div>
+            </div>
+            <div class="co-secure-item">
+                <span class="icn"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="14" width="16" height="13" rx="2"/><path d="M11 14 V 10 C 11 7, 13 5, 16 5 C 19 5, 21 7, 21 10 V 14"/></svg></span>
+                <div><h5>Confidentialité garantie</h5><p>Tes données restent privées et sécurisées.</p></div>
+            </div>
+        </div>
+    </div>
+</section>
+
 </main>
 
-<!-- ============ BANNIÈRE "PROPOSE TON ÉVÉNEMENT" ============ -->
+<!-- ===== FOOTER ===== -->
 <section class="ev-propose">
     <div class="ev-propose-inner">
         <div class="ev-propose-content">
             <h3>Propose ton événement</h3>
             <p>Partage ton idée avec la communauté et crée des moments inoubliables ensemble.</p>
-            <a href="#proposer" class="ev-propose-btn">
-                Proposer un événement
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                    <path d="M12 3 L 14 9 L 21 10 L 16 14 L 17 21 L 12 17 L 7 21 L 8 14 L 3 10 L 10 9 Z" fill="currentColor"/>
-                </svg>
-            </a>
+            <a href="page-contact.html" class="ev-propose-btn">Proposer un événement <svg viewBox="0 0 24 24"><path d="M12 3 L 14 9 L 21 10 L 16 14 L 17 21 L 12 17 L 7 21 L 8 14 L 3 10 L 10 9 Z" fill="currentColor"/></svg></a>
         </div>
         <div class="ev-propose-photo" aria-hidden="true"></div>
     </div>
 </section>
 
-<!-- ============ LIGNE CTA CENTRALE ============ -->
-<div class="ev-cta-row">
-    <div class="ev-cta-side">
-        <svg viewBox="0 0 32 28" aria-hidden="true">
-            <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-        <span>Chaque événement est pensé pour favoriser<br>les rencontres authentiques et les beaux moments.</span>
-    </div>
-    <a href="page-evenements.html" class="ev-cta-btn">
-        <svg viewBox="0 0 24 24" aria-hidden="true">
-            <rect x="3" y="5" width="18" height="16" rx="2" fill="none" stroke="currentColor" stroke-width="2"/>
-            <line x1="3" y1="10" x2="21" y2="10" stroke="currentColor" stroke-width="2"/>
-            <line x1="8" y1="2" x2="8" y2="7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-            <line x1="16" y1="2" x2="16" y2="7" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        Découvrir tous les événements
-    </a>
-    <div class="ev-cta-side ev-cta-side--right">
-        <span>Une communauté bienveillante,<br>des souvenirs inoubliables.</span>
-        <svg viewBox="0 0 32 28" aria-hidden="true">
-            <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        </svg>
-    </div>
-</div>
-
-<!-- ============ FOOTER 4 COLONNES ============ -->
 <footer class="ev-footer">
     <svg class="ev-footer-deco-circles" viewBox="0 0 400 400" aria-hidden="true">
-        <defs>
-            <linearGradient id="footCirGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-                <stop offset="0%" stop-color="#ec3a8b" stop-opacity="0.5"/>
-                <stop offset="100%" stop-color="#ec3a8b" stop-opacity="0.05"/>
-            </linearGradient>
-        </defs>
+        <defs><linearGradient id="footCirGrad" x1="0%" y1="0%" x2="100%" y2="100%"><stop offset="0%" stop-color="#C82677" stop-opacity="0.5"/><stop offset="100%" stop-color="#C82677" stop-opacity="0.05"/></linearGradient></defs>
         <circle cx="200" cy="200" r="180" fill="none" stroke="url(#footCirGrad)" stroke-width="1"/>
         <circle cx="200" cy="200" r="140" fill="none" stroke="url(#footCirGrad)" stroke-width="1"/>
         <circle cx="200" cy="200" r="100" fill="none" stroke="url(#footCirGrad)" stroke-width="1"/>
     </svg>
-    <svg class="ev-footer-deco-heart" viewBox="0 0 32 28" aria-hidden="true">
-        <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
+    <svg class="ev-footer-deco-heart" viewBox="0 0 32 28" aria-hidden="true"><path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/></svg>
     <div class="ev-footer-inner">
         <div class="ev-footer-grid">
             <div class="ev-footer-brand">
-                <div class="ev-footer-brand-head">
-                    <img src="assets/LOGO ROSE.png" alt="Ronde et Jolie - Appli de rencontre" class="ev-footer-brand-logo">
-                </div>
+                <div class="ev-footer-brand-head"><img src="assets/LOGO ROSE.png" alt="Ronde et Jolie" class="ev-footer-brand-logo"></div>
                 <p>Une communauté bienveillante où les femmes rondes et les hommes qui les aiment se rencontrent, échangent et créent des liens authentiques.</p>
-                <a href="#rejoindre" class="ev-footer-aventure">
-                    Rejoins l'aventure !
-                    <svg viewBox="0 0 32 28" aria-hidden="true">
-                        <path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-                    </svg>
-                </a>
+                <a href="page-contact.html" class="ev-footer-aventure">Rejoins l'aventure ! <svg viewBox="0 0 32 28"><path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg></a>
                 <div class="ev-footer-stores">
-                    <a href="#" class="ev-footer-store" aria-label="Télécharger sur l'App Store">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.18 1.78-3.23 1.86-3.28-1.01-1.49-2.59-1.69-3.16-1.71-1.34-.14-2.62.79-3.31.79-.68 0-1.74-.78-2.86-.75-1.47.02-2.83.85-3.59 2.16-1.53 2.65-.39 6.58 1.1 8.74.73 1.06 1.6 2.24 2.74 2.2 1.1-.05 1.52-.71 2.85-.71 1.33 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.64-2.13.84-1.22 1.18-2.41 1.2-2.47-.03-.01-2.29-.88-2.32-3.49zm-2.18-6.42c.61-.74 1.02-1.77.91-2.79-.88.04-1.94.59-2.57 1.33-.57.66-1.07 1.71-.93 2.72.98.08 1.98-.5 2.59-1.26z"/></svg>
-                        <span><small>Télécharger dans</small><strong>l'App Store</strong></span>
-                    </a>
-                    <a href="#" class="ev-footer-store" aria-label="Disponible sur Google Play">
-                        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 20.83V3.17c0-.31.18-.58.43-.71l10.45 10-10.43 10c-.27-.12-.45-.4-.45-.63zm12.31-8.83l2.27 2.27-12.39 7.11 10.12-9.38zm0-2L5.37 1.46l12.39 7.11-2.27 2.4zm5.85 1.91l-2.71 1.56-2.31-2.47 2.31-2.47 2.71 1.56c.69.4.69 1.42 0 1.82z"/></svg>
-                        <span><small>Disponible sur</small><strong>Google Play</strong></span>
-                    </a>
+                    <a href="#" class="ev-footer-store"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.05 12.04c-.02-2.18 1.78-3.23 1.86-3.28-1.01-1.49-2.59-1.69-3.16-1.71-1.34-.14-2.62.79-3.31.79-.68 0-1.74-.78-2.86-.75-1.47.02-2.83.85-3.59 2.16-1.53 2.65-.39 6.58 1.1 8.74.73 1.06 1.6 2.24 2.74 2.2 1.1-.05 1.52-.71 2.85-.71 1.33 0 1.7.71 2.86.69 1.18-.02 1.93-1.07 2.64-2.13.84-1.22 1.18-2.41 1.2-2.47-.03-.01-2.29-.88-2.32-3.49zm-2.18-6.42c.61-.74 1.02-1.77.91-2.79-.88.04-1.94.59-2.57 1.33-.57.66-1.07 1.71-.93 2.72.98.08 1.98-.5 2.59-1.26z"/></svg><span><small>Télécharger dans</small><strong>l'App Store</strong></span></a>
+                    <a href="#" class="ev-footer-store"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M3.18 20.83V3.17c0-.31.18-.58.43-.71l10.45 10-10.43 10c-.27-.12-.45-.4-.45-.63zm12.31-8.83l2.27 2.27-12.39 7.11 10.12-9.38zm0-2L5.37 1.46l12.39 7.11-2.27 2.4zm5.85 1.91l-2.71 1.56-2.31-2.47 2.31-2.47 2.71 1.56c.69.4.69 1.42 0 1.82z"/></svg><span><small>Disponible sur</small><strong>Google Play</strong></span></a>
                 </div>
             </div>
-            <div class="ev-footer-col">
-                <h5>Pages utiles</h5>
-                <ul>
-                    <li><a href="index.html">Accueil</a></li>
-                    <li><a href="page-bienvenue.html">Bienvenue</a></li>
-                    <li><a href="page-communaute.html">Communauté</a></li>
-                    <li><a href="page-pourquoi.html">Pourquoi nous ?</a></li>
-                    <li><a href="page-espace.html">Ton espace</a></li>
-                    <li><a href="page-activites.html">Activités</a></li>
-                    <li><a href="page-evenements.html">Événements</a></li>
-                    <li><a href="page-contact.html">Contact</a></li>
-                </ul>
-            </div>
-            <div class="ev-footer-col">
-                <h5>Liens rapides</h5>
-                <ul>
-                    <li><a href="#cgu">CGU – CGV</a></li>
-                </ul>
-            </div>
+            <div class="ev-footer-col"><h5>Pages utiles</h5><ul>
+                <li><a href="index.html">Accueil</a></li>
+                <li><a href="page-communaute.html">Communauté</a></li>
+                <li><a href="page-activites.html">Activités</a></li>
+                <li><a href="page-evenements.html">Événements</a></li>
+                <li><a href="index.html#apropos">À propos</a></li>
+                <li><a href="page-faq.html">FAQ</a></li>
+                <li><a href="page-contact.html">Contact</a></li>
+            </ul></div>
+            <div class="ev-footer-col"><h5>Liens rapides</h5><ul><li><a href="#cgu">CGU – CGV</a></li></ul></div>
             <div class="ev-footer-col ev-footer-social">
                 <h5>Réseaux sociaux</h5>
                 <p>Suis-nous sur les réseaux pour des témoignages authentiques, des conseils bienveillants et une dose quotidienne de body positive.</p>
                 <div class="ev-footer-social-icons">
-                    <a href="#" aria-label="Instagram">
-                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8">
-                            <rect x="3" y="3" width="18" height="18" rx="5"/>
-                            <circle cx="12" cy="12" r="4"/>
-                            <circle cx="17.5" cy="6.5" r="1" fill="currentColor"/>
-                        </svg>
-                    </a>
-                    <a href="#" aria-label="TikTok">
-                        <svg viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M16 4v2.5c0 2 1.6 3.5 3.5 3.5h.5v3c-1.5 0-3-.4-4-1v6c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.3 0 .7 0 1 .1V15c-.3-.1-.7-.2-1-.2-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3V4h3z"/>
-                        </svg>
-                    </a>
+                    <a href="#" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1" fill="currentColor"/></svg></a>
+                    <a href="#" aria-label="TikTok"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 4v2.5c0 2 1.6 3.5 3.5 3.5h.5v3c-1.5 0-3-.4-4-1v6c0 3.3-2.7 6-6 6s-6-2.7-6-6 2.7-6 6-6c.3 0 .7 0 1 .1V15c-.3-.1-.7-.2-1-.2-1.7 0-3 1.3-3 3s1.3 3 3 3 3-1.3 3-3V4h3z"/></svg></a>
                 </div>
             </div>
         </div>
@@ -634,6 +660,20 @@
 </footer>
 
 <script src="script.js"></script>
+<script>
+(function(){
+    const track = document.getElementById('membersTrack');
+    if (!track) return;
+    document.querySelectorAll('.co-arrow').forEach(btn => {
+        btn.addEventListener('click', () => {
+            const dir = parseInt(btn.dataset.dir, 10);
+            const card = track.querySelector('.co-member');
+            const step = card ? card.offsetWidth + 16 : 280;
+            track.scrollBy({ left: dir * step, behavior: 'smooth' });
+        });
+    });
+})();
+</script>
 
 </body>
 </html>
