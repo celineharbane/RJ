@@ -109,6 +109,16 @@
     font-weight: 500;
   }
 
+  /* 3 écrans app en image (mockup PNG) */
+  .act-phones-img-wrap { display: flex; align-items: center; justify-content: center; }
+  .act-phones-img {
+    width: 100%;
+    max-width: 360px;
+    height: auto;
+    display: block;
+    filter: drop-shadow(0 25px 50px rgba(0, 0, 0, 0.6));
+  }
+
   /* 3 phones side-by-side */
   .act-phones {
     display: grid;
@@ -1067,88 +1077,9 @@
             </div>
         </div>
 
-        <!-- 3 PHONES -->
-        <div class="act-phones" aria-hidden="true">
-
-            <!-- Phone 1 : Fil d'actualité -->
-            <div class="ph">
-                <div class="ph-screen">
-                    <div class="ph-status"><span>9:31</span><span>📶 100%</span></div>
-                    <div style="text-align:center;font-size:0.6rem;color:var(--cream);margin-bottom:6px;font-weight:600;">Fil d'actualité</div>
-                    <div class="ph-tabs">
-                        <span class="ph-tab is-on">Pour toi</span>
-                        <span class="ph-tab">Abonnements</span>
-                        <span class="ph-tab">Populaire</span>
-                    </div>
-                    <div class="ph-card">
-                        <div class="ph-row">
-                            <span class="ph-avatar"></span>
-                            <span class="ph-name">Mélanie, 32</span>
-                            <span class="ph-loc">Paris</span>
-                        </div>
-                        <div class="ph-img" style="background-image:url('assets/photos/photo-3-cuisine@1x.jpg')"></div>
-                        <div style="font-size:0.4rem;color:var(--cream-soft);margin:4px 0;">Se sentir bien dans sa peau, c'est la plus belle des libertés ✨</div>
-                        <div class="ph-actions"><span>❤️ 128</span><span>💬 45</span><span>🤍 12</span></div>
-                    </div>
-                    <div class="ph-card">
-                        <div class="ph-row">
-                            <span class="ph-avatar" style="background:linear-gradient(135deg,#5fc9d8,#2a7d8a)"></span>
-                            <span class="ph-name">Lucas, 37</span>
-                            <span class="ph-loc">Lyon</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Phone 2 : Salon vocal -->
-            <div class="ph ph--middle">
-                <div class="ph-screen">
-                    <div class="ph-status"><span>9:41</span><span>📶</span></div>
-                    <div class="ph-vroom-head">
-                        <h4>Salon vocal</h4>
-                        <div style="color:var(--cream);font-size:0.5rem;">Confiance &amp; positif <span style="color:var(--pink);">✨</span></div>
-                        <div class="meta">78 en ligne</div>
-                    </div>
-                    <div class="ph-vroom-grid">
-                        <div class="ph-vroom-cell"><span class="av"></span><span class="nm">Camille<br>Hôte</span></div>
-                        <div class="ph-vroom-cell"><span class="av"></span><span class="nm">Alex<br>Co-hôte</span></div>
-                        <div class="ph-vroom-cell"><span class="av"></span><span class="nm">Sophie<br>Co-hôte</span></div>
-                        <div class="ph-vroom-cell"><span class="av"></span><span class="nm">Julie</span></div>
-                        <div class="ph-vroom-cell"><span class="av"></span><span class="nm">Thomas</span></div>
-                        <div class="ph-vroom-cell"><span class="av"></span><span class="nm">Laura</span></div>
-                        <div class="ph-vroom-cell"><span class="av"></span><span class="nm">Ben</span></div>
-                        <div class="ph-vroom-cell"><span class="av"></span><span class="nm">Nina</span></div>
-                        <div class="ph-vroom-cell"><span class="av"></span><span class="nm">Marc</span></div>
-                    </div>
-                    <div style="text-align:center;font-size:0.5rem;color:var(--text-muted);margin-bottom:6px;">+72 Participants</div>
-                    <div class="ph-vroom-controls">
-                        <div class="ph-vroom-btn">←</div>
-                        <div class="ph-vroom-btn mic">🎤</div>
-                        <div class="ph-vroom-btn">📞</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Phone 3 : Live -->
-            <div class="ph">
-                <div class="ph-screen">
-                    <div class="ph-status"><span>9:41</span><span>📶</span></div>
-                    <div style="padding:0 4px;">
-                        <span class="ph-live-badge">LIVE</span>
-                        <div class="ph-live-title">Conseils mode spécial grandes tailles</div>
-                        <div class="ph-live-meta">En direct</div>
-                        <div class="ph-live-photo" style="background-image:url('assets/photos/photo-2-apero@1x.jpg')"></div>
-                        <div class="ph-comment"><span class="ph-avatar" style="width:10px;height:10px;background:linear-gradient(135deg,#d4a574,#8a6438)"></span><strong>Sarah, 29</strong> Merci pour ces conseils !</div>
-                        <div class="ph-comment"><span class="ph-avatar" style="width:10px;height:10px;background:linear-gradient(135deg,#ec3a8b,#b8226a)"></span><strong>Chloé, 35</strong> J'adore ton look</div>
-                        <div class="ph-comment"><span class="ph-avatar" style="width:10px;height:10px;background:linear-gradient(135deg,#5fc9d8,#2a7d8a)"></span><strong>Laura, 34</strong> Tellement inspirant</div>
-                        <div class="ph-comment-input">
-                            <span>Écrire un message…</span>
-                            <svg viewBox="0 0 16 16"><path d="M2 8 L 14 2 L 10 14 L 8 9 Z" fill="currentColor"/></svg>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+        <!-- 3 écrans app (image) -->
+        <div class="act-phones-img-wrap" aria-hidden="true">
+            <img class="act-phones-img" src="assets/photos/mockup-activites-3ecrans.png" alt="Aperçu de l'app Ronde et Jolie : fil d'actualité, salon vocal et conseils mode" loading="eager">
         </div>
 
     </div>
@@ -1569,12 +1500,11 @@
                 <h5>Pages utiles</h5>
                 <ul>
                     <li><a href="index.html">Accueil</a></li>
-                    <li><a href="page-bienvenue.html">Bienvenue</a></li>
                     <li><a href="page-communaute.html">Communauté</a></li>
-                    <li><a href="page-pourquoi.html">Pourquoi nous ?</a></li>
-                    <li><a href="page-espace.html">Ton espace</a></li>
                     <li><a href="page-activites.html">Activités</a></li>
                     <li><a href="page-evenements.html">Événements</a></li>
+                    <li><a href="index.html#apropos">À propos</a></li>
+                    <li><a href="page-faq.html">FAQ</a></li>
                     <li><a href="page-contact.html">Contact</a></li>
                 </ul>
             </div>
