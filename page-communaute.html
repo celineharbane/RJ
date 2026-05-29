@@ -245,6 +245,9 @@
   .co-member-body { padding: 0.85rem 1rem; }
   .co-member-body h4 { color: var(--co-text); font-size: 0.95rem; font-weight: 600; }
   .co-member-body .loc { font-size: 0.72rem; color: var(--co-muted); display: inline-flex; align-items: center; gap: 0.25rem; margin-bottom: 0.5rem; }
+  .co-member-body .loc svg { width: 11px; height: 11px; color: var(--pink); }
+  .co-member-body .tags { display: flex; flex-wrap: wrap; gap: 0.3rem; margin-bottom: 0.6rem; }
+  .co-member-body .tags span { font-size: 0.6rem; color: var(--pink); border: 1px solid rgba(200,38,119,0.35); border-radius: 999px; padding: 2px 8px; }
   .co-member-body p { font-size: 0.78rem; color: var(--co-muted); line-height: 1.5; font-style: italic; }
   .co-members-arrows { display: flex; justify-content: center; gap: 0.75rem; margin-top: 1.5rem; }
   .co-arrow {
@@ -262,8 +265,8 @@
      ============================================ */
   .co-events {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: clamp(1rem, 2vw, 1.5rem);
+    grid-template-columns: repeat(5, 1fr);
+    gap: clamp(0.75rem, 1.5vw, 1.25rem);
     margin-bottom: 2rem;
   }
   .co-event {
@@ -281,9 +284,11 @@
     background-size: cover; background-position: center;
     position: relative;
   }
-  .co-event:nth-child(1) .co-event-photo { background-image: url('assets/photos/APERO.png'); }
-  .co-event:nth-child(2) .co-event-photo { background-image: url('assets/photos/CUISINE.png'); }
-  .co-event:nth-child(3) .co-event-photo { background-image: url('assets/photos/SORTIE.png'); }
+  .co-event:nth-child(1) .co-event-photo { background-image: url('assets/photos/REPAS.png'); }
+  .co-event:nth-child(2) .co-event-photo { background-image: url('assets/photos/APERO.png'); }
+  .co-event:nth-child(3) .co-event-photo { background-image: url('assets/photos/CUISINE.png'); }
+  .co-event:nth-child(4) .co-event-photo { background-image: url('assets/photos/SORTIE.png'); }
+  .co-event:nth-child(5) .co-event-photo { background-image: url('assets/photos/SORTIE-2.png'); }
   .co-event-date {
     position: absolute; top: 10px; left: 10px;
     background: rgba(12,11,11,0.85);
@@ -297,6 +302,8 @@
   .co-event-body h4 { color: var(--co-text); font-family: var(--font-display); font-size: 1.05rem; margin-bottom: 0.3rem; }
   .co-event-body .loc { font-size: 0.75rem; color: var(--co-muted); display: inline-flex; align-items: center; gap: 0.3rem; }
   .co-event-body .loc svg { width: 12px; height: 12px; color: var(--pink); }
+  .co-event-body .desc { font-size: 0.74rem; color: var(--co-muted); line-height: 1.5; margin: 0.45rem 0 0.6rem; }
+  .co-event-body .places { font-size: 0.7rem; color: var(--pink); font-weight: 600; }
   .co-events-cta { text-align: center; }
 
   /* Boutons */
@@ -346,20 +353,22 @@
 
   /* Bandeau sécurité (logos couleur conservés) */
   .co-secure {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 1.5rem;
-    padding: 1.25rem clamp(1.25rem, 2vw, 2rem);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.85rem;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 1.1rem clamp(1.25rem, 2vw, 2rem);
     background: rgba(12,11,11,0.6);
     border: 1px solid var(--border-gold);
     border-radius: 14px;
-    align-items: center;
   }
-  .co-secure-item { display: flex; align-items: center; gap: 0.75rem; }
-  .co-secure-item .icn { width: 30px; height: 30px; color: var(--co-gold); flex-shrink: 0; }
-  .co-secure-item .icn svg { width: 100%; height: 100%; }
-  .co-secure-item h5 { font-family: var(--font-display); font-style: italic; font-size: 0.92rem; color: var(--co-text); }
-  .co-secure-item p { font-size: 0.72rem; color: var(--co-muted); }
+  .co-secure .icn { width: 30px; height: 30px; color: var(--co-gold); flex-shrink: 0; }
+  .co-secure .icn svg { width: 100%; height: 100%; }
+  .co-secure p { font-size: 0.82rem; color: var(--co-muted); max-width: 720px; }
+  .co-secure p strong { color: var(--co-gold); font-family: var(--font-display); font-style: italic; font-weight: 600; }
+  .co-title .gold { color: var(--gold); font-style: italic; }
 
   /* RESPONSIVE */
   @media (max-width: 1100px) {
@@ -413,18 +422,14 @@
     <div class="co-inner">
         <div class="co-hero-grid">
             <div>
-                <p class="co-eyebrow">
-                    <span>Bienvenue dans la communauté</span>
-                    <svg viewBox="0 0 32 28" aria-hidden="true"><path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-                </p>
-                <h1 class="co-hero-title">Une communauté qui <em>célèbre la vraie vie</em>
+                <h1 class="co-hero-title"><em>Une communauté</em> qui célèbre la vraie vie, les vraies personnes et les vraies connexions.
                     <svg class="heart" viewBox="0 0 32 28" aria-hidden="true"><path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
                 </h1>
-                <p class="co-hero-desc">Des milliers de membres bienveillants qui se rencontrent, échangent et créent de vrais liens. Ici, chacun a sa place, sans jugement, dans le respect et l'authenticité.</p>
+                <p class="co-hero-desc">Ici, femmes rondes et hommes bienveillants se rencontrent, échangent et partagent bien plus que des discussions : des expériences, des conseils, des fous rires et du soutien au quotidien.</p>
                 <div class="co-stats">
                     <div class="co-stat">
                         <span class="co-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="9" cy="9" r="3"/><circle cx="15" cy="9" r="3"/><path d="M3 19 Q 9 14, 14 18 Q 17 14, 21 19" stroke-linecap="round"/></svg></span>
-                        <div><b>+12 000</b><span>membres actifs</span></div>
+                        <div><b>+12 000</b><span>membres</span></div>
                     </div>
                     <div class="co-stat">
                         <span class="co-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="15" rx="2"/><line x1="4" y1="9" x2="20" y2="9"/><line x1="8" y1="3" x2="8" y2="7" stroke-linecap="round"/><line x1="16" y1="3" x2="16" y2="7" stroke-linecap="round"/></svg></span>
@@ -432,11 +437,11 @@
                     </div>
                     <div class="co-stat">
                         <span class="co-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 L 20 6 V 12 C 20 17, 16 20, 12 21 C 8 20, 4 17, 4 12 V 6 Z" stroke-linejoin="round"/><path d="M9 12 L 11 14 L 15 10" stroke-width="2" stroke-linecap="round"/></svg></span>
-                        <div><b>Modérée</b><span>communauté saine</span></div>
+                        <div><b>Communauté</b><span>modérée</span></div>
                     </div>
                     <div class="co-stat">
                         <span class="co-stat-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="9" r="3.5"/><path d="M5 20 C 6 16, 9 14, 12 14 C 15 14, 18 16, 19 20" stroke-linecap="round"/><path d="M16 5 L 18 7 L 22 3" stroke-width="2" stroke-linecap="round"/></svg></span>
-                        <div><b>Vérifiés</b><span>profils authentiques</span></div>
+                        <div><b>Profils</b><span>vérifiés</span></div>
                     </div>
                 </div>
             </div>
@@ -457,34 +462,33 @@
 <section class="co-section">
     <div class="co-inner">
         <div class="co-section-head">
-            <h2 class="co-title">Des univers pour <em>t'inspirer</em></h2>
-            <p>Explore les multiples facettes de la communauté et trouve l'espace qui te ressemble.</p>
+            <h2 class="co-title">Des univers pour <em>t'inspirer et t'épanouir</em></h2>
         </div>
         <div class="co-univers">
             <article class="co-univers-card">
                 <span class="co-univers-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M4 5 h16 v11 h-11 l-5 4 z" stroke-linejoin="round"/></svg></span>
                 <h3>Discussions &amp; entraide</h3>
-                <ul><li>Échanges bienveillants</li><li>Conseils &amp; soutien</li><li>Groupes thématiques</li></ul>
+                <ul><li>Confiance en soi</li><li>Body positive</li><li>Relations</li><li>Lifestyle</li><li>Mode grande taille</li><li>Bien-être</li></ul>
             </article>
             <article class="co-univers-card">
                 <span class="co-univers-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="4" y="5" width="16" height="15" rx="2"/><line x1="4" y1="9" x2="20" y2="9"/></svg></span>
                 <h3>Sorties &amp; événements</h3>
-                <ul><li>Brunchs &amp; dîners</li><li>Afterworks</li><li>Voyages de groupe</li></ul>
+                <ul><li>Afterworks</li><li>Brunchs</li><li>Dîners rencontres</li><li>Voyages</li><li>Ateliers cuisine</li><li>Soirées privées</li></ul>
             </article>
             <article class="co-univers-card">
                 <span class="co-univers-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="3" width="6" height="12" rx="3"/><path d="M5 12 V 14 C 5 18, 9 21, 12 21 C 15 21, 19 18, 19 14 V 12" stroke-linecap="round"/></svg></span>
                 <h3>Lives &amp; salons vocaux</h3>
-                <ul><li>Lives en direct</li><li>Salons audio</li><li>Témoignages</li></ul>
+                <ul><li>Discussions en direct</li><li>Débats bienveillants</li><li>Conseils</li><li>Témoignages</li><li>Podcasts communautaires</li></ul>
             </article>
             <article class="co-univers-card">
                 <span class="co-univers-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3 L 14 9 L 21 10 L 16 14 L 17 21 L 12 17 L 7 21 L 8 14 L 3 10 L 10 9 Z" stroke-linejoin="round"/></svg></span>
                 <h3>Inspiration &amp; valorisation</h3>
-                <ul><li>Confiance en soi</li><li>Body positive</li><li>Réussites partagées</li></ul>
+                <ul><li>Portraits de membres</li><li>Transformations</li><li>Looks &amp; style</li><li>Stories inspirantes</li><li>Citations positives</li></ul>
             </article>
             <article class="co-univers-card">
                 <span class="co-univers-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><circle cx="12" cy="16" r="3"/><path d="M8 11 L 11 14 M 16 11 L 13 14" stroke-linecap="round"/></svg></span>
                 <h3>Réseau &amp; connexions</h3>
-                <ul><li>Rencontres locales</li><li>Amitiés durables</li><li>Belles histoires</li></ul>
+                <ul><li>Rencontres amicales</li><li>Entraide</li><li>Opportunités</li><li>Projets communs</li><li>Soutien au quotidien</li></ul>
             </article>
         </div>
     </div>
@@ -494,17 +498,16 @@
 <section class="co-section">
     <div class="co-inner">
         <div class="co-section-head">
-            <h2 class="co-title">Des membres <em>inspirants</em></h2>
-            <p>Derrière chaque profil, une histoire vraie. Découvre celles et ceux qui font vivre la communauté.</p>
+            <h2 class="co-title">Des membres <em>inspirants,</em> des histoires qui motivent</h2>
         </div>
     </div>
     <div class="co-members-wrap">
         <div class="co-members-track" id="membersTrack">
-            <article class="co-member"><div class="co-member-photo"></div><div class="co-member-body"><h4>Camille, 32</h4><span class="loc">📍 Lyon</span><p>« Ici j'ai trouvé des amies en or et bien plus encore. »</p></div></article>
-            <article class="co-member"><div class="co-member-photo"></div><div class="co-member-body"><h4>Thomas, 36</h4><span class="loc">📍 Bordeaux</span><p>« Des échanges vrais, sans superficiel. Ça change tout. »</p></div></article>
-            <article class="co-member"><div class="co-member-photo"></div><div class="co-member-body"><h4>Sarah, 29</h4><span class="loc">📍 Paris</span><p>« Je me sens enfin à ma place, valorisée pour qui je suis. »</p></div></article>
-            <article class="co-member"><div class="co-member-photo"></div><div class="co-member-body"><h4>Alexandre, 40</h4><span class="loc">📍 Toulouse</span><p>« Les afterworks sont devenus mes rendez-vous préférés. »</p></div></article>
-            <article class="co-member"><div class="co-member-photo"></div><div class="co-member-body"><h4>Laura, 34</h4><span class="loc">📍 Marseille</span><p>« Une communauté qui soutient, qui inspire, qui élève. »</p></div></article>
+            <article class="co-member"><div class="co-member-photo"></div><div class="co-member-body"><h4>Mélanie, 32</h4><span class="loc"><svg viewBox="0 0 12 12"><path d="M6 11 C 3 8, 2 6, 2 4 C 2 2, 4 1, 6 1 C 8 1, 10 2, 10 4 C 10 6, 9 8, 6 11Z" fill="currentColor"/></svg>Paris</span><div class="tags"><span>Voyage</span><span>Développement</span><span>Bien-être</span></div><p>« J'ai enfin trouvé un endroit où je me sens à ma place. »</p></div></article>
+            <article class="co-member"><div class="co-member-photo"></div><div class="co-member-body"><h4>Lucas, 37</h4><span class="loc"><svg viewBox="0 0 12 12"><path d="M6 11 C 3 8, 2 6, 2 4 C 2 2, 4 1, 6 1 C 8 1, 10 2, 10 4 C 10 6, 9 8, 6 11Z" fill="currentColor"/></svg>Lyon</span><div class="tags"><span>Sport</span><span>Entrepreneur</span><span>Voyage</span></div><p>« Une vraie communauté, pas juste des profils. »</p></div></article>
+            <article class="co-member"><div class="co-member-photo"></div><div class="co-member-body"><h4>Sarah, 29</h4><span class="loc"><svg viewBox="0 0 12 12"><path d="M6 11 C 3 8, 2 6, 2 4 C 2 2, 4 1, 6 1 C 8 1, 10 2, 10 4 C 10 6, 9 8, 6 11Z" fill="currentColor"/></svg>Lille</span><div class="tags"><span>Lifestyle</span><span>Mode</span><span>Podcasts</span></div><p>« Les événements m'ont permis de reprendre confiance. »</p></div></article>
+            <article class="co-member"><div class="co-member-photo"></div><div class="co-member-body"><h4>Alexandre, 40</h4><span class="loc"><svg viewBox="0 0 12 12"><path d="M6 11 C 3 8, 2 6, 2 4 C 2 2, 4 1, 6 1 C 8 1, 10 2, 10 4 C 10 6, 9 8, 6 11Z" fill="currentColor"/></svg>Toulouse</span><div class="tags"><span>Lecture</span><span>Développement</span><span>Débats</span></div><p>« Des échanges sincères et des personnes incroyables. »</p></div></article>
+            <article class="co-member"><div class="co-member-photo"></div><div class="co-member-body"><h4>Laura, 34</h4><span class="loc"><svg viewBox="0 0 12 12"><path d="M6 11 C 3 8, 2 6, 2 4 C 2 2, 4 1, 6 1 C 8 1, 10 2, 10 4 C 10 6, 9 8, 6 11Z" fill="currentColor"/></svg>Marseille</span><div class="tags"><span>Mode</span><span>Danse</span><span>Bien-être</span></div><p>« Ici, on prend soin de soi-même sans jugement. »</p></div></article>
         </div>
         <div class="co-members-arrows">
             <button class="co-arrow" type="button" data-dir="-1" aria-label="Précédent"><svg viewBox="0 0 24 24"><path d="M15 6 L 9 12 L 15 18" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
@@ -517,21 +520,28 @@
 <section class="co-section">
     <div class="co-inner">
         <div class="co-section-head">
-            <h2 class="co-title">Des événements pour <em>se rencontrer</em></h2>
-            <p>La communauté prend vie dans la vraie vie. Voici quelques moments à venir.</p>
+            <h2 class="co-title">Des événements pour <em>se rencontrer</em> et créer des <span class="gold">souvenirs</span></h2>
         </div>
         <div class="co-events">
             <a href="page-contact.html" class="co-event">
-                <div class="co-event-photo"><span class="co-event-date">18<small>Juin</small></span></div>
-                <div class="co-event-body"><h4>Apéro &amp; rencontres</h4><span class="loc"><svg viewBox="0 0 12 12"><path d="M6 11 C 3 8, 2 6, 2 4 C 2 2, 4 1, 6 1 C 8 1, 10 2, 10 4 C 10 6, 9 8, 6 11Z" fill="currentColor"/></svg>Paris</span></div>
+                <div class="co-event-photo"><span class="co-event-date">24<small>Mai</small></span></div>
+                <div class="co-event-body"><h4>Brunch entre membres</h4><span class="loc"><svg viewBox="0 0 12 12"><path d="M6 11 C 3 8, 2 6, 2 4 C 2 2, 4 1, 6 1 C 8 1, 10 2, 10 4 C 10 6, 9 8, 6 11Z" fill="currentColor"/></svg>Paris</span><p class="desc">Un moment gourmand pour échanger et faire de belles rencontres.</p><span class="places">12 places restantes</span></div>
             </a>
             <a href="page-contact.html" class="co-event">
-                <div class="co-event-photo"><span class="co-event-date">22<small>Juin</small></span></div>
-                <div class="co-event-body"><h4>Atelier cuisine healthy</h4><span class="loc"><svg viewBox="0 0 12 12"><path d="M6 11 C 3 8, 2 6, 2 4 C 2 2, 4 1, 6 1 C 8 1, 10 2, 10 4 C 10 6, 9 8, 6 11Z" fill="currentColor"/></svg>Lyon</span></div>
+                <div class="co-event-photo"><span class="co-event-date">07<small>Juin</small></span></div>
+                <div class="co-event-body"><h4>Afterwork &amp; échanges</h4><span class="loc"><svg viewBox="0 0 12 12"><path d="M6 11 C 3 8, 2 6, 2 4 C 2 2, 4 1, 6 1 C 8 1, 10 2, 10 4 C 10 6, 9 8, 6 11Z" fill="currentColor"/></svg>Lyon</span><p class="desc">Décompresse, rencontre et partage dans une ambiance détendue.</p><span class="places">18 places restantes</span></div>
             </a>
             <a href="page-contact.html" class="co-event">
-                <div class="co-event-photo"><span class="co-event-date">29<small>Juin</small></span></div>
-                <div class="co-event-body"><h4>Soirée afterwork</h4><span class="loc"><svg viewBox="0 0 12 12"><path d="M6 11 C 3 8, 2 6, 2 4 C 2 2, 4 1, 6 1 C 8 1, 10 2, 10 4 C 10 6, 9 8, 6 11Z" fill="currentColor"/></svg>Bordeaux</span></div>
+                <div class="co-event-photo"><span class="co-event-date">15<small>Juin</small></span></div>
+                <div class="co-event-body"><h4>Atelier cuisine healthy</h4><span class="loc"><svg viewBox="0 0 12 12"><path d="M6 11 C 3 8, 2 6, 2 4 C 2 2, 4 1, 6 1 C 8 1, 10 2, 10 4 C 10 6, 9 8, 6 11Z" fill="currentColor"/></svg>Toulouse</span><p class="desc">Cuisine, conseils et bonne humeur pour prendre soin de soi tout en se régalant.</p><span class="places">10 places restantes</span></div>
+            </a>
+            <a href="page-contact.html" class="co-event">
+                <div class="co-event-photo"><span class="co-event-date">15<small>Juin</small></span></div>
+                <div class="co-event-body"><h4>Rando &amp; nature</h4><span class="loc"><svg viewBox="0 0 12 12"><path d="M6 11 C 3 8, 2 6, 2 4 C 2 2, 4 1, 6 1 C 8 1, 10 2, 10 4 C 10 6, 9 8, 6 11Z" fill="currentColor"/></svg>Marseille</span><p class="desc">Une journée pour se reconnecter à la nature et à de belles personnes.</p><span class="places">15 places restantes</span></div>
+            </a>
+            <a href="page-contact.html" class="co-event">
+                <div class="co-event-photo"><span class="co-event-date">05<small>Juil</small></span></div>
+                <div class="co-event-body"><h4>Soirée au bord de mer</h4><span class="loc"><svg viewBox="0 0 12 12"><path d="M6 11 C 3 8, 2 6, 2 4 C 2 2, 4 1, 6 1 C 8 1, 10 2, 10 4 C 10 6, 9 8, 6 11Z" fill="currentColor"/></svg>Nice</span><p class="desc">Musique, cocktails et discussions sous les étoiles.</p><span class="places">20 places restantes</span></div>
             </a>
         </div>
         <div class="co-events-cta">
@@ -548,54 +558,42 @@
     <div class="co-inner">
         <div class="co-section-head">
             <h2 class="co-title">Nos valeurs, <em>notre force</em></h2>
-            <p>Ce qui fait de Ronde et Jolie une communauté unique et bienveillante.</p>
         </div>
         <div class="co-values">
             <div class="co-value">
                 <span class="co-value-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 26 C 6 19, 3 13, 6 8 C 9 4, 14 4, 16 9 C 18 4, 23 4, 26 8 C 29 13, 26 19, 16 26Z" stroke-linejoin="round"/></svg></span>
                 <h4>Bienveillance</h4>
-                <p>Le respect et l'écoute au cœur de chaque échange.</p>
+                <p>Respect, écoute et soutien sont au cœur de chaque échange.</p>
             </div>
             <div class="co-value">
                 <span class="co-value-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 4 L 26 8 V 16 C 26 22, 21 26, 16 28 C 11 26, 6 22, 6 16 V 8 Z" stroke-linejoin="round"/><path d="M12 16 L 15 19 L 21 13" stroke-width="2" stroke-linecap="round"/></svg></span>
                 <h4>Sécurité</h4>
-                <p>Modération active et profils vérifiés en continu.</p>
+                <p>Modération active, profils vérifiés et espace sécurisé pour toutes et tous.</p>
+            </div>
+            <div class="co-value">
+                <span class="co-value-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="3.5"/><circle cx="21" cy="11" r="3.5"/><path d="M4 25 Q 11 19, 16 22 Q 21 19, 28 25" stroke-linecap="round"/></svg></span>
+                <h4>Inclusivité</h4>
+                <p>Toutes les morphologies, tous les parcours, toutes les histoires ont leur place.</p>
             </div>
             <div class="co-value">
                 <span class="co-value-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 3 L 19 12 L 28 13 L 21 19 L 23 28 L 16 23 L 9 28 L 11 19 L 4 13 L 13 12 Z" stroke-linejoin="round"/></svg></span>
                 <h4>Authenticité</h4>
-                <p>Des personnes vraies, sans filtre ni faux-semblant.</p>
-            </div>
-            <div class="co-value">
-                <span class="co-value-icon"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="11" cy="11" r="3.5"/><circle cx="21" cy="11" r="3.5"/><path d="M4 25 Q 11 19, 16 22 Q 21 19, 28 25" stroke-linecap="round"/></svg></span>
-                <h4>Inclusion</h4>
-                <p>Ouvert à toutes et tous, sans exception.</p>
+                <p>Des échanges vrais, sans filtre, sans jugement, en toute authenticité.</p>
             </div>
         </div>
 
         <div class="co-join">
-            <h3>Prêt(e) à nous rejoindre ?</h3>
-            <p>Fais partie d'une communauté qui te ressemble et vis des expériences authentiques près de chez toi.</p>
+            <h3>Rejoins une communauté qui t'accepte, t'inspire et t'élève chaque jour.</h3>
             <a href="page-contact.html" class="btn-magenta">
                 Rejoindre la communauté
                 <svg viewBox="0 0 32 28" aria-hidden="true"><path d="M 16 26 C 4 19, 1 11, 5 5 C 11 1, 17 6, 16 12 C 17 6, 23 1, 28 5 C 32 11, 27 19, 16 26" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
             </a>
         </div>
 
-        <!-- Bandeau sécurité (logos couleur conservés) -->
+        <!-- Bandeau sécurité (logo couleur conservé) -->
         <div class="co-secure">
-            <div class="co-secure-item">
-                <span class="icn"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 4 L 26 8 V 16 C 26 22, 21 26, 16 28 C 11 26, 6 22, 6 16 V 8 Z" stroke-linejoin="round"/><path d="M12 16 L 15 19 L 21 13" stroke-width="2" stroke-linecap="round"/></svg></span>
-                <div><h5>Ta sécurité, notre priorité</h5><p>Modération 24h/24, signalement facile.</p></div>
-            </div>
-            <div class="co-secure-item">
-                <span class="icn"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="16" cy="12" r="5"/><path d="M6 28 C 8 22, 12 19, 16 19 C 20 19, 24 22, 26 28" stroke-linecap="round"/><path d="M22 6 L 24 8 L 28 4" stroke-width="2" stroke-linecap="round"/></svg></span>
-                <div><h5>Profils vérifiés</h5><p>Des membres authentiques et bienveillants.</p></div>
-            </div>
-            <div class="co-secure-item">
-                <span class="icn"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="8" y="14" width="16" height="13" rx="2"/><path d="M11 14 V 10 C 11 7, 13 5, 16 5 C 19 5, 21 7, 21 10 V 14"/></svg></span>
-                <div><h5>Confidentialité garantie</h5><p>Tes données restent privées et sécurisées.</p></div>
-            </div>
+            <span class="icn"><svg viewBox="0 0 32 32" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M16 4 L 26 8 V 16 C 26 22, 21 26, 16 28 C 11 26, 6 22, 6 16 V 8 Z" stroke-linejoin="round"/><path d="M12 16 L 15 19 L 21 13" stroke-width="2" stroke-linecap="round"/></svg></span>
+            <p><strong>Ta sécurité, notre priorité.</strong> Profils vérifiés, modération humaine et engagement pour un espace sain et bienveillant.</p>
         </div>
     </div>
 </section>
